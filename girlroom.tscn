@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bp3hqin4n5h8o"]
+
+[ext_resource type="Texture2D" uid="uid://brdwcpr8qp75q" path="res://assets/girl room.jpg" id="1_dw713"]
+[ext_resource type="Texture2D" uid="uid://cvk7hjt78keeg" path="res://assets/ruby floor.png" id="2_6mjyq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odxbf"]
+atlas = ExtResource("2_6mjyq")
+region = Rect2(0, 0, 960, 923)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pe8wd"]
+atlas = ExtResource("2_6mjyq")
+region = Rect2(960, 0, 960, 923)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rgf7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odxbf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pe8wd")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 1.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D" unique_id=400311361]
+
+[node name="GirlRoom" type="Sprite2D" parent="." unique_id=35822436]
+position = Vector2(583.5532, 322.49997)
+scale = Vector2(0.23337868, 0.19591959)
+texture = ExtResource("1_dw713")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2007448161]
+position = Vector2(539, 491)
+scale = Vector2(0.55268204, 0.55268204)
+sprite_frames = SubResource("SpriteFrames_rgf7s")
+autoplay = "default"
