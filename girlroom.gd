@@ -24,9 +24,8 @@ func _on_girlpressed(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 				dialogue_active = true
 
 				$AnimatedSprite2D.play("touch")
-				mama = true
 				#keyhole anim here possibly
-				await get_tree().create_timer(2.0).timeout
+				await get_tree().create_timer(1.0).timeout
 				
 				$mom.visible=false
 				$Node2D.visible = true
@@ -35,9 +34,14 @@ func _on_girlpressed(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 			#ruby has book atp	
 			if mama:
 				$AnimatedSprite2D.play("touchbook")
+				await get_tree().create_timer(1.0).timeout
+				$connectTheDots.visible = true
+				
+				
 
 func _on_dialogue_finished():
 	$Node2D.visible = false
+	mama = true
 	dialogue_scene.set_process_input(false)
 
 	dialogue_active = false

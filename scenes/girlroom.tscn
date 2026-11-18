@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dheuy3yacguyw" path="res://assets/ruby book floor.png" id="4_tkwkb"]
 [ext_resource type="PackedScene" uid="uid://ca6ryfke52sre" path="res://scenes/mama.tscn" id="5_yhlmj"]
 [ext_resource type="FontFile" uid="uid://cdpjmu781u54k" path="res://font/BBHBogle-Regular.ttf" id="6_tkwkb"]
+[ext_resource type="PackedScene" uid="uid://b55lylwa4l3mx" path="res://scenes/connect_the_dots.tscn" id="7_yhlmj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dw713"]
 atlas = ExtResource("2_6mjyq")
@@ -108,5 +109,8 @@ theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
 text = "Ruby, Sweetie. Come Here"
 scroll_active = false
+
+[node name="connectTheDots" parent="." unique_id=582379745 instance=ExtResource("7_yhlmj")]
+visible = false
 
 [connection signal="input_event" from="AnimatedSprite2D/Area2D" to="." method="_on_girlpressed"]
