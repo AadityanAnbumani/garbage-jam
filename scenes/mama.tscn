@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://ca6ryfke52sre"]
+
+[ext_resource type="Texture2D" uid="uid://brdwcpr8qp75q" path="res://assets/girl room.jpg" id="1_3xgb4"]
+[ext_resource type="Texture2D" uid="uid://cuicvechq55ek" path="res://assets/ruby stand.png" id="2_xykpk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgs2w"]
+atlas = ExtResource("2_xykpk")
+region = Rect2(1238, 0, 619, 837)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3pkb"]
+atlas = ExtResource("2_xykpk")
+region = Rect2(619, 0, 619, 837)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwgat"]
+atlas = ExtResource("2_xykpk")
+region = Rect2(1857, 0, 619, 837)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fitkg"]
+atlas = ExtResource("2_xykpk")
+region = Rect2(0, 0, 619, 837)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hae68"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgs2w")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3pkb")
+}],
+"loop": 1,
+"name": &"huh",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwgat")
+}],
+"loop": 1,
+"name": &"um",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fitkg")
+}],
+"loop": 1,
+"name": &"wow",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D" unique_id=1413871163]
+
+[node name="GirlRoom" type="Sprite2D" parent="." unique_id=237097040]
+position = Vector2(728.99994, -82)
+scale = Vector2(0.5269783, 0.4423942)
+texture = ExtResource("1_3xgb4")
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=875524851]
+position = Vector2(328, 368)
+sprite_frames = SubResource("SpriteFrames_hae68")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=2125658668]
+offset_left = 511.0
+offset_top = 131.0
+offset_right = 638.0
+offset_bottom = 171.0
+text = "yes mama? "
