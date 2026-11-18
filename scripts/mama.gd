@@ -37,7 +37,8 @@ var typing = false
 
 var waiting_for_animation = false
 
-func _ready():
+func start_dialogue():
+	current_line = 0
 	show_dialogue()
 
 func show_dialogue():

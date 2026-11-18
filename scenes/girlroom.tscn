@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c8uksdvsjcwrj" path="res://assets/ruby floor.png" id="2_6mjyq"]
 [ext_resource type="Texture2D" uid="uid://dheuy3yacguyw" path="res://assets/ruby book floor.png" id="4_tkwkb"]
 [ext_resource type="PackedScene" uid="uid://ca6ryfke52sre" path="res://scenes/mama.tscn" id="5_yhlmj"]
+[ext_resource type="FontFile" uid="uid://cdpjmu781u54k" path="res://font/BBHBogle-Regular.ttf" id="6_tkwkb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dw713"]
 atlas = ExtResource("2_6mjyq")
@@ -14,12 +15,12 @@ region = Rect2(0, 0, 960, 923)
 atlas = ExtResource("2_6mjyq")
 region = Rect2(960, 0, 960, 923)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pe8wd"]
-atlas = ExtResource("2_6mjyq")
+[sub_resource type="AtlasTexture" id="AtlasTexture_1m1kd"]
+atlas = ExtResource("4_tkwkb")
 region = Rect2(0, 0, 960, 923)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_83qv3"]
-atlas = ExtResource("2_6mjyq")
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkwkb"]
+atlas = ExtResource("4_tkwkb")
 region = Rect2(960, 0, 960, 923)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_odxbf"]
@@ -45,14 +46,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pe8wd")
+"texture": SubResource("AtlasTexture_1m1kd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_83qv3")
+"texture": SubResource("AtlasTexture_tkwkb")
 }],
 "loop": 1,
 "name": &"rubybook",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -83,7 +84,7 @@ texture = ExtResource("1_dw713")
 position = Vector2(573.00006, 468.00003)
 scale = Vector2(0.6024176, 0.6024176)
 sprite_frames = SubResource("SpriteFrames_rgf7s")
-animation = &"touchbook"
+animation = &"rubybook"
 autoplay = "default ruby"
 
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D" unique_id=671601229]
@@ -92,14 +93,20 @@ scale = Vector2(0.99999994, 0.99999994)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AnimatedSprite2D/Area2D" unique_id=1436771661]
 polygon = PackedVector2Array(-192.55756, -149.39807, -227.41711, -134.45825, -240.69696, -34.85956, -159.35803, -21.579773, -117.85858, 6.6398926, -190.89758, 116.198425, -152.71808, 154.37793, -38.179626, 214.13715, -36.519653, 169.31775, 102.91852, 174.29767, 109.55841, 164.33777, 172.63763, 167.65778, 378.4749, 154.37793, 200.85724, 117.8584, 270.57623, 51.45929, 298.79596, 82.99884, 287.1761, 4.9799194, 131.13812, 94.61871, 28.219482, 73.039, -19.91986, -13.279846, -58.099365, -13.279846, -48.139465, -54.779297, -24.89978, -36.51953, 6.6397705, -48.139404, -14.939941, -169.31781, -61.41931, -157.69794, -126.15845, -187.57758)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=164058925]
-offset_left = 187.0
-offset_top = 53.0
-offset_right = 444.0
-offset_bottom = 75.0
-text = "Ruby, Sweetie. Come here. "
-
 [node name="Node2D" parent="." unique_id=1413871163 instance=ExtResource("5_yhlmj")]
 visible = false
+
+[node name="mom" type="RichTextLabel" parent="." unique_id=449399241]
+offset_left = 99.0
+offset_top = 56.0
+offset_right = 713.0
+offset_bottom = 128.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.64705884)
+theme_override_fonts/normal_font = ExtResource("6_tkwkb")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "Ruby, Sweetie. Come Here"
+scroll_active = false
 
 [connection signal="input_event" from="AnimatedSprite2D/Area2D" to="." method="_on_girlpressed"]
