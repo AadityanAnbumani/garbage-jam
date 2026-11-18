@@ -1,0 +1,177 @@
+[gd_scene format=3 uid="uid://ca6ryfke52sre"]
+
+[ext_resource type="Texture2D" uid="uid://brdwcpr8qp75q" path="res://assets/girl room.jpg" id="1_3xgb4"]
+[ext_resource type="Texture2D" uid="uid://cuicvechq55ek" path="res://assets/ruby stand.png" id="2_xykpk"]
+[ext_resource type="Texture2D" uid="uid://bcfhufvhbcip3" path="res://assets/book.png" id="3_wwgat"]
+[ext_resource type="Script" uid="uid://ci4rh36ailb46" path="res://scripts/mama.gd" id="3_x3pkb"]
+[ext_resource type="FontFile" uid="uid://cdpjmu781u54k" path="res://font/BBHBogle-Regular.ttf" id="4_wwgat"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgs2w"]
+atlas = ExtResource("2_xykpk")
+region = Rect2(1238, 0, 619, 837)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3pkb"]
+atlas = ExtResource("2_xykpk")
+region = Rect2(619, 0, 619, 837)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwgat"]
+atlas = ExtResource("2_xykpk")
+region = Rect2(1857, 0, 619, 837)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fitkg"]
+atlas = ExtResource("2_xykpk")
+region = Rect2(0, 0, 619, 837)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hae68"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgs2w")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3pkb")
+}],
+"loop": 1,
+"name": &"huh",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwgat")
+}],
+"loop": 1,
+"name": &"um",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fitkg")
+}],
+"loop": 1,
+"name": &"wow",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_wwgat"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(854.99994, -229.99994)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.2468447]
+}
+
+[sub_resource type="Animation" id="Animation_fitkg"]
+resource_name = "book slide"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.01),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(487, 836), Vector2(440.99997, 471.00003)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.01),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.2468447]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pc8j8"]
+_data = {
+&"RESET": SubResource("Animation_wwgat"),
+&"book slide": SubResource("Animation_fitkg")
+}
+
+[node name="Node2D" type="Node2D" unique_id=1413871163]
+
+[node name="GirlRoom" type="Sprite2D" parent="." unique_id=237097040]
+position = Vector2(728.99994, -82)
+scale = Vector2(0.5269783, 0.4423942)
+texture = ExtResource("1_3xgb4")
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=875524851]
+position = Vector2(328, 368)
+sprite_frames = SubResource("SpriteFrames_hae68")
+animation = &"wow"
+
+[node name="Book" type="Sprite2D" parent="." unique_id=545285726]
+position = Vector2(854.99994, -229.99994)
+rotation = -0.2468447
+scale = Vector2(0.56163603, 0.561636)
+texture = ExtResource("3_wwgat")
+
+[node name="Control" type="Control" parent="." unique_id=1639278558]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 487.0
+offset_top = 121.0
+offset_right = 1206.0
+offset_bottom = 521.0
+script = ExtResource("3_x3pkb")
+
+[node name="ruby" type="RichTextLabel" parent="Control" unique_id=2125658668]
+layout_mode = 0
+offset_right = 614.0
+offset_bottom = 203.0
+theme_override_colors/default_color = Color(1, 0.65593, 0.91673905, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.64705884)
+theme_override_fonts/normal_font = ExtResource("4_wwgat")
+theme_override_font_sizes/normal_font_size = 80
+bbcode_enabled = true
+text = "yes mama? "
+scroll_active = false
+
+[node name="mama" type="RichTextLabel" parent="Control" unique_id=1757758557]
+layout_mode = 0
+offset_left = 213.0
+offset_top = 216.0
+offset_right = 647.0
+offset_bottom = 495.0
+theme_override_colors/default_color = Color(1, 0.65593, 0.91673905, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.64705884)
+theme_override_fonts/normal_font = ExtResource("4_wwgat")
+theme_override_font_sizes/normal_font_size = 80
+bbcode_enabled = true
+text = "yes mama? "
+scroll_active = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1084306524]
+root_node = NodePath("../Book")
+libraries/ = SubResource("AnimationLibrary_pc8j8")
