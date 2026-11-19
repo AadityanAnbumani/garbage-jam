@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://8atlpmd8pax4"]
+
+[ext_resource type="Texture2D" uid="uid://tm0vnlphy0nj" path="res://assets/paper.png" id="1_ter0v"]
+[ext_resource type="Texture2D" uid="uid://bd72tknc81j5k" path="res://assets/dots/pentagram.png" id="2_ter0v"]
+
+[node name="flowerShape" type="Node2D" unique_id=967914542]
+
+[node name="Paper" type="Sprite2D" parent="." unique_id=1663904749]
+position = Vector2(-106.700005, -71.05924)
+scale = Vector2(0.5, 0.60041744)
+texture = ExtResource("1_ter0v")
+metadata/_edit_lock_ = true
+
+[node name="Pentagram" type="Sprite2D" parent="." unique_id=124366033]
+position = Vector2(-99.00001, -63)
+scale = Vector2(0.467448, 0.467448)
+texture = ExtResource("2_ter0v")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=2135368065]
+points = PackedVector2Array(-98, 91, -204, -205, 66, -6, -255, -16, 3, -196, -71, 89, -230, 27, -252, -120, -84, -231, 61, -103, 8, 53)
+default_color = Color(0, 0, 0, 1)

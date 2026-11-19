@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://ybuwtmaf15iq"]
+
+[ext_resource type="Texture2D" uid="uid://tm0vnlphy0nj" path="res://assets/paper.png" id="1_tjxnu"]
+[ext_resource type="Texture2D" uid="uid://bb0rd0knk45dr" path="res://assets/dots/eyeball.png" id="2_tjxnu"]
+
+[node name="flowerShape" type="Node2D" unique_id=967914542]
+
+[node name="Paper" type="Sprite2D" parent="." unique_id=1663904749]
+position = Vector2(-106.700005, -71.05924)
+scale = Vector2(0.5, 0.60041744)
+texture = ExtResource("1_tjxnu")
+metadata/_edit_lock_ = true
+
+[node name="Eyeball" type="Sprite2D" parent="." unique_id=1743446945]
+position = Vector2(-114.99999, -57.999996)
+scale = Vector2(0.80725807, 0.80725807)
+texture = ExtResource("2_tjxnu")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1802289763]
+position = Vector2(-114.99999, -57.999996)
+scale = Vector2(0.80725807, 0.80725807)
+points = PackedVector2Array(-29.730286, -85.47454, 86.71327, -73.08692, 91.66832, 32.20779, -4.955063, 69.37063, -68.13188, -2.4775238, -130.06996, -99.100914, 65.654335, -185.81421, 198.2018, -53.26674, 141.21878, 130.06993, -68.13188, 136.26373, -161.03899, 7.432564)
+default_color = Color(0, 0, 0, 1)

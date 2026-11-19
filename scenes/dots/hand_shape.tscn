@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://ck7jk1enp1r58"]
+
+[ext_resource type="Texture2D" uid="uid://tm0vnlphy0nj" path="res://assets/paper.png" id="1_dxfie"]
+[ext_resource type="Texture2D" uid="uid://bleokm4yhrhqu" path="res://assets/dots/hand.png" id="2_dxfie"]
+
+[node name="flowerShape" type="Node2D" unique_id=967914542]
+
+[node name="Paper" type="Sprite2D" parent="." unique_id=1663904749]
+position = Vector2(-106.700005, -71.05924)
+scale = Vector2(0.5, 0.60041744)
+texture = ExtResource("1_dxfie")
+metadata/_edit_lock_ = true
+
+[node name="Hand" type="Sprite2D" parent="." unique_id=1593384816]
+position = Vector2(-90, -101)
+scale = Vector2(1.0089461, 1.0089464)
+texture = ExtResource("2_dxfie")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1378094303]
+position = Vector2(-90, -101)
+scale = Vector2(1.0089461, 1.0089464)
+points = PackedVector2Array(-31.716263, 246.79211, -51.538933, 121.909355, -141.73206, -56.494583, -67.39706, 6.937935, -64.42367, -167.50146, -20.813797, -45.592117, 13.87587, -178.40393, 10.902473, -31.716248, 64.42367, -140.74088, 44.601, -7.929062, 102.08674, -87.219696, 35.680805, 106.05123, 55.50347, 238.86305)
+default_color = Color(0, 0, 0, 1)

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://61vv4xqyakaq"]
+
+[ext_resource type="Texture2D" uid="uid://tm0vnlphy0nj" path="res://assets/paper.png" id="1_tbbgc"]
+[ext_resource type="Texture2D" uid="uid://coaddy0udqnyk" path="res://assets/stickman.png" id="2_tbbgc"]
+
+[node name="flowerShape" type="Node2D" unique_id=967914542]
+
+[node name="Paper" type="Sprite2D" parent="." unique_id=1663904749]
+position = Vector2(-106.700005, -71.05924)
+scale = Vector2(0.5, 0.60041744)
+texture = ExtResource("1_tbbgc")
+metadata/_edit_lock_ = true
+
+[node name="Stickman" type="Sprite2D" parent="." unique_id=1716922818]
+position = Vector2(-101, -66)
+scale = Vector2(0.7125624, 0.7125624)
+texture = ExtResource("2_tbbgc")
+region_enabled = true
+region_rect = Rect2(0, 0, 601.15857, 837)
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1650411115]
+points = PackedVector2Array(-180, -201, -106, -257, -32, -187, -82, -123, -87, -88, -31, -42, -52, -17, -87, -45, -81, 58, -47, 111, -70, 131, -99, 94, -125, 130, -157, 110, -116, 58, -115, -48, -150, -16, -172, -40, -121, -86, -128, -123, -179, -167)
+default_color = Color(0, 0, 0, 1)

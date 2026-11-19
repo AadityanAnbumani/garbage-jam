@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://brv0ggpfusfrc"]
+
+[ext_resource type="Texture2D" uid="uid://tm0vnlphy0nj" path="res://assets/paper.png" id="1_rugfo"]
+[ext_resource type="Texture2D" uid="uid://b0mc6ahmvpxxf" path="res://assets/dots/key.png" id="2_rugfo"]
+
+[node name="flowerShape" type="Node2D" unique_id=967914542]
+
+[node name="Paper" type="Sprite2D" parent="." unique_id=1663904749]
+position = Vector2(-106.700005, -71.05924)
+scale = Vector2(0.5, 0.60041744)
+texture = ExtResource("1_rugfo")
+metadata/_edit_lock_ = true
+
+[node name="Key" type="Sprite2D" parent="." unique_id=2140816695]
+position = Vector2(-80.99999, -53.999996)
+scale = Vector2(0.6033055, 0.6033058)
+texture = ExtResource("2_rugfo")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=492766147]
+points = PackedVector2Array(-98, -248, -40, -245, -29, -194, -58, -154, -57, 122, -102, 121, -104, 80, -154, 80, -153, 20, -99, 22, -105, -159, -145, -183, -141, -238)
+default_color = Color(0, 0, 0, 1)

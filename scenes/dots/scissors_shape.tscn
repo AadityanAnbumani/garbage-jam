@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cvreuyif5kojc"]
+
+[ext_resource type="Texture2D" uid="uid://tm0vnlphy0nj" path="res://assets/paper.png" id="1_y1drb"]
+[ext_resource type="Texture2D" uid="uid://delkrnmm55umx" path="res://assets/dots/scissors.png" id="2_6t1js"]
+
+[node name="flowerShape" type="Node2D" unique_id=967914542]
+
+[node name="Paper" type="Sprite2D" parent="." unique_id=1663904749]
+position = Vector2(-106.700005, -71.05924)
+scale = Vector2(0.5, 0.60041744)
+texture = ExtResource("1_y1drb")
+metadata/_edit_lock_ = true
+
+[node name="Scissors" type="Sprite2D" parent="." unique_id=992333427]
+position = Vector2(-77.00001, -90.00001)
+rotation = 0.41935644
+scale = Vector2(0.677593, 0.677593)
+texture = ExtResource("2_6t1js")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1749856349]
+points = PackedVector2Array(-48, -269, -82, -130, -245, -32, -261, 44, -182, 53, -81, -88, -122, 87, -58, 129, -13, 67, -47, -108, 38, -245, -30, -194, -27, -245)
+default_color = Color(0, 0, 0, 1)
