@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://did7hhac4kove"]
+
+[ext_resource type="Texture2D" uid="uid://b4u1fjb5i573m" path="res://assets/dots/flower.png" id="1_0qbqi"]
+
+[node name="flowerShape" type="Node2D" unique_id=967914542]
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1244236248]
+
+[node name="Flower" type="Sprite2D" parent="." unique_id=1591152935]
+texture = ExtResource("1_0qbqi")
