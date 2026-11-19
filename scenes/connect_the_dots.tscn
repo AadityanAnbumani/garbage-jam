@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b55lylwa4l3mx"]
 
 [ext_resource type="Script" uid="uid://bqlcn7h2lwlpy" path="res://scripts/connect_the_dots.gd" id="1_6it6j"]
+[ext_resource type="PackedScene" uid="uid://did7hhac4kove" path="res://scenes/flower_shape.tscn" id="2_4o5sk"]
 [ext_resource type="Texture2D" uid="uid://brdwcpr8qp75q" path="res://assets/girl room.jpg" id="2_6hgct"]
 [ext_resource type="Texture2D" uid="uid://bcfhufvhbcip3" path="res://assets/book.png" id="3_4o5sk"]
 [ext_resource type="Texture2D" uid="uid://tm0vnlphy0nj" path="res://assets/paper.png" id="4_hdh57"]
@@ -703,15 +704,6 @@ bg_color = Color(0.15453345, 0.16667596, 0.006900722, 1)
 bg_color = Color(0.8784314, 0.9411765, 0.18039216, 1)
 
 [node name="connectTheDots" type="Node2D" unique_id=582379745]
-script = ExtResource("1_6it6j")
-
-[node name="Shape" type="Node2D" parent="." unique_id=1331105281]
-
-[node name="Outline" type="Line2D" parent="Shape" unique_id=1427534405]
-points = PackedVector2Array(90, 530)
-width = 4.0
-
-[node name="LeftEye" type="Line2D" parent="Shape" unique_id=818697737]
 
 [node name="GirlRoom" type="Sprite2D" parent="." unique_id=1709195477]
 position = Vector2(646, -1105)
@@ -771,3 +763,8 @@ autowrap_mode = 2
 visible = false
 position = Vector2(845, 365)
 texture = ExtResource("3_4o5sk")
+
+[node name="Puzzle" type="Node2D" parent="." unique_id=88191845]
+script = ExtResource("1_6it6j")
+shape_scene = ExtResource("2_4o5sk")
+autostart = true
