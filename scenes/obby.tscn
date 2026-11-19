@@ -1,3 +1,10 @@
 [gd_scene format=3 uid="uid://ceh4unn33py5o"]
 
+[ext_resource type="Texture2D" uid="uid://bylf6q6af8aem" path="res://assets/obby paper.png" id="1_88vgh"]
+
 [node name="Node2D" type="Node2D" unique_id=2018465092]
+
+[node name="ObbyPaper" type="Sprite2D" parent="." unique_id=134239082]
+position = Vector2(572.5, 321.5)
+scale = Vector2(2.4704642, 2.5150375)
+texture = ExtResource("1_88vgh")
