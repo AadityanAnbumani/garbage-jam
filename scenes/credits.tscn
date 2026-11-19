@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://dw5w055qwpeay"]
+
+[ext_resource type="Texture2D" uid="uid://fty52wp7hvg7" path="res://assets/nontebook paper.png" id="1_2ckv8"]
+[ext_resource type="FontFile" uid="uid://cdpjmu781u54k" path="res://font/BBHBogle-Regular.ttf" id="2_0ctdu"]
+
+[node name="Node2D" type="Node2D" unique_id=1488563634]
+
+[node name="NontebookPaper" type="Sprite2D" parent="." unique_id=226129414]
+position = Vector2(597, 311)
+rotation = -0.08603121
+scale = Vector2(0.46847293, 0.4684729)
+texture = ExtResource("1_2ckv8")
+
+[node name="credits" type="Label" parent="." unique_id=1073808899]
+offset_left = 495.0
+offset_top = 147.0
+offset_right = 692.0
+offset_bottom = 209.0
+rotation = -0.08450103
+theme_override_colors/font_color = Color(1, 0.17254902, 1, 1)
+theme_override_fonts/font = ExtResource("2_0ctdu")
+theme_override_font_sizes/font_size = 40
+text = "credits"
+horizontal_alignment = 1
+
+[node name="name" type="Label" parent="." unique_id=1558539646]
+offset_left = 291.99997
+offset_top = 245.0
+offset_right = 962.0
+offset_bottom = 307.0
+rotation = -0.08450103
+theme_override_colors/font_color = Color(1, 0.17254902, 1, 1)
+theme_override_fonts/font = ExtResource("2_0ctdu")
+theme_override_font_sizes/font_size = 35
+text = "Made by: Vishalya Sairam + Aadityan Anbumani"
+horizontal_alignment = 1
+
+[node name="art" type="Label" parent="." unique_id=2143362668]
+offset_left = 289.99997
+offset_top = 336.99997
+offset_right = 960.0
+offset_bottom = 398.99997
+rotation = -0.08450103
+theme_override_colors/font_color = Color(1, 0.17254902, 1, 1)
+theme_override_fonts/font = ExtResource("2_0ctdu")
+theme_override_font_sizes/font_size = 35
+text = "Art: vishalya sairam"
+horizontal_alignment = 1
+
+[node name="assets" type="Label" parent="." unique_id=605290689]
+offset_left = 291.0
+offset_top = 415.99997
+offset_right = 961.0
+offset_bottom = 477.99997
+rotation = -0.08450103
+theme_override_colors/font_color = Color(1, 0.17254902, 1, 1)
+theme_override_fonts/font = ExtResource("2_0ctdu")
+theme_override_font_sizes/font_size = 35
+text = "assets: pexels stock photos"
+horizontal_alignment = 1
