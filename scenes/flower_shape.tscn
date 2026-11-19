@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://did7hhac4kove"]
+[gd_scene format=3 uid="uid://drpnf8pw8wjjt"]
 
 [ext_resource type="Texture2D" uid="uid://tm0vnlphy0nj" path="res://assets/paper.png" id="1_kefqa"]
 [ext_resource type="Texture2D" uid="uid://b4u1fjb5i573m" path="res://assets/dots/flower.png" id="2_nb64g"]
@@ -6,17 +6,17 @@
 [node name="flowerShape" type="Node2D" unique_id=967914542]
 
 [node name="Line2D" type="Line2D" parent="." unique_id=1244236248]
-points = PackedVector2Array(-127, -94, -136, -122, -154, -147, -174, -167, -181, -186, -174, -210, -151, -232, -119, -245, -77, -244, -44, -232, -27, -217, -11, -191, -23, -160, -47, -138, -59, -120, -75, -95, -44, -118, -28, -139, -14, -155, 8, -165, 33, -159, 59, -139, 73, -117, 80, -105, 86, -83, 71, -59, 60, -40, 44, -27, 24, -18, -2, -23, -31, -31, -74, -41, -43, -26, -25, -20, -2, -14, 27, 0, 35, 27, 25, 63, 1, 86, -27, 109, -66, 108, -102, 96, -120, 64, -121, 31, -124, -1, -126, -26, -139, 4, -140, 25, -138, 66, -146, 82, -174, 97, -195, 100, -220, 94, -248, 80, -267, 56, -276, 21, -266, -3, -236, -25, -199, -42, -172, -53, -145, -59, -180, -61, -202, -58, -228, -49, -251, -42, -275, -46, -290, -59, -297, -95, -284, -132, -263, -159, -231, -181, -203, -178, -185, -165, -172, -148, -151, -124, -130, -98)
+points = PackedVector2Array(-120, -89, -169, -187, -136, -231, -55, -232, -23, -184, -72, -97, 13, -152, 61, -121, 72, -77, 34, -34, -70, -42, 3, 15, 19, 57, -32, 100, -89, 88, -125, -28, -162, 79, -255, 62, -251, 6, -145, -60, -276, -73, -229, -166, -149, -109)
 default_color = Color(0, 0, 0, 1)
 
 [node name="Paper" type="Sprite2D" parent="." unique_id=1663904749]
-visible = false
 position = Vector2(-106.700005, -71.05924)
 scale = Vector2(0.5, 0.60041744)
 texture = ExtResource("1_kefqa")
+metadata/_edit_lock_ = true
 
 [node name="Flower" type="Sprite2D" parent="." unique_id=1591152935]
-visible = false
 position = Vector2(-104, -66.99999)
 scale = Vector2(0.735, 0.735)
 texture = ExtResource("2_nb64g")
+metadata/_edit_lock_ = true

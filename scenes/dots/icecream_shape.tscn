@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bch00hh6opgm1"]
+
+[ext_resource type="Texture2D" uid="uid://tm0vnlphy0nj" path="res://assets/paper.png" id="1_qhpij"]
+[ext_resource type="Texture2D" uid="uid://b5xnkjkvf7gwo" path="res://assets/dots/icecream.png" id="2_qhpij"]
+
+[node name="flowerShape" type="Node2D" unique_id=967914542]
+
+[node name="Paper" type="Sprite2D" parent="." unique_id=1663904749]
+position = Vector2(-106.700005, -71.05924)
+scale = Vector2(0.5, 0.60041744)
+texture = ExtResource("1_qhpij")
+metadata/_edit_lock_ = true
+
+[node name="Icecream" type="Sprite2D" parent="." unique_id=585510460]
+position = Vector2(-90, -70)
+scale = Vector2(0.4345665, 0.43456644)
+texture = ExtResource("2_qhpij")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=257896988]
+points = PackedVector2Array(-100, 143, -166, -114, -201, -152, -164, -189, -180, -250, -89, -287, -12, -244, -20, -193, 28, -158, -10, -119, -76, 105)
+default_color = Color(0, 0, 0, 1)

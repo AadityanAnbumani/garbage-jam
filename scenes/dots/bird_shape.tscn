@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://blnia2whj7qox"]
+
+[ext_resource type="Texture2D" uid="uid://tm0vnlphy0nj" path="res://assets/paper.png" id="1_why2c"]
+[ext_resource type="Texture2D" uid="uid://d01lwvsjybf1h" path="res://assets/dots/bird.png" id="2_why2c"]
+
+[node name="flowerShape" type="Node2D" unique_id=967914542]
+
+[node name="Paper" type="Sprite2D" parent="." unique_id=1663904749]
+position = Vector2(-106.700005, -71.05924)
+scale = Vector2(0.5, 0.60041744)
+texture = ExtResource("1_why2c")
+metadata/_edit_lock_ = true
+
+[node name="Bird" type="Sprite2D" parent="." unique_id=2117741755]
+position = Vector2(-66, -104)
+scale = Vector2(0.49421293, 0.49421293)
+texture = ExtResource("2_why2c")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1678385920]
+points = PackedVector2Array(-261, 54, -130, -140, -54, -214, 13, -212, 29, -188, 73, -180, 29, -153, -11, -45, -95, 21, -186, 10)
+default_color = Color(0, 0, 0, 1)

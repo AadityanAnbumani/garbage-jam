@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dck4k7tvdwh2m"]
+
+[ext_resource type="Texture2D" uid="uid://tm0vnlphy0nj" path="res://assets/paper.png" id="1_dgdjp"]
+[ext_resource type="Texture2D" uid="uid://c3ojw2w2y2mlm" path="res://assets/dots/red square.png" id="2_dgdjp"]
+
+[node name="flowerShape" type="Node2D" unique_id=967914542]
+
+[node name="Line2D2" type="Line2D" parent="." unique_id=1224941917]
+points = PackedVector2Array(-260, -223, 51, -223, 51, 89, -262, 88)
+default_color = Color(0, 0, 0, 1)
+
+[node name="Paper" type="Sprite2D" parent="." unique_id=1663904749]
+position = Vector2(-106.700005, -71.05924)
+scale = Vector2(0.5, 0.60041744)
+texture = ExtResource("1_dgdjp")
+metadata/_edit_lock_ = true
+
+[node name="RedSquare" type="Sprite2D" parent="." unique_id=34323041]
+position = Vector2(-105, -67)
+scale = Vector2(0.57536775, 0.57536775)
+texture = ExtResource("2_dgdjp")
+metadata/_edit_lock_ = true

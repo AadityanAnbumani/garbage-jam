@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://b55lylwa4l3mx"]
 
 [ext_resource type="Script" uid="uid://bqlcn7h2lwlpy" path="res://scripts/connect_the_dots.gd" id="1_6it6j"]
-[ext_resource type="PackedScene" uid="uid://did7hhac4kove" path="res://scenes/flower_shape.tscn" id="2_4o5sk"]
 [ext_resource type="Texture2D" uid="uid://brdwcpr8qp75q" path="res://assets/girl room.jpg" id="2_6hgct"]
 [ext_resource type="Texture2D" uid="uid://bcfhufvhbcip3" path="res://assets/book.png" id="3_4o5sk"]
 [ext_resource type="Texture2D" uid="uid://tm0vnlphy0nj" path="res://assets/paper.png" id="4_hdh57"]
+[ext_resource type="PackedScene" uid="uid://dck4k7tvdwh2m" path="res://scenes/square_shape.tscn" id="5_4o5sk"]
 
 [sub_resource type="Animation" id="Animation_6hgct"]
 resource_name = "new_animation"
@@ -766,5 +766,5 @@ texture = ExtResource("3_4o5sk")
 
 [node name="Puzzle" type="Node2D" parent="." unique_id=88191845]
 script = ExtResource("1_6it6j")
-shape_scene = ExtResource("2_4o5sk")
+shape_scene = ExtResource("5_4o5sk")
 autostart = true
