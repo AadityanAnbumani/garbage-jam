@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://c3ojw2w2y2mlm" path="res://assets/dots/red square.png" id="33_ac4sc"]
 [ext_resource type="Texture2D" uid="uid://delkrnmm55umx" path="res://assets/dots/scissors.png" id="34_2rmbk"]
 [ext_resource type="Texture2D" uid="uid://bxik6ypry6cgx" path="res://assets/dots/spaceship.png" id="35_qs4hi"]
+[ext_resource type="Texture2D" uid="uid://cc5tfp36siyjk" path="res://assets/arrow.png" id="35_x6a6y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dw713"]
 atlas = ExtResource("2_6mjyq")
@@ -569,6 +570,92 @@ _data = {
 &"friend escape": SubResource("Animation_qs4hi")
 }
 
+[sub_resource type="Animation" id="Animation_ixjkf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer2/Arrow:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.32627118, 0.32627118)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer2/Arrow:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.69419384]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer2/Arrow:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(578, 454)]
+}
+
+[sub_resource type="Animation" id="Animation_jp0jl"]
+resource_name = "arrow"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer2/Arrow:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.0333333, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.32627118, 0.32627118), Vector2(0.3, 0.3), Vector2(0.32627118, 0.32627118)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer2/Arrow:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.0333333, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.69419384, -0.69419384, -0.69419384]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer2/Arrow:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(578, 454)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w6n54"]
+_data = {
+&"RESET": SubResource("Animation_ixjkf"),
+&"arrow": SubResource("Animation_jp0jl")
+}
+
 [node name="Node2D2" type="Node2D" unique_id=400311361]
 script = ExtResource("1_1m1kd")
 
@@ -826,6 +913,17 @@ visible = false
 position = Vector2(605, 342)
 scale = Vector2(0.44045344, 0.44045338)
 texture = ExtResource("25_ac4sc")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." unique_id=89032357]
+libraries/ = SubResource("AnimationLibrary_w6n54")
+autoplay = &"arrow"
+
+[node name="Arrow" type="Sprite2D" parent="AnimationPlayer2" unique_id=817939310]
+position = Vector2(578, 454)
+rotation = -0.69419384
+scale = Vector2(0.32627118, 0.32627118)
+texture = ExtResource("35_x6a6y")
+centered = false
 
 [connection signal="input_event" from="AnimatedSprite2D/Area2D" to="." method="_on_girlpressed"]
 

@@ -153,7 +153,9 @@ func _on_girlpressed(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		if event.pressed:
 			if !mama:
 				busy = true
-
+				
+				$AnimationPlayer2.stop()
+				$AnimationPlayer2/Arrow.visible=false
 				$AnimatedSprite2D.play("touch")
 				#keyhole anim here possibly
 				await get_tree().create_timer(1.0).timeout
