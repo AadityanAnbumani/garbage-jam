@@ -460,12 +460,22 @@ func _end_dialogue() -> void:
 		return
 	if current_dialogue_id in ["friend drawn", "eyeball", "pentagram"]:
 
-		friend_text.visible = false
-		friend_sprite.visible = false
-		friend_room_sprite.visible = false
-		book_ruby_text.visible = false
+		friend_text.hide()
+		friend_sprite.hide()
+		friend_room_sprite.hide()
+		book_ruby_text.hide()
 
-		book.visible = false
+		# Hide the completed puzzle's book image
+		var reveal_name: String = current_puzzle_data.get("reveal", "")
+		var imgs = book.get_node_or_null("imgs")
+
+		if imgs:
+			var completed_image = imgs.get_node_or_null(reveal_name)
+			if completed_image:
+				completed_image.hide()
+
+		# Close book AFTER dialogue finishes
+		book.hide()
 		in_book_view = false
 
 		$AnimatedSprite2D.play("rubybook")
@@ -494,6 +504,10 @@ func _end_dialogue() -> void:
 		print("FINAL BOOK DIALOGUE COMPLETED!")
 
 		busy = false
+		
+		$AnimationPlayer.play("friend escape")
+		await $AnimationPlayer.animation_finished
+		get_tree().change_scene_to_file("res://scenes/obby.tscn")
 		return
 		
 	dialogue_box.visible = false
@@ -603,30 +617,34 @@ func _on_puzzle_completed() -> void:
 
 	# EYEBALL SPECIAL EVENT
 	if reveal_name == "Eyeball":
-		if book_image:
-			book_image.hide()
-
-		book.hide()
-		in_book_view = false
-
 		puzzle_index += 1
 		busy = false
 
-		_start_eyeball_event()
+		# Keep book and eyeball visible during dialogue
+		book.show()
+		in_book_view = true
+		book_image.show()
+
+		_start_friend_dialogue("eyeball", true)
 		return
+
 
 	# PENTAGRAM SPECIAL EVENT
 	if reveal_name == "Pentagram":
-		if book_image:
-			book_image.hide()
-
-		book.hide()
-		in_book_view = false
-
 		puzzle_index += 1
 		busy = false
 
-		_start_pentagram_event()
+		var room_node = get_node_or_null("Pentagram")
+		if room_node:
+			room_node.show()
+		else:
+			push_warning("Pentagram room node not found!")
+
+		book.show()
+		in_book_view = true
+		book_image.show()
+
+		_start_friend_dialogue("pentagram", true)
 		return
 	# NORMAL PUZZLE COMPLETION
 	if book_image:
@@ -818,25 +836,21 @@ func _start_eyeball_event() -> void:
 	_start_room_dialogue("eyeball")
 	
 	
-func _start_friend_dialogue(id: String, in_room: bool = false) -> void:
+func _start_friend_dialogue(id: String, use_room_sprite: bool = false) -> void:
 	if not dialogues.has(id):
 		push_error("No dialogue named: " + id)
 		return
 
-	# Hide both sprites first
-	friend_sprite.visible = false
-	friend_room_sprite.visible = false
+	friend_sprite.hide()
+	friend_room_sprite.hide()
 
-	# Show the correct friend
-	if in_room:
-		friend_room_sprite.visible = true
+	if use_room_sprite:
+		friend_room_sprite.show()
+		friend_room_sprite.play("default")
 	else:
-		friend_sprite.visible = true
-		friend_sprite.play("default")
+		friend_sprite.show()
 
 	_start_dialogue(id)
-	
-	
 	
 func _play_first_book_intro() -> void:
 	in_book_view = true
