@@ -18,5 +18,5 @@ scale = Vector2(0.677593, 0.677593)
 texture = ExtResource("2_6t1js")
 
 [node name="Line2D" type="Line2D" parent="." unique_id=1749856349]
-points = PackedVector2Array(-48, -269, -82, -130, -245, -32, -261, 44, -182, 53, -81, -88, -122, 87, -58, 129, -13, 67, -47, -108, 38, -245, -30, -194, -27, -245)
+points = PackedVector2Array(-48, -269, -82, -130, -245, -32, -261, 44, -182, 53, -81, -88, -122, 87, -58, 129, -13, 67, -47, -108, 38, -245, -30, -194)
 default_color = Color(0, 0, 0, 1)

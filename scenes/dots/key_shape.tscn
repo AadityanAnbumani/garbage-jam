@@ -17,5 +17,5 @@ scale = Vector2(0.6033055, 0.6033058)
 texture = ExtResource("2_rugfo")
 
 [node name="Line2D" type="Line2D" parent="." unique_id=492766147]
-points = PackedVector2Array(-98, -248, -40, -245, -29, -194, -58, -154, -57, 122, -102, 121, -104, 80, -154, 80, -153, 20, -99, 22, -105, -159, -145, -183, -141, -238)
+points = PackedVector2Array(-40, -245, -29, -194, -58, -154, -57, 122, -102, 121, -104, 80, -154, 80, -153, 20, -99, 22, -105, -159, -145, -183, -141, -238)
 default_color = Color(0, 0, 0, 1)

@@ -17,5 +17,5 @@ scale = Vector2(0.33083448, 0.33083448)
 texture = ExtResource("2_wbw1p")
 
 [node name="Line2D" type="Line2D" parent="." unique_id=1114091021]
-points = PackedVector2Array(-227, -9, -224, -174, -161, -90, -95, -182, -47, -95, 31, -178, 24, -6, -192, -11)
+points = PackedVector2Array(-227, -9, -224, -174, -161, -90, -95, -182, -47, -95, 31, -178, 24, -6)
 default_color = Color(0, 0, 0, 1)
