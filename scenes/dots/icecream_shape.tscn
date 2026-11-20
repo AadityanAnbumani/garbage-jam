@@ -12,10 +12,12 @@ texture = ExtResource("1_qhpij")
 metadata/_edit_lock_ = true
 
 [node name="Icecream" type="Sprite2D" parent="." unique_id=585510460]
-position = Vector2(-90, -70)
-scale = Vector2(0.4345665, 0.43456644)
+position = Vector2(-114.87416, -92.71991)
+scale = Vector2(0.36538678, 0.36538675)
 texture = ExtResource("2_qhpij")
 
 [node name="Line2D" type="Line2D" parent="." unique_id=257896988]
-points = PackedVector2Array(-100, 143, -166, -114, -201, -152, -164, -189, -180, -250, -89, -287, -12, -244, -20, -193, 28, -158, -10, -119, -76, 105)
+position = Vector2(-40.874165, -30.719913)
+scale = Vector2(0.84080756, 0.84080756)
+points = PackedVector2Array(-100, 143, -166, -114, -201, -152, -164, -189, -180, -250, -89, -287, -12, -244, -20, -193, 28, -158, -10, -119, -52.480305, 11.560211)
 default_color = Color(0, 0, 0, 1)
