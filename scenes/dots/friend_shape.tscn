@@ -3,6 +3,76 @@
 [ext_resource type="Texture2D" uid="uid://tm0vnlphy0nj" path="res://assets/paper.png" id="1_tbbgc"]
 [ext_resource type="Texture2D" uid="uid://coaddy0udqnyk" path="res://assets/stickman.png" id="2_tbbgc"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbbgc"]
+atlas = ExtResource("2_tbbgc")
+region = Rect2(600, 0, 600, 837)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wn8jx"]
+atlas = ExtResource("2_tbbgc")
+region = Rect2(3000, 0, 600, 837)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddmak"]
+atlas = ExtResource("2_tbbgc")
+region = Rect2(0, 0, 600, 837)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47mod"]
+atlas = ExtResource("2_tbbgc")
+region = Rect2(2400, 0, 600, 837)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pprk"]
+atlas = ExtResource("2_tbbgc")
+region = Rect2(1200, 0, 600, 837)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_im4ie"]
+atlas = ExtResource("2_tbbgc")
+region = Rect2(1800, 0, 600, 837)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rgf7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbbgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wn8jx")
+}],
+"loop": 1,
+"name": &"dance",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddmak")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47mod")
+}],
+"loop": 1,
+"name": &"sad",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3pprk")
+}],
+"loop": 1,
+"name": &"smile",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_im4ie")
+}],
+"loop": 1,
+"name": &"yay",
+"speed": 5.0
+}]
+
 [node name="flowerShape" type="Node2D" unique_id=967914542]
 
 [node name="Paper" type="Sprite2D" parent="." unique_id=1663904749]
@@ -10,6 +80,12 @@ position = Vector2(-106.700005, -71.05924)
 scale = Vector2(0.5, 0.60041744)
 texture = ExtResource("1_tbbgc")
 metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=336743191]
+position = Vector2(-101, -66)
+scale = Vector2(0.7125624, 0.7125624)
+sprite_frames = SubResource("SpriteFrames_rgf7s")
+animation = &"sad"
 
 [node name="Stickman" type="Sprite2D" parent="." unique_id=1716922818]
 position = Vector2(-101, -66)

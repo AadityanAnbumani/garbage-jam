@@ -75,6 +75,77 @@ var dialogues: Dictionary = {
 		"text": "[color=#ffa7ea]hehe let's keep drawing![/color]"
 	},
 ],
+
+"bird":[
+	{
+		"speaker": "ruby",
+		#"animation": "wow",
+		"text": "[color=#ffa7ea]Aw,mr. birdie isn't here[/color]"
+	},
+],
+
+"friend drawn":[
+	{
+		"speaker": "friend",
+		"animation": "default",
+		"text": "[color=#4F366F]I can’t believe it, I’m awake.. After all these years.[/color]"
+	},
+	{
+		"speaker": "ruby",
+		#"animation": "wow",
+		"text": "[color=#ffa7ea]Hello! You’re gonna be my new friend![/color]"
+	},
+	{
+		"speaker": "friend",
+		"animation": "sad",
+		"text": "[color=#4F366F]Ack, who are you.[/color]"
+	},
+	{
+		"speaker": "ruby",
+		#"animation": "wow",
+		"text": "[color=#ffa7ea]My name's Ruby![/color]"
+	},
+	{
+		"speaker": "friend",
+		"animation": "sad",
+		"text": "[color=#4F366F]We can be friends… if you draw me a key![/color]"
+	},
+],
+
+"eyeball":[
+	{
+		"speaker": "friend",
+		#"animation": "wow",
+		"text": "[color=#4F366F]wouldn’t it be nice to have an extra eyeball.[/color]"
+	},
+],
+
+"pentagram":[
+	{
+		"speaker": "friend",
+		#"animation": "wow",
+		"text": "[color=#4F366F]I wish I could play with you in the real world.[/color]"
+	},
+],
+
+"dots done":[
+	{
+		"speaker": "friend",
+		#"animation": "wow",
+		"text": "[color=#4F366F]I had so much fun drawing with you![/color]"
+	},
+	{
+		"speaker": "ruby",
+		#"animation": "wow",
+		"text": "[color=#ffa7ea]Me too![/color]"
+	},
+	{
+		"speaker": "friend",
+		#"animation": "wow",
+		"text": "[color=#4F366F]it’s time for a real playdate.[/color]"
+	},
+],
+
 }
 
 
