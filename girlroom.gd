@@ -401,15 +401,11 @@ func _begin_puzzle(data: Dictionary) -> void:
 	puzzle.start_puzzle(data["shape"])
 
 	puzzle_in_progress = true
+	
 func _open_book() -> void:
 	in_book_view = true
 	book.visible = true
-
-	var book_anim = $connectTheDots/AnimationPlayer
-	book_anim.play("bookOpen")
-	await book_anim.animation_finished
-
-	# Do not restart dialogue here.
+	
 func _close_book() -> void:
 	in_book_view = false
 	book.visible = false
@@ -435,6 +431,7 @@ func _on_puzzle_completed() -> void:
 
 	book.visible = false
 	in_book_view = false
+	$AnimatedSprite2D.play("rubybook")
 
 	if current_puzzle_data.has("reveal"):
 		_reveal(current_puzzle_data["reveal"])
