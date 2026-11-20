@@ -164,7 +164,7 @@ var story: Array[Dictionary] = [
 {
 	"type": "puzzle",
 	"shape": preload("res://scenes/dots/bird_shape.tscn"),
-	"reveal": "TODO_bird",
+	"reveal": "Bird",
 },
 {
 	"type": "puzzle",
@@ -184,7 +184,7 @@ var story: Array[Dictionary] = [
 {
 	"type": "puzzle",
 	"shape": preload("res://scenes/dots/friend_shape.tscn"),
-	"reveal": "TODO_friend",
+	"reveal": "friend",
 },
 {
 	"type": "puzzle",
@@ -195,11 +195,12 @@ var story: Array[Dictionary] = [
 	"type": "puzzle",
 	"shape": preload("res://scenes/dots/candle_shape.tscn"),
 	"reveal": "Candle",
+	"room_reveals": ["Candle", "Candle2", "Candle3","Candle4", "Candle5", "Candle6"]
 },
 {
 	"type": "puzzle",
 	"shape": preload("res://scenes/dots/eyeball_shape.tscn"),
-	"reveal": "TODO_eyeball",
+	"reveal": "Eyeball",
 },
 {
 	"type": "puzzle",
@@ -214,7 +215,7 @@ var story: Array[Dictionary] = [
 {
 	"type": "puzzle",
 	"shape": preload("res://scenes/dots/hand_shape.tscn"),
-	"reveal": "TODO_hand",
+	"reveal": "Hand",
 },
 ]
 
@@ -500,6 +501,7 @@ func _on_back_pressed() -> void:
 
 
 
+
 func _on_puzzle_completed() -> void:
 	if busy:
 		return
@@ -509,42 +511,47 @@ func _on_puzzle_completed() -> void:
 
 	print("Yay! Puzzle completed!")
 
-	# Show completed picture in the book
-	var completed_image: Node = null
+	var reveal_name: String = current_puzzle_data.get("reveal", "")
+	var book_image: Node = null
 
-	if current_puzzle_data.has("reveal"):
-		var imgs = book.get_node("imgs")
-		completed_image = imgs.get_node_or_null(
-			current_puzzle_data["reveal"]
-		)
-
-		if completed_image:
-			completed_image.visible = true
-
-	# Let the player see the completed picture
-	await get_tree().create_timer(1.5).timeout
-
-	# Hide puzzle and dots
+	# 1. Hide puzzle and dots
 	puzzle.end_puzzle()
 	puzzle.visible = false
 
-	# Close book
+	# 2. Reveal the picture in the book
+	if not reveal_name.is_empty():
+		var imgs = book.get_node_or_null("imgs")
+		if imgs:
+			book_image = imgs.get_node_or_null(reveal_name)
+
+			if book_image:
+				book_image.show()
+				print("BOOK IMAGE REVEALED: ", book_image.get_path())
+		else:
+			push_warning("imgs folder not found!")
+
+	# Give the player time to see the picture
+	await get_tree().create_timer(1.5).timeout
+
+	# 3. Hide picture and close the book
+	if book_image:
+		book_image.hide()
+
 	book.visible = false
 	in_book_view = false
-
 	$AnimatedSprite2D.play("rubybook")
 
-	# Hide previous picture AFTER closing the book
-	if completed_image:
-		completed_image.visible = false
-
-	# Reveal object in Ruby's room
-	if current_puzzle_data.has("reveal"):
-		var room_node = get_node_or_null(
-			current_puzzle_data["reveal"]
-		)
+	# 4. Reveal room object if it exists
+	if current_puzzle_data.has("room_reveals"):
+		for path in current_puzzle_data["room_reveals"]:
+			var room_node = get_node_or_null(path)
+			if room_node:
+				room_node.show()
+	else:
+		# single objs
+		var room_node = get_node_or_null(reveal_name)
 		if room_node:
-			room_node.visible = true
+			room_node.show()
 
 	puzzle_index += 1
 
@@ -557,7 +564,7 @@ func _on_puzzle_completed() -> void:
 	await get_tree().create_timer(1.0).timeout
 	busy = false
 	_run_puzzle()
-
+	
 func _reveal(path: String) -> void:
 	# Reveal room object
 	var room_node = get_node_or_null(path)
