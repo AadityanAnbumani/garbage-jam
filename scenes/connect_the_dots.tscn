@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://brdwcpr8qp75q" path="res://assets/girl room.jpg" id="2_6hgct"]
 [ext_resource type="Texture2D" uid="uid://bcfhufvhbcip3" path="res://assets/book.png" id="3_4o5sk"]
 [ext_resource type="Texture2D" uid="uid://tm0vnlphy0nj" path="res://assets/paper.png" id="4_hdh57"]
-[ext_resource type="PackedScene" uid="uid://dck4k7tvdwh2m" path="res://scenes/square_shape.tscn" id="5_4o5sk"]
+[ext_resource type="PackedScene" uid="uid://dck4k7tvdwh2m" path="res://scenes/dots/square_shape.tscn" id="5_4o5sk"]
 
 [sub_resource type="Animation" id="Animation_6hgct"]
 resource_name = "new_animation"
@@ -714,7 +714,7 @@ metadata/_edit_lock_ = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=635076543]
 root_node = NodePath("../Panel")
 libraries/ = SubResource("AnimationLibrary_po3ya")
-autoplay = &"bookZoom"
+autoplay = &"bookOpen"
 
 [node name="Panel3" type="Panel" parent="." unique_id=1421823698]
 offset_left = 603.0
@@ -750,6 +750,7 @@ texture = ExtResource("4_hdh57")
 
 [node name="Label" type="Label" parent="." unique_id=1478765529]
 visible = false
+custom_minimum_size = Vector2(0.91, 0)
 offset_left = 165.0
 offset_top = 165.0
 offset_right = 549.0
@@ -765,6 +766,7 @@ position = Vector2(845, 365)
 texture = ExtResource("3_4o5sk")
 
 [node name="Puzzle" type="Node2D" parent="." unique_id=88191845]
+visible = false
 script = ExtResource("1_6it6j")
 shape_scene = ExtResource("5_4o5sk")
 autostart = true
