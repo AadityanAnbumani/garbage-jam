@@ -32,7 +32,7 @@ var locked := false
 var ui_box: HBoxContainer
 var status: Label
 
-
+var input_enabled := true
 func _ready() -> void:
 	_build_ui()
 	ui_box.visible = false
@@ -117,7 +117,7 @@ func _build_ui() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if not active or locked or not is_visible_in_tree():
+	if not active or not input_enabled or locked or not is_visible_in_tree():
 		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:

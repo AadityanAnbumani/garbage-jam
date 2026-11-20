@@ -39,6 +39,8 @@ var puzzle_index := 0
 var dialogue_transitioning := false
 var book_intro_finished := false
 
+var puzzle_unlocked := false	
+
 var dialogues: Dictionary = {
 "book_intro": [
 	{
@@ -158,6 +160,10 @@ var puzzle_in_progress = false
 func _ready() -> void:
 	speechbubble.visible = false
 	ruby_room_text.visible = false
+
+	puzzle.visible = false
+	puzzle.end_puzzle()
+
 	puzzle.puzzle_completed.connect(_on_puzzle_completed)
 	back_button.pressed.connect(_on_back_pressed)
 
@@ -318,9 +324,13 @@ func _show_line() -> void:
 		waiting_for_animation = false
 
 		if current_dialogue_id == "book_intro":
-			$connectTheDots/Puzzle.visible = true
+			# Display square dots, but don't allow drawing
+			puzzle.start_puzzle(preload("res://scenes/dots/square_shape.tscn"))
+			puzzle.visible = true
+			puzzle.input_enabled = false
+			puzzle_unlocked = false
+
 			_start_dialogue("book_intro2")
-			
 func _input(event: InputEvent) -> void:
 	if not dialogue_active or waiting_for_animation or dialogue_transitioning:
 		return
@@ -356,11 +366,13 @@ func _end_dialogue() -> void:
 	if in_book_view:
 		book_ruby_text.visible = false
 
-		if current_dialogue_id == "book_intro2":
-			book_intro_finished = true
-			dialogue_transitioning = false
-			_run_puzzle()
-			return
+	if current_dialogue_id == "book_intro2":
+		book_intro_finished = true
+		puzzle_unlocked = true
+		puzzle.input_enabled = true
+		dialogue_transitioning = false
+		_run_puzzle()
+		return
 
 		dialogue_transitioning = false
 		return
@@ -528,6 +540,11 @@ func _show_room_line() -> void:
 func _play_first_book_intro() -> void:
 	in_book_view = true
 	book.visible = true
+
+	# Absolutely no dots during bookOpen
+	puzzle.end_puzzle()
+	puzzle.visible = false
+	puzzle_unlocked = false
 
 	var book_anim = $connectTheDots/AnimationPlayer
 	book_anim.play("bookOpen")
