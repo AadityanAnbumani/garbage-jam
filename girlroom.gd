@@ -16,6 +16,13 @@ const MAX_STRAY := 0.30
 
 @onready var book_animations = $connectTheDots/AnimationPlayer
 
+
+@onready var speechbubble = $SpeechBubble
+@onready var ruby_room_text: RichTextLabel = $"ruby room text"
+
+var room_dialogue_finished := false
+var room_dialogue_active := false
+
 var dialogue_active = false
 var lines: Array = []
 var current_line = 0
@@ -52,6 +59,19 @@ var dialogues: Dictionary = {
 		#"animation": "default",
 		"text": "[color=#ffa7ea]Let me connect all the dots from 0 to the largest number and back to 0 again![/color]"
 	}
+],
+
+"ruby_square": [
+	{
+		"speaker": "ruby",
+		#"animation": "wow",
+		"text": "[color=#ffa7ea]Did the square I just drew come into my room?![/color]"
+	},
+	{
+		"speaker": "ruby",
+		#"animation": "default",
+		"text": "[color=#ffa7ea]hehe let's keep drawing![/color]"
+	},
 ],
 }
 
@@ -136,7 +156,8 @@ var puzzle_in_progress = false
 
 
 func _ready() -> void:
-	print("text")
+	speechbubble.visible = false
+	ruby_room_text.visible = false
 	puzzle.puzzle_completed.connect(_on_puzzle_completed)
 	back_button.pressed.connect(_on_back_pressed)
 
@@ -151,45 +172,48 @@ func _ready() -> void:
 	book.visible = false
 
 func _on_girlpressed(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-
 	if busy or in_book_view:
 		return
 
 	if event is InputEventMouseButton or event is InputEventScreenTouch:
 		if event.pressed:
+
 			if !mama:
 				busy = true
-				
+
 				$AnimationPlayer2.stop()
-				$AnimationPlayer2/Arrow.visible=false
+				$AnimationPlayer2/Arrow.visible = false
 				$AnimatedSprite2D.play("touch")
-				#keyhole anim here possibly
+
 				await get_tree().create_timer(1.0).timeout
 
-				$Node2D.visible=true
-				$mom.visible=false
+				$Node2D.visible = true
+				$mom.visible = false
 				busy = false
 				_run_step()
 			#ruby has book atp
 			else:
-				if busy:
+				if busy or dialogue_active:
 					return
 
 				busy = true
-
 				$AnimatedSprite2D.play("touchbook")
+
 				await get_tree().create_timer(1.0).timeout
 
-				if not book_intro_finished:
+				if room_dialogue_finished:
+					room_dialogue_finished = false
+					_run_puzzle()
+
+				elif not book_intro_finished:
 					if first_book_open:
 						first_book_open = false
 						await _play_first_book_intro()
-				else:
-					if puzzle_in_progress and not in_book_view:
-						await _open_book()
+
+				elif puzzle_in_progress and not in_book_view:
+					await _open_book()
 
 				busy = false
-
 
 func _run_step() -> void:
 	if step >= story.size():
@@ -216,11 +240,11 @@ func _run_puzzle() -> void:
 
 	print("CURRENT PUZZLE: ", current_puzzle_data)
 
+	
+	book.visible = true
+	in_book_view = true
+
 	_begin_puzzle(current_puzzle_data)
-
-	if not in_book_view:
-		await _open_book()
-
 func _start_dialogue(id: String) -> void:
 
 	if id == "intro":
@@ -311,9 +335,15 @@ func _input(event: InputEvent) -> void:
 		current_line += 1
 
 		if current_line < lines.size():
-			_show_line()
+			if room_dialogue_active:
+				_show_room_line()
+			else:
+				_show_line()
 		else:
-			_end_dialogue()
+			if room_dialogue_active:
+				_end_room_dialogue()
+			else:
+				_end_dialogue()
 
 func _end_dialogue() -> void:
 	if dialogue_transitioning:
@@ -366,10 +396,11 @@ func _begin_puzzle(data: Dictionary) -> void:
 	puzzle.tolerance = data.get("tolerance", 20.0)
 	puzzle.closed = data.get("closed", false)
 	back_button.visible = data.get("can_leave", true)
+
+	puzzle.visible = true
 	puzzle.start_puzzle(data["shape"])
+
 	puzzle_in_progress = true
-
-
 func _open_book() -> void:
 	in_book_view = true
 	book.visible = true
@@ -396,26 +427,29 @@ func _on_puzzle_completed() -> void:
 	busy = true
 	puzzle_in_progress = false
 
-	print("YAY! PUZZLE COMPLETED!")
+	print("Yay! Puzzle completed!")
 
 	await get_tree().create_timer(1.0).timeout
 
 	puzzle.end_puzzle()
 
-	# Hide the entire book
 	book.visible = false
 	in_book_view = false
 
-	# Reveal the correct image in the room
 	if current_puzzle_data.has("reveal"):
 		_reveal(current_puzzle_data["reveal"])
 
+	# Advance immediately, even before room dialogue
+	if puzzle_index == 0:
+		puzzle_index += 1
+
+		await get_tree().create_timer(0.5).timeout
+		busy = false
+		_start_room_dialogue("ruby_square")
+		return
+
 	puzzle_index += 1
-
-	await get_tree().create_timer(1.0).timeout
-
 	busy = false
-
 func _reveal(path: String) -> void:
 	var node = get_node_or_null(path)
 
@@ -435,6 +469,59 @@ func _on_mama_dialogue_finished() -> void:
 
 	step += 1
 
+func _start_room_dialogue(id: String) -> void:
+	if not dialogues.has(id):
+		push_error("No dialogue named: " + id)
+		return
+
+	lines = dialogues[id]
+	current_dialogue_id = id
+	current_line = 0
+
+	dialogue_active = true
+	room_dialogue_active = true
+	typing = false
+
+	speechbubble.visible = true
+	ruby_room_text.visible = true
+	ruby_room_text.text = ""
+
+	_show_room_line()
+	
+func _end_room_dialogue() -> void:
+	dialogue_active = false
+	room_dialogue_active = false
+	room_dialogue_finished = true
+	typing = false
+
+	ruby_room_text.visible = false
+	speechbubble.visible = false
+
+	print("Room dialogue finished!")
+func _show_room_line() -> void:
+	typing = true
+	typing_id += 1
+	var my_id = typing_id
+
+	active_text = ruby_room_text
+
+	var line: Dictionary = lines[current_line]
+
+	active_text.text = line["text"]
+	active_text.visible_characters = 0
+
+	for i in range(active_text.get_total_character_count()):
+		if my_id != typing_id:
+			return
+
+		if typing:
+			active_text.visible_characters += 1
+			await get_tree().create_timer(0.05).timeout
+
+	if my_id != typing_id:
+		return
+
+	typing = false
 
 func _play_first_book_intro() -> void:
 	in_book_view = true
