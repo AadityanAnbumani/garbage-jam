@@ -8,7 +8,7 @@ extends Node2D
 @onready var scene_animations = get_node_or_null("Node2D/AnimationPlayer")
 @onready var book_ruby_text: RichTextLabel = $"ruby text"
 const PASS_MATCH := 0.8
-
+const MAX_STRAY := 0.30
 @onready var dialogue_box = $Node2D
 
 @onready var mom_text = $Node2D/Control/mama
@@ -28,6 +28,9 @@ var book_opened_once = false
 var first_book_open = true
 var current_dialogue_id = ""
 
+var puzzle_index := 0
+var dialogue_transitioning := false
+var book_intro_finished := false
 
 var dialogues: Dictionary = {
 "book_intro": [
@@ -58,12 +61,12 @@ var story: Array[Dictionary] = [
 	{
 	"type": "puzzle",
 	"shape": preload("res://scenes/dots/square_shape.tscn"),
-	"reveal": "$RedSquare",
+	"reveal": "RedSquare",
 },
 {
 	"type": "puzzle",
 	"shape": preload("res://scenes/dots/flower_shape.tscn"),
-	"reveal": "TODO_flower",
+	"reveal": "Flower",
 },
 {
 	"type": "puzzle",
@@ -122,6 +125,9 @@ var story: Array[Dictionary] = [
 },
 ]
 
+var current_puzzle_data: Dictionary = {}
+
+
 var step = 0
 var mama = false
 var busy = false
@@ -166,17 +172,21 @@ func _on_girlpressed(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 				_run_step()
 			#ruby has book atp
 			else:
+				if busy:
+					return
+
 				busy = true
 
 				$AnimatedSprite2D.play("touchbook")
 				await get_tree().create_timer(1.0).timeout
 
-				if first_book_open:
-					first_book_open = false
-					await _play_first_book_intro()
-
-				elif puzzle_in_progress:
-					_open_book()
+				if not book_intro_finished:
+					if first_book_open:
+						first_book_open = false
+						await _play_first_book_intro()
+				else:
+					if puzzle_in_progress and not in_book_view:
+						await _open_book()
 
 				busy = false
 
@@ -184,12 +194,32 @@ func _on_girlpressed(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 func _run_step() -> void:
 	if step >= story.size():
 		return
+
 	var data: Dictionary = story[step]
+
 	if data["type"] == "dialogue":
 		_start_dialogue(data["id"])
-	else:
-		_begin_puzzle(data)
+		
+		
+func _run_puzzle() -> void:
+	var puzzles: Array = []
 
+	for data in story:
+		if data["type"] == "puzzle":
+			puzzles.append(data)
+
+	if puzzle_index >= puzzles.size():
+		print("ALL PUZZLES COMPLETED!")
+		return
+
+	current_puzzle_data = puzzles[puzzle_index]
+
+	print("CURRENT PUZZLE: ", current_puzzle_data)
+
+	_begin_puzzle(current_puzzle_data)
+
+	if not in_book_view:
+		await _open_book()
 
 func _start_dialogue(id: String) -> void:
 
@@ -241,68 +271,78 @@ func _show_line() -> void:
 	active_text.text = line["text"]
 	active_text.visible_characters = 0
 
-	# Type out the dialogue
 	for i in range(active_text.get_total_character_count()):
-		if not typing or my_id != typing_id:
+		if my_id != typing_id:
 			return
 
-		active_text.visible_characters += 1
-		await get_tree().create_timer(0.05).timeout
+		if typing:
+			active_text.visible_characters += 1
+			await get_tree().create_timer(0.05).timeout
 
 	if my_id != typing_id:
 		return
 
 	typing = false
 
-	# Play animation after all text
-	if line.has("play"):
-		print("Trying to play animation: ", line["play"])
-		print("Animation exists: ", book_animations.has_animation(line["play"]))
-
+	# Wait for book zoom animation
+	if line.has("play") and current_dialogue_id == "book_intro":
 		waiting_for_animation = true
 		book_animations.play(line["play"])
-
-		print("Playing: ", book_animations.current_animation)
 
 		await book_animations.animation_finished
 
 		waiting_for_animation = false
 
 		if current_dialogue_id == "book_intro":
-			$connectTheDots/Puzzle.visible= true
+			$connectTheDots/Puzzle.visible = true
 			_start_dialogue("book_intro2")
-
+			
 func _input(event: InputEvent) -> void:
-	if not dialogue_active or waiting_for_animation:
+	if not dialogue_active or waiting_for_animation or dialogue_transitioning:
 		return
 
 	if event.is_action_pressed("ui_accept"):
+
 		if typing:
 			active_text.visible_characters = -1
 			typing = false
-		else:
-			current_line += 1
+			return
 
-			if current_line < lines.size():
-				_show_line()
-			else:
-				_end_dialogue()
+		current_line += 1
+
+		if current_line < lines.size():
+			_show_line()
+		else:
+			_end_dialogue()
 
 func _end_dialogue() -> void:
+	if dialogue_transitioning:
+		return
+
+	dialogue_transitioning = true
 	dialogue_active = false
 	typing = false
 
 	if in_book_view:
 		book_ruby_text.visible = false
+
+		if current_dialogue_id == "book_intro2":
+			book_intro_finished = true
+			dialogue_transitioning = false
+			_run_puzzle()
+			return
+
+		dialogue_transitioning = false
 		return
 
 	dialogue_box.visible = false
-
 	step += 1
+
+	dialogue_transitioning = false
 
 	await get_tree().create_timer(1.0).timeout
 	_run_step()
-
+	
 func _play_ruby(anim_name: String) -> void:
 	if ruby_sprite.sprite_frames == null or not ruby_sprite.sprite_frames.has_animation(anim_name):
 		push_error("Ruby animation not found: " + anim_name)
@@ -322,13 +362,12 @@ func _play_scene_animation(anim_name: String) -> void:
 
 func _begin_puzzle(data: Dictionary) -> void:
 	puzzle.required_coverage = PASS_MATCH
-	puzzle.allowed_stray = 1.0 - PASS_MATCH
+	puzzle.allowed_stray = MAX_STRAY
 	puzzle.tolerance = data.get("tolerance", 20.0)
 	puzzle.closed = data.get("closed", false)
 	back_button.visible = data.get("can_leave", true)
 	puzzle.start_puzzle(data["shape"])
 	puzzle_in_progress = true
-	_open_book()
 
 
 func _open_book() -> void:
@@ -336,12 +375,10 @@ func _open_book() -> void:
 	book.visible = true
 
 	var book_anim = $connectTheDots/AnimationPlayer
-
 	book_anim.play("bookOpen")
 	await book_anim.animation_finished
 
-	_start_dialogue("book_intro")
-
+	# Do not restart dialogue here.
 func _close_book() -> void:
 	in_book_view = false
 	book.visible = false
@@ -353,18 +390,31 @@ func _on_back_pressed() -> void:
 
 
 func _on_puzzle_completed() -> void:
-	puzzle_in_progress = false
-	busy = true
-	await get_tree().create_timer(1.0).timeout
-	puzzle.end_puzzle()
-	_close_book()
-	await get_tree().create_timer(0.5).timeout
-	_reveal(story[step]["reveal"])
-	step += 1
-	await get_tree().create_timer(1.0).timeout
-	busy = false
-	_run_step()
+	if busy:
+		return
 
+	busy = true
+	puzzle_in_progress = false
+
+	print("YAY! PUZZLE COMPLETED!")
+
+	await get_tree().create_timer(1.0).timeout
+
+	puzzle.end_puzzle()
+
+	# Hide the entire book
+	book.visible = false
+	in_book_view = false
+
+	# Reveal the correct image in the room
+	if current_puzzle_data.has("reveal"):
+		_reveal(current_puzzle_data["reveal"])
+
+	puzzle_index += 1
+
+	await get_tree().create_timer(1.0).timeout
+
+	busy = false
 
 func _reveal(path: String) -> void:
 	var node = get_node_or_null(path)
@@ -373,8 +423,9 @@ func _reveal(path: String) -> void:
 		push_error("Reveal node not found: " + path)
 		return
 
-	node.show()
-
+	node.visible = true
+	print("Revealed: ", path)
+	
 func _on_mama_dialogue_finished() -> void:
 	dialogue_controller.visible = false
 	$Node2D.visible = false
@@ -383,6 +434,7 @@ func _on_mama_dialogue_finished() -> void:
 	$AnimatedSprite2D.play("rubybook")
 
 	step += 1
+
 
 func _play_first_book_intro() -> void:
 	in_book_view = true
