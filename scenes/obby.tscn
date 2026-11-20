@@ -7,7 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://c5lxvxj3s0jtf" path="res://assets/obby/obby controls.png" id="5_4cx6m"]
 [ext_resource type="Texture2D" uid="uid://dmtjlb33pbwef" path="res://assets/obby/obby house.png" id="6_fw3ae"]
 [ext_resource type="Texture2D" uid="uid://7ignfe72phep" path="res://assets/obby/obby rock.png" id="7_dmger"]
+[ext_resource type="Texture2D" uid="uid://tpkpq8rm72wi" path="res://assets/obby/paper3.png" id="8_4m40g"]
 [ext_resource type="Texture2D" uid="uid://cpu7x5bif8uri" path="res://assets/obby/obby water.png" id="8_wa14l"]
+[ext_resource type="Texture2D" uid="uid://ba3og08gix046" path="res://assets/obby/paper4.png" id="9_3i2nk"]
+[ext_resource type="Texture2D" uid="uid://cbgjspnta13ue" path="res://assets/obby/paper2.png" id="10_heywk"]
+[ext_resource type="Texture2D" uid="uid://cbmhyr4mbmku7" path="res://assets/paper ruby.png" id="11_gct25"]
 
 [node name="Node2D" type="Node2D" unique_id=2018465092]
 
@@ -63,11 +67,6 @@ scroll_active = false
 position = Vector2(1784, 308)
 texture = ExtResource("4_0v40y")
 
-[node name="ObbyControls" type="Sprite2D" parent="." unique_id=2138811688]
-position = Vector2(944.99994, 232)
-scale = Vector2(0.46268654, 0.46268657)
-texture = ExtResource("5_4cx6m")
-
 [node name="ObbyHouse" type="Sprite2D" parent="." unique_id=1609158701]
 position = Vector2(1288, 1179)
 texture = ExtResource("6_fw3ae")
@@ -79,3 +78,33 @@ texture = ExtResource("7_dmger")
 [node name="ObbyWater" type="Sprite2D" parent="." unique_id=1448209741]
 position = Vector2(2943, 1192)
 texture = ExtResource("8_wa14l")
+
+[node name="Paper3" type="Sprite2D" parent="." unique_id=1234946143]
+position = Vector2(1139, 387)
+scale = Vector2(0.080827266, 0.4765247)
+texture = ExtResource("8_4m40g")
+
+[node name="Paper4" type="Sprite2D" parent="." unique_id=545637431]
+position = Vector2(391.00003, 496)
+scale = Vector2(0.4955357, 0.352551)
+texture = ExtResource("9_3i2nk")
+
+[node name="Paper2" type="Sprite2D" parent="." unique_id=1318470112]
+position = Vector2(257, 482)
+scale = Vector2(0.42616034, 0.44603175)
+texture = ExtResource("10_heywk")
+
+[node name="Paper5" type="Sprite2D" parent="." unique_id=1552419243]
+position = Vector2(678, 261)
+scale = Vector2(0.42616034, 0.44603175)
+texture = ExtResource("10_heywk")
+
+[node name="PaperRuby" type="Sprite2D" parent="." unique_id=1430758711]
+position = Vector2(308, 266)
+scale = Vector2(0.09963326, 0.099633254)
+texture = ExtResource("11_gct25")
+
+[node name="ObbyControls" type="Sprite2D" parent="." unique_id=2138811688]
+position = Vector2(526.99994, 426)
+scale = Vector2(0.46268654, 0.46268657)
+texture = ExtResource("5_4cx6m")
