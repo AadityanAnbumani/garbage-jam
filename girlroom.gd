@@ -416,6 +416,7 @@ func _on_back_pressed() -> void:
 	_close_book()
 
 
+
 func _on_puzzle_completed() -> void:
 	if busy:
 		return
@@ -436,17 +437,21 @@ func _on_puzzle_completed() -> void:
 	if current_puzzle_data.has("reveal"):
 		_reveal(current_puzzle_data["reveal"])
 
-	# Advance immediately, even before room dialogue
-	if puzzle_index == 0:
-		puzzle_index += 1
+	# Move to the next puzzle
+	puzzle_index += 1
 
+	# Square is special: show its room dialogue first
+	if puzzle_index == 1:
 		await get_tree().create_timer(0.5).timeout
 		busy = false
 		_start_room_dialogue("ruby_square")
 		return
 
-	puzzle_index += 1
+	# remaining puzzle timeout
+	await get_tree().create_timer(1).timeout
 	busy = false
+	_run_puzzle()
+
 func _reveal(path: String) -> void:
 	var node = get_node_or_null(path)
 
