@@ -768,3 +768,11 @@ texture = ExtResource("3_4o5sk")
 script = ExtResource("1_6it6j")
 shape_scene = ExtResource("5_4o5sk")
 autostart = true
+
+[node name="BackButton" type="Button" parent="." unique_id=1521921593]
+offset_left = 27.0
+offset_top = 100.0
+offset_right = 157.0
+offset_bottom = 154.0
+theme_override_font_sizes/font_size = 30
+text = "Back"
