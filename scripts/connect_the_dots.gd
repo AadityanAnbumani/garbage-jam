@@ -10,7 +10,7 @@ signal puzzle_failed
 @export var closed := false
 @export var tolerance := 20.0
 @export var required_coverage := 0.8
-@export var allowed_stray := 0.2
+@export var allowed_stray := 0.45
 @export var sample_spacing := 8.0
 @export var line_width := 4.0
 @export var line_color := Color(0.1, 0.25, 0.8)
@@ -104,7 +104,7 @@ func _build_ui() -> void:
 	ui_box.position = ui_position
 	add_child(ui_box)
 
-	for entry in [["Done", _on_done_pressed], ["Undo", _on_undo_pressed], ["Clear", _on_clear_pressed]]:
+	for entry in [["Undo", _on_undo_pressed], ["Clear", _on_clear_pressed]]:
 		var b := Button.new()
 		b.text = entry[0]
 		b.pressed.connect(entry[1])
@@ -150,13 +150,36 @@ func _add_point(pos: Vector2) -> void:
 
 func _end_stroke() -> void:
 	drawing = false
+
 	if current_line.get_point_count() < 2:
 		current_line.queue_free()
 		line_nodes.pop_back()
 		return
+
 	strokes.append(current_line.points)
 
+	# check last to first dot
+	_check_loop_closure()
 
+func _check_loop_closure() -> void:
+	if dot_positions.is_empty() or strokes.is_empty():
+		return
+
+	var last_point = strokes[-1][-1]
+	var first_dot = dot_positions[0]
+
+	if last_point.distance_to(first_dot) <= tolerance:
+
+		if _check():
+			print("yay")
+			locked = true
+			ui_box.visible = false
+			puzzle_completed.emit()
+
+		else:
+			# FAILURE
+			puzzle_failed.emit()
+			
 func _clear_strokes() -> void:
 	strokes.clear()
 	for line in line_nodes:

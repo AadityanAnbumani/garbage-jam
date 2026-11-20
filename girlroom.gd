@@ -58,7 +58,7 @@ var story: Array[Dictionary] = [
 	{
 	"type": "puzzle",
 	"shape": preload("res://scenes/dots/square_shape.tscn"),
-	"reveal": "TODO_square",
+	"reveal": "$RedSquare",
 },
 {
 	"type": "puzzle",
@@ -368,10 +368,12 @@ func _on_puzzle_completed() -> void:
 
 func _reveal(path: String) -> void:
 	var node = get_node_or_null(path)
+
 	if node == null:
 		push_error("Reveal node not found: " + path)
 		return
-	node.visible = true
+
+	node.show()
 
 func _on_mama_dialogue_finished() -> void:
 	dialogue_controller.visible = false

@@ -765,7 +765,6 @@ position = Vector2(845, 365)
 texture = ExtResource("3_4o5sk")
 
 [node name="Puzzle" type="Node2D" parent="." unique_id=88191845]
-visible = false
 script = ExtResource("1_6it6j")
 shape_scene = ExtResource("5_4o5sk")
 autostart = true
