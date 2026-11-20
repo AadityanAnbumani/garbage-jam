@@ -31,71 +31,70 @@ var dialogues: Dictionary = {
 var story: Array[Dictionary] = [
 	{"type": "dialogue", "id": "intro"},
 	{
-		"type": "puzzle",
-		"shape": preload("res://scenes/dots/bird_shape.tscn"),
-		"reveal": "TODO_bird",
-		"can_leave": false,
-	},
-	{
-		"type": "puzzle",
-		"shape": preload("res://scenes/dots/candle_shape.tscn"),
-		"reveal": "TODO_candle",
-	},
-	{
-		"type": "puzzle",
-		"shape": preload("res://scenes/dots/crown_shape.tscn"),
-		"reveal": "TODO_crown",
-	},
-	{
-		"type": "puzzle",
-		"shape": preload("res://scenes/dots/eyeball_shape.tscn"),
-		"reveal": "TODO_eyeball",
-	},
-	{
-		"type": "puzzle",
-		"shape": preload("res://scenes/dots/flower_shape.tscn"),
-		"reveal": "TODO_flower",
-	},
-	{
-		"type": "puzzle",
-		"shape": preload("res://scenes/dots/friend_shape.tscn"),
-		"reveal": "TODO_friend",
-	},
-	{
-		"type": "puzzle",
-		"shape": preload("res://scenes/dots/hand_shape.tscn"),
-		"reveal": "TODO_hand",
-	},
-	{
-		"type": "puzzle",
-		"shape": preload("res://scenes/dots/icecream_shape.tscn"),
-		"reveal": "TODO_icecream",
-	},
-	{
-		"type": "puzzle",
-		"shape": preload("res://scenes/dots/key_shape.tscn"),
-		"reveal": "TODO_key",
-	},
-	{
-		"type": "puzzle",
-		"shape": preload("res://scenes/dots/pentagram_shape.tscn"),
-		"reveal": "TODO_pentagram",
-	},
-	{
-		"type": "puzzle",
-		"shape": preload("res://scenes/dots/scissors_shape.tscn"),
-		"reveal": "TODO_scissors",
-	},
-	{
-		"type": "puzzle",
-		"shape": preload("res://scenes/dots/shapeship_shape.tscn"),
-		"reveal": "TODO_shapeship",
-	},
-	{
-		"type": "puzzle",
-		"shape": preload("res://scenes/dots/square_shape.tscn"),
-		"reveal": "TODO_square",
-	},
+	"type": "puzzle",
+	"shape": preload("res://scenes/dots/square_shape.tscn"),
+	"reveal": "TODO_square",
+},
+{
+	"type": "puzzle",
+	"shape": preload("res://scenes/dots/flower_shape.tscn"),
+	"reveal": "TODO_flower",
+},
+{
+	"type": "puzzle",
+	"shape": preload("res://scenes/dots/bird_shape.tscn"),
+	"reveal": "TODO_bird",
+},
+{
+	"type": "puzzle",
+	"shape": preload("res://scenes/dots/crown_shape.tscn"),
+	"reveal": "TODO_crown",
+},
+{
+	"type": "puzzle",
+	"shape": preload("res://scenes/dots/icecream_shape.tscn"),
+	"reveal": "TODO_icecream",
+},
+{
+	"type": "puzzle",
+	"shape": preload("res://scenes/dots/shapeship_shape.tscn"),
+	"reveal": "TODO_shapeship",
+},
+{
+	"type": "puzzle",
+	"shape": preload("res://scenes/dots/friend_shape.tscn"),
+	"reveal": "TODO_friend",
+},
+{
+	"type": "puzzle",
+	"shape": preload("res://scenes/dots/key_shape.tscn"),
+	"reveal": "TODO_key",
+},
+{
+	"type": "puzzle",
+	"shape": preload("res://scenes/dots/candle_shape.tscn"),
+	"reveal": "TODO_candle",
+},
+{
+	"type": "puzzle",
+	"shape": preload("res://scenes/dots/eyeball_shape.tscn"),
+	"reveal": "TODO_eyeball",
+},
+{
+	"type": "puzzle",
+	"shape": preload("res://scenes/dots/scissors_shape.tscn"),
+	"reveal": "TODO_scissors",
+},
+{
+	"type": "puzzle",
+	"shape": preload("res://scenes/dots/pentagram_shape.tscn"),
+	"reveal": "TODO_pentagram",
+},
+{
+	"type": "puzzle",
+	"shape": preload("res://scenes/dots/hand_shape.tscn"),
+	"reveal": "TODO_hand",
+},
 ]
 
 var step = 0

@@ -160,6 +160,7 @@ text = "yes mama? "
 scroll_active = false
 
 [node name="mama" type="RichTextLabel" parent="Control" unique_id=1757758557]
+visible = false
 layout_mode = 0
 offset_left = 213.0
 offset_top = 216.0

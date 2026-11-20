@@ -3,6 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://bylf6q6af8aem" path="res://assets/obby paper.png" id="1_88vgh"]
 [ext_resource type="Texture2D" uid="uid://bh3rrm0b5cm4l" path="res://assets/paper room.png" id="2_ygns2"]
 [ext_resource type="FontFile" uid="uid://cdpjmu781u54k" path="res://font/BBHBogle-Regular.ttf" id="3_w0o1q"]
+[ext_resource type="Texture2D" uid="uid://bfb0k5br6uw20" path="res://assets/obby/obby connect the dots.png" id="4_0v40y"]
+[ext_resource type="Texture2D" uid="uid://c5lxvxj3s0jtf" path="res://assets/obby/obby controls.png" id="5_4cx6m"]
+[ext_resource type="Texture2D" uid="uid://dmtjlb33pbwef" path="res://assets/obby/obby house.png" id="6_fw3ae"]
+[ext_resource type="Texture2D" uid="uid://7ignfe72phep" path="res://assets/obby/obby rock.png" id="7_dmger"]
+[ext_resource type="Texture2D" uid="uid://cpu7x5bif8uri" path="res://assets/obby/obby water.png" id="8_wa14l"]
 
 [node name="Node2D" type="Node2D" unique_id=2018465092]
 
@@ -10,26 +15,31 @@
 position = Vector2(572.5, 321.5)
 scale = Vector2(2.4704642, 2.5150375)
 texture = ExtResource("1_88vgh")
+metadata/_edit_lock_ = true
 
 [node name="ObbyPaper2" type="Sprite2D" parent="." unique_id=1613112552]
 position = Vector2(1687, 316)
 scale = Vector2(2.4704642, 2.5150375)
 texture = ExtResource("1_88vgh")
+metadata/_edit_lock_ = true
 
 [node name="ObbyPaper3" type="Sprite2D" parent="." unique_id=383005183]
 position = Vector2(1692, 978)
 scale = Vector2(2.4704642, 2.5150375)
 texture = ExtResource("1_88vgh")
+metadata/_edit_lock_ = true
 
 [node name="ObbyPaper5" type="Sprite2D" parent="." unique_id=259072487]
 position = Vector2(4999, 322)
 scale = Vector2(2.4704642, 2.5150375)
 texture = ExtResource("1_88vgh")
+metadata/_edit_lock_ = true
 
 [node name="ObbyPaper4" type="Sprite2D" parent="." unique_id=393840314]
 position = Vector2(3338.25, 648.25)
 scale = Vector2(4.5221515, 5.013158)
 texture = ExtResource("1_88vgh")
+metadata/_edit_lock_ = true
 
 [node name="PaperRoom2" type="Sprite2D" parent="." unique_id=619058324]
 position = Vector2(5931.0005, 223.99994)
@@ -48,3 +58,24 @@ theme_override_font_sizes/normal_font_size = 80
 bbcode_enabled = true
 text = "where am i? "
 scroll_active = false
+
+[node name="ObbyConnectTheDots" type="Sprite2D" parent="." unique_id=861586377]
+position = Vector2(1784, 308)
+texture = ExtResource("4_0v40y")
+
+[node name="ObbyControls" type="Sprite2D" parent="." unique_id=2138811688]
+position = Vector2(944.99994, 232)
+scale = Vector2(0.46268654, 0.46268657)
+texture = ExtResource("5_4cx6m")
+
+[node name="ObbyHouse" type="Sprite2D" parent="." unique_id=1609158701]
+position = Vector2(1288, 1179)
+texture = ExtResource("6_fw3ae")
+
+[node name="ObbyRock" type="Sprite2D" parent="." unique_id=892666641]
+position = Vector2(1975, 444)
+texture = ExtResource("7_dmger")
+
+[node name="ObbyWater" type="Sprite2D" parent="." unique_id=1448209741]
+position = Vector2(2943, 1192)
+texture = ExtResource("8_wa14l")

@@ -27,7 +27,6 @@
 [ext_resource type="Texture2D" uid="uid://p7wkuvnwspks" path="res://assets/escape cutscene/pencil and paper friend escape cutscene16.png" id="23_kjynm"]
 [ext_resource type="Texture2D" uid="uid://cg8g3y0guaep2" path="res://assets/escape cutscene/pencil and paper friend escape cutscene17.png" id="24_scnni"]
 [ext_resource type="Texture2D" uid="uid://bxt45v228hvfv" path="res://assets/escape cutscene/pencil and paper friend escape cutscene18.png" id="25_ac4sc"]
-[ext_resource type="Texture2D" uid="uid://bf0hdbjd5fo4k" path="res://assets/dots/bell.png" id="28_jp0jl"]
 [ext_resource type="Texture2D" uid="uid://bp8kj5erea73a" path="res://assets/dots/crown.png" id="29_w6n54"]
 [ext_resource type="Texture2D" uid="uid://b4u1fjb5i573m" path="res://assets/dots/flower.png" id="30_evcye"]
 [ext_resource type="Texture2D" uid="uid://b5xnkjkvf7gwo" path="res://assets/dots/icecream.png" id="31_kjynm"]
@@ -570,7 +569,7 @@ _data = {
 &"friend escape": SubResource("Animation_qs4hi")
 }
 
-[node name="Node2D" type="Node2D" unique_id=400311361]
+[node name="Node2D2" type="Node2D" unique_id=400311361]
 script = ExtResource("1_1m1kd")
 
 [node name="GirlRoom" type="Sprite2D" parent="." unique_id=35822436]
@@ -580,21 +579,25 @@ texture = ExtResource("1_dw713")
 metadata/_edit_lock_ = true
 
 [node name="Pentagram" type="Sprite2D" parent="." unique_id=1082553843]
+visible = false
 position = Vector2(579.5, 558.59265)
 scale = Vector2(0.77473956, 0.1903455)
 texture = ExtResource("3_x6a6y")
 
 [node name="Candle2" type="Sprite2D" parent="." unique_id=375509605]
+visible = false
 position = Vector2(421, 464.00006)
 scale = Vector2(0.1133803, 0.1133803)
 texture = ExtResource("4_ixjkf")
 
 [node name="Candle4" type="Sprite2D" parent="." unique_id=335625431]
+visible = false
 position = Vector2(757, 467)
 scale = Vector2(0.1133803, 0.1133803)
 texture = ExtResource("4_ixjkf")
 
 [node name="Candle6" type="Sprite2D" parent="." unique_id=467104564]
+visible = false
 position = Vector2(593, 450)
 scale = Vector2(0.1133803, 0.1133803)
 texture = ExtResource("4_ixjkf")
@@ -746,61 +749,65 @@ position = Vector2(605, 342)
 scale = Vector2(0.44045344, 0.44045338)
 texture = ExtResource("25_ac4sc")
 
-[node name="Bell" type="Sprite2D" parent="." unique_id=1604026860]
-position = Vector2(153, 531)
-rotation = -0.42991456
-scale = Vector2(0.17699836, 0.17699836)
-texture = ExtResource("28_jp0jl")
-
 [node name="Candle" type="Sprite2D" parent="." unique_id=1646166913]
+visible = false
 position = Vector2(319, 539)
 scale = Vector2(0.1133803, 0.1133803)
 texture = ExtResource("4_ixjkf")
 
 [node name="Candle3" type="Sprite2D" parent="." unique_id=2000520535]
+visible = false
 position = Vector2(592, 575.99994)
 scale = Vector2(0.1133803, 0.1133803)
 texture = ExtResource("4_ixjkf")
 
 [node name="Candle5" type="Sprite2D" parent="." unique_id=1045320335]
+visible = false
 position = Vector2(845, 521.99994)
 scale = Vector2(0.1133803, 0.1133803)
 texture = ExtResource("4_ixjkf")
 
 [node name="Crown" type="Sprite2D" parent="." unique_id=1088763680]
+visible = false
 position = Vector2(239.99994, 202.00002)
 rotation = -0.07536588
 scale = Vector2(0.09810952, 0.098109506)
 texture = ExtResource("29_w6n54")
 
 [node name="Flower" type="Sprite2D" parent="." unique_id=152886181]
+visible = false
 position = Vector2(742, 377)
 scale = Vector2(0.10221351, 0.10221351)
 texture = ExtResource("30_evcye")
 
 [node name="Icecream" type="Sprite2D" parent="." unique_id=2123235299]
+visible = false
 position = Vector2(816.00006, 340.00003)
 scale = Vector2(0.09810947, 0.09810947)
 texture = ExtResource("31_kjynm")
 
 [node name="Key" type="Sprite2D" parent="." unique_id=1037719811]
+visible = false
 position = Vector2(1113.0001, 575.00006)
 rotation = 0.25431657
 scale = Vector2(0.14118467, 0.14118469)
 texture = ExtResource("32_scnni")
 
 [node name="RedSquare" type="Sprite2D" parent="." unique_id=470931834]
+visible = false
 position = Vector2(1071, 433.00003)
 scale = Vector2(0.25735295, 0.25735295)
 texture = ExtResource("33_ac4sc")
 
 [node name="Scissors" type="Sprite2D" parent="." unique_id=1892125733]
+visible = false
 position = Vector2(1037, 544)
 rotation = 0.77588105
 scale = Vector2(0.19471624, 0.19471623)
 texture = ExtResource("34_2rmbk")
 
 [node name="Spaceship" type="Sprite2D" parent="." unique_id=222168979]
+visible = false
 position = Vector2(882, 500)
 scale = Vector2(0.41203704, 0.41203704)
 texture = ExtResource("35_qs4hi")
