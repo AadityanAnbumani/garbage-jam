@@ -20,6 +20,9 @@ const MAX_STRAY := 0.30
 @onready var speechbubble = $SpeechBubble
 @onready var ruby_room_text: RichTextLabel = $"ruby room text"
 
+
+@onready var friend_sprite: AnimatedSprite2D = $connectTheDots/imgs/friend
+@onready var friend_text = $"friend text"
 var room_dialogue_finished := false
 var room_dialogue_active := false
 
@@ -41,11 +44,16 @@ var book_intro_finished := false
 
 var puzzle_unlocked := false	
 
+var final_dialogue_available := false
+var final_dialogue_played := false 	
+
+@onready var friend_room_sprite: AnimatedSprite2D = $friend
+
+
 var dialogues: Dictionary = {
 "book_intro": [
 	{
 		"speaker": "ruby",
-		#"animation": "default",
 		"play": "bookZoom",
 		"text": "[color=#ffa7ea]I wonder what that means?[/color]"
 	},
@@ -53,12 +61,10 @@ var dialogues: Dictionary = {
 "book_intro2": [
 	{
 		"speaker": "ruby",
-		#"animation": "wow",
 		"text": "[color=#ffa7ea]I love connect the dots![/color]"
 	},
 	{
 		"speaker": "ruby",
-		#"animation": "default",
 		"text": "[color=#ffa7ea]Let me connect all the dots from 0 to the largest number and back to 0 again![/color]"
 	}
 ],
@@ -66,12 +72,10 @@ var dialogues: Dictionary = {
 "ruby_square": [
 	{
 		"speaker": "ruby",
-		#"animation": "wow",
 		"text": "[color=#ffa7ea]Did the square I just drew come into my room?![/color]"
 	},
 	{
 		"speaker": "ruby",
-		#"animation": "default",
 		"text": "[color=#ffa7ea]hehe let's keep drawing![/color]"
 	},
 ],
@@ -79,7 +83,6 @@ var dialogues: Dictionary = {
 "bird":[
 	{
 		"speaker": "ruby",
-		#"animation": "wow",
 		"text": "[color=#ffa7ea]Aw,mr. birdie isn't here[/color]"
 	},
 ],
@@ -87,12 +90,11 @@ var dialogues: Dictionary = {
 "friend drawn":[
 	{
 		"speaker": "friend",
-		"animation": "default",
+		"animation": "dance",
 		"text": "[color=#4F366F]I can’t believe it, I’m awake.. After all these years.[/color]"
 	},
 	{
 		"speaker": "ruby",
-		#"animation": "wow",
 		"text": "[color=#ffa7ea]Hello! You’re gonna be my new friend![/color]"
 	},
 	{
@@ -102,12 +104,11 @@ var dialogues: Dictionary = {
 	},
 	{
 		"speaker": "ruby",
-		#"animation": "wow",
 		"text": "[color=#ffa7ea]My name's Ruby![/color]"
 	},
 	{
 		"speaker": "friend",
-		"animation": "sad",
+		"animation": "yay",
 		"text": "[color=#4F366F]We can be friends… if you draw me a key![/color]"
 	},
 ],
@@ -115,7 +116,7 @@ var dialogues: Dictionary = {
 "eyeball":[
 	{
 		"speaker": "friend",
-		#"animation": "wow",
+		"animation": "default",
 		"text": "[color=#4F366F]wouldn’t it be nice to have an extra eyeball.[/color]"
 	},
 ],
@@ -123,7 +124,7 @@ var dialogues: Dictionary = {
 "pentagram":[
 	{
 		"speaker": "friend",
-		#"animation": "wow",
+		"animation": "yay",
 		"text": "[color=#4F366F]I wish I could play with you in the real world.[/color]"
 	},
 ],
@@ -282,6 +283,10 @@ func _on_girlpressed(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 				if room_dialogue_finished:
 					room_dialogue_finished = false
 					_run_puzzle()
+				
+				elif final_dialogue_available and not final_dialogue_played:
+					final_dialogue_played = true
+					await _play_final_book_dialogue()
 
 				elif not book_intro_finished:
 					if first_book_open:
@@ -311,7 +316,8 @@ func _run_puzzle() -> void:
 			puzzles.append(data)
 
 	if puzzle_index >= puzzles.size():
-		print("ALL PUZZLES COMPLETED!")
+		print("all dots doneeenenne")
+		final_dialogue_available = true
 		return
 
 	current_puzzle_data = puzzles[puzzle_index]
@@ -324,6 +330,7 @@ func _run_puzzle() -> void:
 
 	_begin_puzzle(current_puzzle_data)
 func _start_dialogue(id: String) -> void:
+	room_dialogue_active = false
 
 	if id == "intro":
 		dialogue_controller.visible = true
@@ -356,18 +363,26 @@ func _show_line() -> void:
 
 	mom_text.visible = false
 	ruby_text.visible = false
+	friend_text.visible = false
 
 	var line: Dictionary = lines[current_line]
 
-	if line.has("animation"):
-		_play_ruby(line["animation"])
-
 	if in_book_view:
-		active_text = book_ruby_text
+		if line["speaker"] == "friend":
+			active_text = friend_text
+		else:
+			active_text = book_ruby_text
 	elif line["speaker"] == "mom":
 		active_text = mom_text
 	else:
 		active_text = ruby_text
+
+	# Play the correct character animation
+	if line.has("animation"):
+		if line["speaker"] == "friend":
+			_play_friend(line["animation"])
+		elif line["speaker"] == "ruby":
+			_play_ruby(line["animation"])
 
 	active_text.visible = true
 	active_text.text = line["text"]
@@ -386,7 +401,6 @@ func _show_line() -> void:
 
 	typing = false
 
-	# Wait for book zoom animation
 	if line.has("play") and current_dialogue_id == "book_intro":
 		waiting_for_animation = true
 		book_animations.play(line["play"])
@@ -396,7 +410,6 @@ func _show_line() -> void:
 		waiting_for_animation = false
 
 		if current_dialogue_id == "book_intro":
-			# Display square dots, but don't allow drawing
 			puzzle.start_puzzle(preload("res://scenes/dots/square_shape.tscn"))
 			puzzle.visible = true
 			puzzle.input_enabled = false
@@ -445,10 +458,44 @@ func _end_dialogue() -> void:
 		dialogue_transitioning = false
 		_run_puzzle()
 		return
+	if current_dialogue_id in ["friend drawn", "eyeball", "pentagram"]:
+
+		friend_text.visible = false
+		friend_sprite.visible = false
+		friend_room_sprite.visible = false
+		book_ruby_text.visible = false
+
+		book.visible = false
+		in_book_view = false
+
+		$AnimatedSprite2D.play("rubybook")
 
 		dialogue_transitioning = false
-		return
 
+		await get_tree().create_timer(1.0).timeout
+
+		busy = false
+		_run_puzzle()
+		return
+	if current_dialogue_id == "dots done":
+
+		friend_text.visible = false
+		book_ruby_text.visible = false
+
+		friend_sprite.visible = false
+
+		book.visible = false
+		in_book_view = false
+
+		$AnimatedSprite2D.play("rubybook")
+
+		final_dialogue_available = false
+
+		print("FINAL BOOK DIALOGUE COMPLETED!")
+
+		busy = false
+		return
+		
 	dialogue_box.visible = false
 	step += 1
 
@@ -456,6 +503,17 @@ func _end_dialogue() -> void:
 
 	await get_tree().create_timer(1.0).timeout
 	_run_step()
+	
+
+func _play_friend(anim_name: String) -> void:
+	if friend_sprite.sprite_frames == null:
+		return
+
+	if not friend_sprite.sprite_frames.has_animation(anim_name):
+		push_error("Friend animation not found: " + anim_name)
+		return
+
+	friend_sprite.play(anim_name)
 	
 func _play_ruby(anim_name: String) -> void:
 	if ruby_sprite.sprite_frames == null or not ruby_sprite.sprite_frames.has_animation(anim_name):
@@ -499,9 +557,6 @@ func _close_book() -> void:
 func _on_back_pressed() -> void:
 	_close_book()
 
-
-
-
 func _on_puzzle_completed() -> void:
 	if busy:
 		return
@@ -530,15 +585,56 @@ func _on_puzzle_completed() -> void:
 		else:
 			push_warning("imgs folder not found!")
 
+	
 	# Give the player time to see the picture
 	await get_tree().create_timer(1.5).timeout
 
-	# 3. Hide picture and close the book
+	# FRIEND SPECIAL EVENT
+	if reveal_name == "friend":
+
+		# Keep the book open!
+		# Keep the friend visible inside the book!
+
+		puzzle_index += 1
+		busy = false
+
+		_start_dialogue("friend drawn")
+		return
+
+	# EYEBALL SPECIAL EVENT
+	if reveal_name == "Eyeball":
+		if book_image:
+			book_image.hide()
+
+		book.hide()
+		in_book_view = false
+
+		puzzle_index += 1
+		busy = false
+
+		_start_eyeball_event()
+		return
+
+	# PENTAGRAM SPECIAL EVENT
+	if reveal_name == "Pentagram":
+		if book_image:
+			book_image.hide()
+
+		book.hide()
+		in_book_view = false
+
+		puzzle_index += 1
+		busy = false
+
+		_start_pentagram_event()
+		return
+	# NORMAL PUZZLE COMPLETION
 	if book_image:
 		book_image.hide()
 
 	book.visible = false
 	in_book_view = false
+
 	$AnimatedSprite2D.play("rubybook")
 
 	# 4. Reveal room object if it exists
@@ -559,6 +655,13 @@ func _on_puzzle_completed() -> void:
 		await get_tree().create_timer(0.5).timeout
 		busy = false
 		_start_room_dialogue("ruby_square")
+		return
+		
+	# birb puzzle
+	if puzzle_index == 3:
+		await get_tree().create_timer(0.5).timeout
+		busy = false
+		_start_room_dialogue("bird")
 		return
 
 	await get_tree().create_timer(1.0).timeout
@@ -616,13 +719,22 @@ func _start_room_dialogue(id: String) -> void:
 func _end_room_dialogue() -> void:
 	dialogue_active = false
 	room_dialogue_active = false
-	room_dialogue_finished = true
+	room_dialogue_finished = false
 	typing = false
 
-	ruby_room_text.visible = false
-	speechbubble.visible = false
+	ruby_room_text.hide()
+	speechbubble.hide()
+
+	# Hide room friend
+	friend_room_sprite.hide()
 
 	print("Room dialogue finished!")
+
+	await get_tree().create_timer(1.0).timeout
+
+	busy = false
+	_run_puzzle()
+	
 func _show_room_line() -> void:
 	typing = true
 	typing_id += 1
@@ -648,6 +760,84 @@ func _show_room_line() -> void:
 
 	typing = false
 
+func _play_final_book_dialogue() -> void:
+	busy = true
+	in_book_view = true
+
+	# Show book
+	book.visible = true
+
+	# No puzzle or dots
+	puzzle.end_puzzle()
+	puzzle.visible = false
+
+	# Hide all previously used dialogue
+	book_ruby_text.visible = false
+	ruby_text.visible = false
+	friend_text.visible = false
+
+	# Show friend inside the book
+	friend_sprite.visible = true
+	friend_room_sprite.visible = false
+
+	# Start final conversation
+	_start_dialogue("dots done")
+
+	busy = false
+	
+
+func _start_pentagram_event() -> void:
+	book.hide()
+	in_book_view = false
+	puzzle.hide()
+
+	book_ruby_text.hide()
+	friend_text.hide()
+
+	friend_sprite.hide()
+	friend_room_sprite.show()
+	friend_room_sprite.play("default")
+
+	_start_room_dialogue("pentagram")
+
+func _start_eyeball_event() -> void:
+	# Hide book and all book dialogue
+	book.hide()
+	in_book_view = false
+	puzzle.hide()
+
+	book_ruby_text.hide()
+	friend_text.hide()
+
+	# Show main-scene friend
+	friend_sprite.hide()
+	friend_room_sprite.show()
+	friend_room_sprite.play("default")
+
+	# Start room dialogue
+	_start_room_dialogue("eyeball")
+	
+	
+func _start_friend_dialogue(id: String, in_room: bool = false) -> void:
+	if not dialogues.has(id):
+		push_error("No dialogue named: " + id)
+		return
+
+	# Hide both sprites first
+	friend_sprite.visible = false
+	friend_room_sprite.visible = false
+
+	# Show the correct friend
+	if in_room:
+		friend_room_sprite.visible = true
+	else:
+		friend_sprite.visible = true
+		friend_sprite.play("default")
+
+	_start_dialogue(id)
+	
+	
+	
 func _play_first_book_intro() -> void:
 	in_book_view = true
 	book.visible = true

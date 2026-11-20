@@ -732,13 +732,13 @@ region = Rect2(0, 0, 600, 837)
 atlas = ExtResource("18_fatfg")
 region = Rect2(2400, 0, 600, 837)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3pprk"]
-atlas = ExtResource("18_fatfg")
-region = Rect2(1200, 0, 600, 837)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_im4ie"]
 atlas = ExtResource("18_fatfg")
 region = Rect2(1800, 0, 600, 837)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pprk"]
+atlas = ExtResource("18_fatfg")
+region = Rect2(1200, 0, 600, 837)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jupuq"]
 animations = [{
@@ -771,7 +771,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3pprk")
+"texture": SubResource("AtlasTexture_im4ie")
 }],
 "loop": 1,
 "name": &"smile",
@@ -779,7 +779,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_im4ie")
+"texture": SubResource("AtlasTexture_3pprk")
 }],
 "loop": 1,
 "name": &"yay",
