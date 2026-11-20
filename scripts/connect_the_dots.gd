@@ -224,9 +224,38 @@ func _on_clear_pressed() -> void:
 	status.text = ""
 
 
+func _check_dot_order() -> bool:
+	if dot_positions.size() < 2:
+		return false
+
+	var visited := 0
+	var expected := 0
+
+	# Combine all drawn strokes into one sequence.
+	var all_points := PackedVector2Array()
+
+	for stroke in strokes:
+		all_points.append_array(stroke)
+
+	# Check which numbered dot the player reaches.
+	for p in all_points:
+		if expected >= dot_positions.size():
+			break
+
+		if p.distance_to(dot_positions[expected]) <= tolerance:
+			visited += 1
+			expected += 1
+
+	# All dots must have been visited in order.
+	return visited == dot_positions.size()
+	
+	
 func _check() -> bool:
 	if strokes.is_empty():
 		status.text = "Draw something first!"
+		return false
+	if not _check_dot_order():
+		status.text = "Connect the dots in order!"
 		return false
 
 	var ideal_samples := PackedVector2Array()
