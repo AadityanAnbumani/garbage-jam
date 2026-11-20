@@ -48,13 +48,25 @@ text = "Art: vishalya sairam"
 horizontal_alignment = 1
 
 [node name="assets" type="Label" parent="." unique_id=605290689]
-offset_left = 291.0
-offset_top = 415.99997
-offset_right = 961.0
-offset_bottom = 477.99997
+offset_left = 292.99997
+offset_top = 425.99997
+offset_right = 963.0
+offset_bottom = 487.99997
 rotation = -0.08450103
 theme_override_colors/font_color = Color(1, 0.17254902, 1, 1)
 theme_override_fonts/font = ExtResource("2_0ctdu")
 theme_override_font_sizes/font_size = 35
 text = "assets: pexels stock photos"
+horizontal_alignment = 1
+
+[node name="audio" type="Label" parent="." unique_id=2052296289]
+offset_left = 296.99997
+offset_top = 501.0
+offset_right = 967.0
+offset_bottom = 563.0
+rotation = -0.08450103
+theme_override_colors/font_color = Color(1, 0.17254902, 1, 1)
+theme_override_fonts/font = ExtResource("2_0ctdu")
+theme_override_font_sizes/font_size = 35
+text = "audio: pbs kids peg + cat music maker "
 horizontal_alignment = 1

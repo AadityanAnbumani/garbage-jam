@@ -5,8 +5,9 @@ signal puzzle_failed
 
 @export var shape_scene: PackedScene
 @export var autostart := false
-@export var drawing_rect := Rect2(390, 70, 480, 630)
-@export var fit_margin := 30.0
+@export var drawing_rect := Rect2(370, 35, 520, 630)
+@export var fit_margin := 45.0
+#@export var fit_margin := 30.0
 @export var closed := false
 @export var tolerance := 20.0
 @export var required_coverage := 0.8
@@ -85,8 +86,18 @@ func _load_shape(scene: PackedScene) -> void:
 		for p in pts:
 			bounds = bounds.expand(p)
 
-	var avail := drawing_rect.size - Vector2.ONE * fit_margin * 2.0
-	var s := minf(avail.x / maxf(bounds.size.x, 1.0), avail.y / maxf(bounds.size.y, 1.0))
+	#var avail := drawing_rect.size - Vector2.ONE * fit_margin * 2.0
+	#var s := minf(avail.x / maxf(bounds.size.x, 1.0), avail.y / maxf(bounds.size.y, 1.0))
+	#var offset := drawing_rect.position + (drawing_rect.size - bounds.size * s) / 2.0 - bounds.position * s
+	
+	var margin := fit_margin + dot_radius + 12.0
+	var avail := drawing_rect.size - Vector2.ONE * margin * 2.0
+
+	var s := minf(
+		avail.x / maxf(bounds.size.x, 1.0),
+		avail.y / maxf(bounds.size.y, 1.0)
+	)
+
 	var offset := drawing_rect.position + (drawing_rect.size - bounds.size * s) / 2.0 - bounds.position * s
 
 	for pts in raw_paths:
