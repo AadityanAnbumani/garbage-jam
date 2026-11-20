@@ -24,6 +24,8 @@ var active_text: RichTextLabel
 
 var book_opened_once = false
 var first_book_open = true
+var current_dialogue_id = ""
+
 
 var dialogues: Dictionary = {
 "book_intro": [
@@ -39,7 +41,7 @@ var dialogues: Dictionary = {
 	{
 		"speaker": "ruby",
 		#"animation": "wow",
-		"text": "[color=#ffa7ea]I [emphasis]love connect the dots![/color]"
+		"text": "[color=#ffa7ea]I [emphasis]love[/emphasis] connect the dots![/color]"
 	},
 	{
 		"speaker": "ruby",
@@ -197,8 +199,11 @@ func _start_dialogue(id: String) -> void:
 		return
 
 	lines = dialogues[id]
+	current_dialogue_id = id
 	current_line = 0
 	dialogue_active = true
+	typing = false
+	waiting_for_animation = false
 
 	if in_book_view:
 		book_ruby_text.visible = true
@@ -207,7 +212,6 @@ func _start_dialogue(id: String) -> void:
 		dialogue_box.visible = true
 
 	_show_line()
-
 
 func _show_line() -> void:
 	typing = true
@@ -233,6 +237,7 @@ func _show_line() -> void:
 	active_text.text = line["text"]
 	active_text.visible_characters = 0
 
+	# Type out the dialogue
 	for i in range(active_text.get_total_character_count()):
 		if not typing or my_id != typing_id:
 			return
@@ -240,30 +245,31 @@ func _show_line() -> void:
 		active_text.visible_characters += 1
 		await get_tree().create_timer(0.05).timeout
 
-	if my_id == typing_id:
-		typing = false
+	if my_id != typing_id:
+		return
 
+	typing = false
+
+	# Play animation after all text
 	if line.has("play"):
 		waiting_for_animation = true
 
-		var book_sprite = $connectTheDots/AnimationPlayer
+		var book_anim = $connectTheDots/AnimationPlayer
 
-		if book_sprite.sprite_frames.has_animation(line["play"]):
-			book_sprite.play(line["play"])
-			await book_sprite.animation_finished
-		else:
-			push_error("Book animation not found: " + line["play"])
+		book_anim.play(line["play"])
+		await book_anim.animation_finished
 
 		waiting_for_animation = false
 
+		# Auto= start dialogue 2
+		if current_dialogue_id == "book_intro":
+			_start_dialogue("book_intro2")
+
 func _input(event: InputEvent) -> void:
-	if not dialogue_active:
+	if not dialogue_active or waiting_for_animation:
 		return
 
 	if event.is_action_pressed("ui_accept"):
-		if waiting_for_animation:
-			return
-
 		if typing:
 			active_text.visible_characters = -1
 			typing = false
@@ -276,15 +282,10 @@ func _input(event: InputEvent) -> void:
 				_end_dialogue()
 
 func _end_dialogue() -> void:
-
 	dialogue_active = false
 	typing = false
 
 	if in_book_view:
-		if lines == dialogues["book_intro"]:
-			_start_dialogue("book_intro2")
-			return
-
 		book_ruby_text.visible = false
 		return
 

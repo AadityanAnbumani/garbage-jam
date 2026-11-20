@@ -714,7 +714,6 @@ metadata/_edit_lock_ = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=635076543]
 root_node = NodePath("../Panel")
 libraries/ = SubResource("AnimationLibrary_po3ya")
-autoplay = &"bookOpen"
 
 [node name="Panel3" type="Panel" parent="." unique_id=1421823698]
 offset_left = 603.0
