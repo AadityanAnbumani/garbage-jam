@@ -5,6 +5,19 @@
 [ext_resource type="Texture2D" uid="uid://bcfhufvhbcip3" path="res://assets/book.png" id="3_4o5sk"]
 [ext_resource type="Texture2D" uid="uid://tm0vnlphy0nj" path="res://assets/paper.png" id="4_hdh57"]
 [ext_resource type="PackedScene" uid="uid://dck4k7tvdwh2m" path="res://scenes/dots/square_shape.tscn" id="5_4o5sk"]
+[ext_resource type="Texture2D" uid="uid://d01lwvsjybf1h" path="res://assets/dots/bird.png" id="6_2pl0l"]
+[ext_resource type="Texture2D" uid="uid://bxvl4jnatbdw" path="res://assets/dots/candle.png" id="7_fatfg"]
+[ext_resource type="Texture2D" uid="uid://bp8kj5erea73a" path="res://assets/dots/crown.png" id="8_jupuq"]
+[ext_resource type="Texture2D" uid="uid://bb0rd0knk45dr" path="res://assets/dots/eyeball.png" id="9_4gn7c"]
+[ext_resource type="Texture2D" uid="uid://b4u1fjb5i573m" path="res://assets/dots/flower.png" id="10_mauyy"]
+[ext_resource type="Texture2D" uid="uid://bleokm4yhrhqu" path="res://assets/dots/hand.png" id="11_sprfo"]
+[ext_resource type="Texture2D" uid="uid://b5xnkjkvf7gwo" path="res://assets/dots/icecream.png" id="12_nb26w"]
+[ext_resource type="Texture2D" uid="uid://b0mc6ahmvpxxf" path="res://assets/dots/key.png" id="13_5pjls"]
+[ext_resource type="Texture2D" uid="uid://bd72tknc81j5k" path="res://assets/dots/pentagram.png" id="14_wqq3w"]
+[ext_resource type="Texture2D" uid="uid://c3ojw2w2y2mlm" path="res://assets/dots/red square.png" id="15_q3upu"]
+[ext_resource type="Texture2D" uid="uid://delkrnmm55umx" path="res://assets/dots/scissors.png" id="16_ll52t"]
+[ext_resource type="Texture2D" uid="uid://bxik6ypry6cgx" path="res://assets/dots/spaceship.png" id="17_5q0lv"]
+[ext_resource type="Texture2D" uid="uid://coaddy0udqnyk" path="res://assets/stickman.png" id="18_fatfg"]
 
 [sub_resource type="Animation" id="Animation_6hgct"]
 resource_name = "new_animation"
@@ -703,6 +716,76 @@ bg_color = Color(0.15453345, 0.16667596, 0.006900722, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rgf7s"]
 bg_color = Color(0.8784314, 0.9411765, 0.18039216, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbbgc"]
+atlas = ExtResource("18_fatfg")
+region = Rect2(600, 0, 600, 837)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wn8jx"]
+atlas = ExtResource("18_fatfg")
+region = Rect2(3000, 0, 600, 837)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddmak"]
+atlas = ExtResource("18_fatfg")
+region = Rect2(0, 0, 600, 837)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47mod"]
+atlas = ExtResource("18_fatfg")
+region = Rect2(2400, 0, 600, 837)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pprk"]
+atlas = ExtResource("18_fatfg")
+region = Rect2(1200, 0, 600, 837)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_im4ie"]
+atlas = ExtResource("18_fatfg")
+region = Rect2(1800, 0, 600, 837)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jupuq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbbgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wn8jx")
+}],
+"loop": 1,
+"name": &"dance",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddmak")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47mod")
+}],
+"loop": 1,
+"name": &"sad",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3pprk")
+}],
+"loop": 1,
+"name": &"smile",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_im4ie")
+}],
+"loop": 1,
+"name": &"yay",
+"speed": 5.0
+}]
+
 [node name="connectTheDots" type="Node2D" unique_id=582379745]
 
 [node name="GirlRoom" type="Sprite2D" parent="." unique_id=1709195477]
@@ -776,3 +859,85 @@ offset_right = 157.0
 offset_bottom = 154.0
 theme_override_font_sizes/font_size = 30
 text = "Back"
+
+[node name="imgs" type="Node2D" parent="." unique_id=1135792592]
+position = Vector2(1619, 265.5)
+
+[node name="Bird" type="Sprite2D" parent="imgs" unique_id=1599939634]
+visible = false
+position = Vector2(-941.0001, 40.5)
+scale = Vector2(0.4537037, 0.4537037)
+texture = ExtResource("6_2pl0l")
+
+[node name="Candle" type="Sprite2D" parent="imgs" unique_id=1390410370]
+visible = false
+position = Vector2(-1003, 89.68394)
+scale = Vector2(0.59753525, 0.61768645)
+texture = ExtResource("7_fatfg")
+
+[node name="Crown" type="Sprite2D" parent="imgs" unique_id=2083179200]
+visible = false
+position = Vector2(-1000, 74.5)
+scale = Vector2(0.40759444, 0.40759447)
+texture = ExtResource("8_jupuq")
+
+[node name="Eyeball" type="Sprite2D" parent="imgs" unique_id=1711901966]
+visible = false
+position = Vector2(-985.7273, 97.059814)
+scale = Vector2(0.7629032, 0.7629033)
+texture = ExtResource("9_4gn7c")
+
+[node name="Flower" type="Sprite2D" parent="imgs" unique_id=1709032854]
+visible = false
+position = Vector2(-979, 79.49998)
+scale = Vector2(0.6347656, 0.6347656)
+texture = ExtResource("10_mauyy")
+
+[node name="Hand" type="Sprite2D" parent="imgs" unique_id=1413067890]
+visible = false
+position = Vector2(-993.7273, 61.059814)
+scale = Vector2(0.8098039, 0.80980396)
+texture = ExtResource("11_sprfo")
+
+[node name="Icecream" type="Sprite2D" parent="imgs" unique_id=509476829]
+visible = false
+position = Vector2(-1002.7969, 78.500015)
+scale = Vector2(0.3890564, 0.43472812)
+texture = ExtResource("12_nb26w")
+
+[node name="Key" type="Sprite2D" parent="imgs" unique_id=1626092793]
+visible = false
+position = Vector2(-974.7273, 113.059814)
+scale = Vector2(0.6818181, 0.6818182)
+texture = ExtResource("13_5pjls")
+
+[node name="Pentagram" type="Sprite2D" parent="imgs" unique_id=1609469086]
+visible = false
+position = Vector2(-994, 85.5)
+scale = Vector2(0.5169271, 0.5169271)
+texture = ExtResource("14_wqq3w")
+
+[node name="RedSquare" type="Sprite2D" parent="imgs" unique_id=1759223444]
+visible = false
+position = Vector2(-989, 81.5)
+scale = Vector2(0.697109, 0.697109)
+texture = ExtResource("15_q3upu")
+
+[node name="Scissors" type="Sprite2D" parent="imgs" unique_id=1674239355]
+visible = false
+position = Vector2(-941, 51.50003)
+rotation = 0.43853274
+scale = Vector2(0.7407045, 0.74070454)
+texture = ExtResource("16_ll52t")
+
+[node name="Spaceship" type="Sprite2D" parent="imgs" unique_id=712652766]
+visible = false
+position = Vector2(-993, 97.43937)
+scale = Vector2(0.7705176, 0.7993214)
+texture = ExtResource("17_5q0lv")
+
+[node name="friend" type="AnimatedSprite2D" parent="imgs" unique_id=387189858]
+visible = false
+position = Vector2(-980, 94.15279)
+scale = Vector2(0.81647414, 0.8586552)
+sprite_frames = SubResource("SpriteFrames_jupuq")

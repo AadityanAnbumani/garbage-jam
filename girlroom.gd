@@ -509,42 +509,75 @@ func _on_puzzle_completed() -> void:
 
 	print("Yay! Puzzle completed!")
 
-	await get_tree().create_timer(1.0).timeout
-
-	puzzle.end_puzzle()
-
-	book.visible = false
-	in_book_view = false
-	$AnimatedSprite2D.play("rubybook")
+	# Show completed picture in the book
+	var completed_image: Node = null
 
 	if current_puzzle_data.has("reveal"):
-		_reveal(current_puzzle_data["reveal"])
+		var imgs = book.get_node("imgs")
+		completed_image = imgs.get_node_or_null(
+			current_puzzle_data["reveal"]
+		)
 
-	# Move to the next puzzle
+		if completed_image:
+			completed_image.visible = true
+
+	# Let the player see the completed picture
+	await get_tree().create_timer(1.5).timeout
+
+	# Hide puzzle and dots
+	puzzle.end_puzzle()
+	puzzle.visible = false
+
+	# Close book
+	book.visible = false
+	in_book_view = false
+
+	$AnimatedSprite2D.play("rubybook")
+
+	# Hide previous picture AFTER closing the book
+	if completed_image:
+		completed_image.visible = false
+
+	# Reveal object in Ruby's room
+	if current_puzzle_data.has("reveal"):
+		var room_node = get_node_or_null(
+			current_puzzle_data["reveal"]
+		)
+		if room_node:
+			room_node.visible = true
+
 	puzzle_index += 1
 
-	# Square is special: show its room dialogue first
 	if puzzle_index == 1:
 		await get_tree().create_timer(0.5).timeout
 		busy = false
 		_start_room_dialogue("ruby_square")
 		return
 
-	# remaining puzzle timeout
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(1.0).timeout
 	busy = false
 	_run_puzzle()
 
 func _reveal(path: String) -> void:
-	var node = get_node_or_null(path)
+	# Reveal room object
+	var room_node = get_node_or_null(path)
 
-	if node == null:
-		push_error("Reveal node not found: " + path)
-		return
+	if room_node != null:
+		room_node.visible = true
+		print("ROOM IMAGE VISIBLE: ", room_node.get_path())
+	else:
+		print("ROOM IMAGE NOT FOUND: ", path)
 
-	node.visible = true
-	print("Revealed: ", path)
-	
+	# Find book image
+	var current_book_image = book.get_node_or_null("imgs/" + path)
+
+	if current_book_image != null:
+		current_book_image.visible = true
+		print("BOOK IMAGE FOUND: ", current_book_image.get_path())
+		print("BOOK IMAGE VISIBLE: ", current_book_image.visible)
+		print("BOOK IMAGE POSITION: ", current_book_image.position)
+	else:
+		print("BOOK IMAGE NOT FOUND: ", "imgs/" + path)
 func _on_mama_dialogue_finished() -> void:
 	dialogue_controller.visible = false
 	$Node2D.visible = false
