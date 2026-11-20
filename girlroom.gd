@@ -14,6 +14,8 @@ const PASS_MATCH := 0.8
 @onready var mom_text = $Node2D/Control/mama
 @onready var ruby_text = $Node2D/Control/ruby
 
+@onready var book_animations = $connectTheDots/AnimationPlayer
+
 var dialogue_active = false
 var lines: Array = []
 var current_line = 0
@@ -37,11 +39,10 @@ var dialogues: Dictionary = {
 	},
 ],
 "book_intro2": [
-
 	{
 		"speaker": "ruby",
 		#"animation": "wow",
-		"text": "[color=#ffa7ea]I [emphasis]love[/emphasis] connect the dots![/color]"
+		"text": "[color=#ffa7ea]I love connect the dots![/color]"
 	},
 	{
 		"speaker": "ruby",
@@ -129,6 +130,7 @@ var puzzle_in_progress = false
 
 
 func _ready() -> void:
+	print("text")
 	puzzle.puzzle_completed.connect(_on_puzzle_completed)
 	back_button.pressed.connect(_on_back_pressed)
 
@@ -252,17 +254,20 @@ func _show_line() -> void:
 
 	# Play animation after all text
 	if line.has("play"):
+		print("Trying to play animation: ", line["play"])
+		print("Animation exists: ", book_animations.has_animation(line["play"]))
+
 		waiting_for_animation = true
+		book_animations.play(line["play"])
 
-		var book_anim = $connectTheDots/AnimationPlayer
+		print("Playing: ", book_animations.current_animation)
 
-		book_anim.play(line["play"])
-		await book_anim.animation_finished
+		await book_animations.animation_finished
 
 		waiting_for_animation = false
 
-		# Auto= start dialogue 2
 		if current_dialogue_id == "book_intro":
+			$connectTheDots/Puzzle.visible= true
 			_start_dialogue("book_intro2")
 
 func _input(event: InputEvent) -> void:
