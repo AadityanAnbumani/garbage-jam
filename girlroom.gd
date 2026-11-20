@@ -96,17 +96,17 @@ var story: Array[Dictionary] = [
 {
 	"type": "puzzle",
 	"shape": preload("res://scenes/dots/crown_shape.tscn"),
-	"reveal": "TODO_crown",
+	"reveal": "Crown",
 },
 {
 	"type": "puzzle",
 	"shape": preload("res://scenes/dots/icecream_shape.tscn"),
-	"reveal": "TODO_icecream",
+	"reveal": "Icecream",
 },
 {
 	"type": "puzzle",
 	"shape": preload("res://scenes/dots/shapeship_shape.tscn"),
-	"reveal": "TODO_shapeship",
+	"reveal": "Spaceship",
 },
 {
 	"type": "puzzle",
@@ -116,12 +116,12 @@ var story: Array[Dictionary] = [
 {
 	"type": "puzzle",
 	"shape": preload("res://scenes/dots/key_shape.tscn"),
-	"reveal": "TODO_key",
+	"reveal": "Key",
 },
 {
 	"type": "puzzle",
 	"shape": preload("res://scenes/dots/candle_shape.tscn"),
-	"reveal": "TODO_candle",
+	"reveal": "Candle",
 },
 {
 	"type": "puzzle",
@@ -131,12 +131,12 @@ var story: Array[Dictionary] = [
 {
 	"type": "puzzle",
 	"shape": preload("res://scenes/dots/scissors_shape.tscn"),
-	"reveal": "TODO_scissors",
+	"reveal": "Scissors",
 },
 {
 	"type": "puzzle",
 	"shape": preload("res://scenes/dots/pentagram_shape.tscn"),
-	"reveal": "TODO_pentagram",
+	"reveal": "Pentagram",
 },
 {
 	"type": "puzzle",
