@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dj5aoat5vjb46"
+path="res://.godot/imported/b4 frien.mp3-1f79755c1fdc6f99e660a5cdcf6ad1ad.mp3str"
+
+[deps]
+
+source_file="res://assets/music/b4 frien.mp3"
+dest_files=["res://.godot/imported/b4 frien.mp3-1f79755c1fdc6f99e660a5cdcf6ad1ad.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
