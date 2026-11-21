@@ -22,6 +22,9 @@ signal puzzle_failed
 @export var show_debug := true
 @export var show_area_guide := false
 
+@onready var undo_button: TextureButton = $"../undo"
+@onready var clear_button: TextureButton = $"../clear"
+
 var ideal_paths: Array[PackedVector2Array] = []
 var dot_positions := PackedVector2Array()
 var strokes: Array[PackedVector2Array] = []
@@ -30,17 +33,17 @@ var current_line: Line2D
 var drawing := false
 var active := false
 var locked := false
-var ui_box: HBoxContainer
 var status: Label
 
 var input_enabled := true
 func _ready() -> void:
-	_build_ui()
-	ui_box.visible = false
+	undo_button.pressed.connect(_on_undo_pressed)
+	clear_button.pressed.connect(_on_clear_pressed)
+
 	if autostart and shape_scene:
 		start_puzzle(shape_scene)
-	queue_redraw()
 
+	queue_redraw()
 
 func start_puzzle(scene: PackedScene) -> void:
 	end_puzzle()
@@ -48,7 +51,6 @@ func start_puzzle(scene: PackedScene) -> void:
 	if ideal_paths.is_empty():
 		return
 	active = true
-	ui_box.visible = true
 	queue_redraw()
 
 
@@ -59,8 +61,7 @@ func end_puzzle() -> void:
 	_clear_strokes()
 	ideal_paths.clear()
 	dot_positions.clear()
-	ui_box.visible = false
-	status.text = ""
+	#status.text = ""
 	queue_redraw()
 
 
@@ -108,24 +109,6 @@ func _load_shape(scene: PackedScene) -> void:
 		if closed:
 			fitted.append(fitted[0])
 		ideal_paths.append(fitted)
-
-
-func _build_ui() -> void:
-	ui_box = HBoxContainer.new()
-	ui_box.position = ui_position
-	add_child(ui_box)
-
-	for entry in [["Undo", _on_undo_pressed], ["Clear", _on_clear_pressed]]:
-		var b := Button.new()
-		b.text = entry[0]
-		b.pressed.connect(entry[1])
-		ui_box.add_child(b)
-
-	status = Label.new()
-	status.position = ui_position + Vector2(0, 40)
-	status.visible = show_debug
-	add_child(status)
-
 
 func _input(event: InputEvent) -> void:
 	if not active or not input_enabled or locked or not is_visible_in_tree():
@@ -184,7 +167,6 @@ func _check_loop_closure() -> void:
 		if _check():
 			print("yay")
 			locked = true
-			ui_box.visible = false
 			puzzle_completed.emit()
 
 		else:
@@ -203,7 +185,6 @@ func _on_done_pressed() -> void:
 		return
 	if _check():
 		locked = true
-		ui_box.visible = false
 		puzzle_completed.emit()
 	else:
 		puzzle_failed.emit()
@@ -214,14 +195,12 @@ func _on_undo_pressed() -> void:
 		return
 	strokes.pop_back()
 	line_nodes.pop_back().queue_free()
-	status.text = ""
 
 
 func _on_clear_pressed() -> void:
 	if locked:
 		return
 	_clear_strokes()
-	status.text = ""
 
 
 func _check_dot_order() -> bool:

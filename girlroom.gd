@@ -3,7 +3,7 @@ extends Node2D
 @onready var dialogue_controller = $Node2D/Control
 @onready var book = $connectTheDots
 @onready var puzzle = $connectTheDots/Puzzle
-@onready var back_button = $connectTheDots/BackButton
+
 @onready var ruby_sprite = get_node_or_null("Node2D/AnimatedSprite2D")
 @onready var scene_animations = get_node_or_null("Node2D/AnimationPlayer")
 @onready var book_ruby_text: RichTextLabel = $"ruby text"
@@ -49,6 +49,16 @@ var final_dialogue_played := false
 
 @onready var friend_room_sprite: AnimatedSprite2D = $friend
 
+@onready var back_button = $connectTheDots/BackButton
+@onready var help_button = $connectTheDots/help
+@onready var undo_button = $connectTheDots/undo
+@onready var clear_button = $connectTheDots/clear
+
+func _set_puzzle_ui(visible: bool) -> void:
+	back_button.visible = visible
+	help_button.visible = visible
+	undo_button.visible = visible
+	clear_button.visible = visible
 
 var dialogues: Dictionary = {
 "book_intro": [
@@ -231,6 +241,7 @@ var puzzle_in_progress = false
 
 
 func _ready() -> void:
+	_set_puzzle_ui(false)
 	speechbubble.visible = false
 	ruby_room_text.visible = false
 
@@ -551,23 +562,34 @@ func _begin_puzzle(data: Dictionary) -> void:
 	puzzle.allowed_stray = MAX_STRAY
 	puzzle.tolerance = data.get("tolerance", 20.0)
 	puzzle.closed = data.get("closed", false)
-	back_button.visible = data.get("can_leave", true)
 
 	puzzle.visible = true
 	puzzle.start_puzzle(data["shape"])
 
 	puzzle_in_progress = true
+
+	_set_puzzle_ui(true)
 	
 func _open_book() -> void:
 	in_book_view = true
 	book.visible = true
+
+	if puzzle_in_progress:
+		puzzle.visible = true
+		undo_button.show()
+		clear_button.show()
+		back_button.show()
+		help_button.show()
 	
 func _close_book() -> void:
 	in_book_view = false
 	book.visible = false
 	book_ruby_text.visible = false
-	$AnimatedSprite2D.play("rubybook")
 
+	_set_puzzle_ui(false)
+
+	$AnimatedSprite2D.play("rubybook")
+	
 func _on_back_pressed() -> void:
 	_close_book()
 
@@ -583,9 +605,10 @@ func _on_puzzle_completed() -> void:
 	var reveal_name: String = current_puzzle_data.get("reveal", "")
 	var book_image: Node = null
 
-	# 1. Hide puzzle and dots
+	# 1. Hide puzzle and dots + ui
 	puzzle.end_puzzle()
 	puzzle.visible = false
+	_set_puzzle_ui(false)
 
 	# 2. Reveal the picture in the book
 	if not reveal_name.is_empty():
