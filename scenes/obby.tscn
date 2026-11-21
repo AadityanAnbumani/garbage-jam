@@ -132,7 +132,7 @@ position = Vector2(1723, 107)
 texture = ExtResource("4_0v40y")
 
 [node name="ObbyHouse" type="Sprite2D" parent="." unique_id=1609158701]
-position = Vector2(1288, 1179)
+position = Vector2(2747, 163)
 texture = ExtResource("6_fw3ae")
 
 [node name="ObbyRock" type="Sprite2D" parent="." unique_id=892666641]
@@ -140,7 +140,7 @@ position = Vector2(2284, 270)
 texture = ExtResource("7_dmger")
 
 [node name="ObbyWater" type="Sprite2D" parent="." unique_id=1448209741]
-position = Vector2(2943, 1192)
+position = Vector2(3361, 146)
 texture = ExtResource("8_wa14l")
 
 [node name="Paper3" type="Sprite2D" parent="." unique_id=1234946143]

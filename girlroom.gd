@@ -119,7 +119,7 @@ var dialogues: Dictionary = {
 		"speaker": "friend",
 		"animation": "dance",
 		"text": "[color=#4F366F]I can’t believe it, I’m awake.. After all these years.[/color]",
-		#"audio": preload("res://assets/recordings/bird.mp3"),  change to your rec
+		"audio": preload("res://assets/recordings/Friend1.mp3"),
 	},
 	{
 		"speaker": "ruby",
