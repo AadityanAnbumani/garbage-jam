@@ -857,6 +857,7 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [node name="connectTheDots" parent="." unique_id=582379745 instance=ExtResource("7_yhlmj")]
+visible = false
 z_index = 10
 
 [node name="help2" parent="connectTheDots" index="15" unique_id=548428524]
@@ -1035,12 +1036,13 @@ texture = ExtResource("35_x6a6y")
 centered = false
 
 [node name="friend" type="AnimatedSprite2D" parent="." unique_id=868447967]
-visible = false
 z_index = 10
 position = Vector2(838, 589)
 scale = Vector2(0.3782851, 0.39782825)
 sprite_frames = SubResource("SpriteFrames_w6n54")
-animation = &"dance"
+animation = &"smile"
+
+[node name="VoicePlayer" type="AudioStreamPlayer2D" parent="." unique_id=1434623927]
 
 [connection signal="input_event" from="AnimatedSprite2D/Area2D" to="." method="_on_girlpressed"]
 

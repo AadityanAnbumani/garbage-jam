@@ -23,8 +23,11 @@ const MAX_STRAY := 0.35
 
 @onready var friend_sprite: AnimatedSprite2D = $connectTheDots/imgs/friend
 @onready var friend_text = $"friend text"
+
 var room_dialogue_finished := false
 var room_dialogue_active := false
+
+@onready var voice_player = $VoicePlayer
 
 var dialogue_active = false
 var lines: Array = []
@@ -67,36 +70,47 @@ var dialogues: Dictionary = {
 "book_intro": [
 	{
 		"speaker": "ruby",
+		"text": "[color=#ffa7ea]Your pencil can create anything the world can hold, but never what breathes.[/color]",
+		"audio": preload("res://assets/recordings/bookintro1.mp3"),
+	},
+	{
+		"speaker": "ruby",
 		"play": "bookZoom",
-		"text": "[color=#ffa7ea]I wonder what that means?[/color]"
+		"text": "[color=#ffa7ea]I wonder what that means?[/color]",
+		"audio": preload("res://assets/recordings/bookintro2.mp3"),
 	},
 ],
 "book_intro2": [
 	{
 		"speaker": "ruby",
-		"text": "[color=#ffa7ea]I love connect the dots![/color]"
+		"text": "[color=#ffa7ea]I love connect the dots![/color]",
+		"audio": preload("res://assets/recordings/bookintro3.mp3"),
 	},
 	{
 		"speaker": "ruby",
-		"text": "[color=#ffa7ea]Let me connect all the dots from 0 to the largest number and back to 0 again![/color]"
+		"text": "[color=#ffa7ea]Let me connect all the dots from 0 to the largest number and back to 0 again![/color]",
+		"audio": preload("res://assets/recordings/bookintro4.mp3"),
 	}
 ],
 
 "ruby_square": [
 	{
 		"speaker": "ruby",
-		"text": "[color=#ffa7ea]Did the square I just drew come into my room?![/color]"
+		"text": "[color=#ffa7ea]Did the square I just drew come into my room?![/color]",
+		"audio": preload("res://assets/recordings/square1.mp3"),
 	},
 	{
 		"speaker": "ruby",
-		"text": "[color=#ffa7ea]hehe let's keep drawing![/color]"
+		"text": "[color=#ffa7ea]hehe let's keep drawing![/color]",
+		"audio": preload("res://assets/recordings/square2.mp3"),
 	},
 ],
 
 "bird":[
 	{
 		"speaker": "ruby",
-		"text": "[color=#ffa7ea]Aw,mr. birdie isn't here[/color]"
+		"text": "[color=#ffa7ea]Aw,mr. birdie isn't here[/color]",
+		"audio": preload("res://assets/recordings/bird.mp3"),
 	},
 ],
 
@@ -104,25 +118,30 @@ var dialogues: Dictionary = {
 	{
 		"speaker": "friend",
 		"animation": "dance",
-		"text": "[color=#4F366F]I can’t believe it, I’m awake.. After all these years.[/color]"
+		"text": "[color=#4F366F]I can’t believe it, I’m awake.. After all these years.[/color]",
+		#"audio": preload("res://assets/recordings/bird.mp3"),  change to your rec
 	},
 	{
 		"speaker": "ruby",
-		"text": "[color=#ffa7ea]Hello! You’re gonna be my new friend![/color]"
+		"text": "[color=#ffa7ea]Hello! You’re gonna be my new friend![/color]",
+		"audio": preload("res://assets/recordings/frienddrawn2.mp3"),
 	},
 	{
 		"speaker": "friend",
 		"animation": "sad",
-		"text": "[color=#4F366F]Ack, who are you.[/color]"
+		"text": "[color=#4F366F]Ack, who are you.[/color]",
+		#"audio": preload("res://assets/recordings/bird.mp3"),change to your rec
 	},
 	{
 		"speaker": "ruby",
-		"text": "[color=#ffa7ea]My name's Ruby![/color]"
+		"text": "[color=#ffa7ea]My name's Ruby![/color]",
+		"audio": preload("res://assets/recordings/frienddrawn4.mp3"),
 	},
 	{
 		"speaker": "friend",
 		"animation": "yay",
-		"text": "[color=#4F366F]We can be friends… if you draw me a key![/color]"
+		"text": "[color=#4F366F]We can be friends… if you draw me a key![/color]",
+		#"audio": preload("res://assets/recordings/bird.mp3"),  change to your rec
 	},
 ],
 
@@ -130,7 +149,8 @@ var dialogues: Dictionary = {
 	{
 		"speaker": "friend",
 		"animation": "default",
-		"text": "[color=#4F366F]wouldn’t it be nice to have an extra eyeball.[/color]"
+		"text": "[color=#4F366F]wouldn’t it be nice to have an extra eyeball.[/color]",
+		#"audio": preload("res://assets/recordings/bird.mp3"),  change to your rec
 	},
 ],
 
@@ -138,25 +158,30 @@ var dialogues: Dictionary = {
 	{
 		"speaker": "friend",
 		"animation": "yay",
-		"text": "[color=#4F366F]I wish I could play with you in the real world.[/color]"
+		"text": "[color=#4F366F]I wish I could play with you in the real world.[/color]",
+		#"audio": preload("res://assets/recordings/bird.mp3"),  change to your rec
 	},
 ],
 
 "dots done":[
 	{
 		"speaker": "friend",
-		#"animation": "wow",
-		"text": "[color=#4F366F]I had so much fun drawing with you![/color]"
+		"animation": "yay",
+		"text": "[color=#4F366F]I had so much fun drawing with you![/color]",
+		#"audio": preload("res://assets/recordings/bird.mp3"),  change to your rec
 	},
 	{
 		"speaker": "ruby",
-		#"animation": "wow",
-		"text": "[color=#ffa7ea]Me too![/color]"
+		"text": "[color=#ffa7ea]Me too![/color]",
+		"audio": preload("res://assets/recordings/dotsdone2.mp3")
+		
+		
 	},
 	{
 		"speaker": "friend",
-		#"animation": "wow",
-		"text": "[color=#4F366F]it’s time for a real playdate.[/color]"
+		"animation": "smile",
+		"text": "[color=#4F366F]it’s time for a real playdate.[/color]",
+		#"audio": preload("res://assets/recordings/bird.mp3"),  change to your rec
 	},
 ],
 
@@ -402,6 +427,13 @@ func _show_line() -> void:
 	active_text.visible = true
 	active_text.text = line["text"]
 	active_text.visible_characters = 0
+	var audio_duration = _play_dialogue_voice(line)
+	var character_count = active_text.get_total_character_count()
+
+	var typing_speed = 0.05
+
+	if character_count > 0 and audio_duration > 0:
+		typing_speed = (audio_duration / character_count) * 0.7
 
 	for i in range(active_text.get_total_character_count()):
 		if my_id != typing_id:
@@ -409,7 +441,7 @@ func _show_line() -> void:
 
 		if typing:
 			active_text.visible_characters += 1
-			await get_tree().create_timer(0.05).timeout
+			await get_tree().create_timer(typing_speed).timeout
 
 	if my_id != typing_id:
 		return
@@ -441,6 +473,8 @@ func _input(event: InputEvent) -> void:
 			active_text.visible_characters = -1
 			typing = false
 			return
+
+		voice_player.stop()
 
 		current_line += 1
 
@@ -538,6 +572,18 @@ var help := false
 func _on_help_pressed() -> void:
 	help = !help
 	$connectTheDots/help2.visible = help
+
+func _play_dialogue_voice(line: Dictionary) -> float:
+
+	voice_player.stop()
+
+	if line.has("audio"):
+		voice_player.stream = line["audio"]
+		voice_player.play()
+
+		return voice_player.stream.get_length()
+
+	return 0.0
 	
 func _play_friend(anim_name: String) -> void:
 	if friend_sprite.sprite_frames == null:
@@ -801,6 +847,14 @@ func _show_room_line() -> void:
 
 	active_text.text = line["text"]
 	active_text.visible_characters = 0
+	
+	var audio_duration = _play_dialogue_voice(line)
+	var character_count = active_text.get_total_character_count()
+
+	var typing_speed = 0.05
+
+	if character_count > 0 and audio_duration > 0:
+		typing_speed = (audio_duration / character_count) * 0.7
 
 	for i in range(active_text.get_total_character_count()):
 		if my_id != typing_id:
@@ -808,7 +862,7 @@ func _show_room_line() -> void:
 
 		if typing:
 			active_text.visible_characters += 1
-			await get_tree().create_timer(0.05).timeout
+			await get_tree().create_timer(typing_speed).timeout
 
 	if my_id != typing_id:
 		return
