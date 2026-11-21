@@ -1029,18 +1029,20 @@ rotation = 0.19685592
 scale = Vector2(0.1710171, 0.17101711)
 texture = ExtResource("23_nb26w")
 
-[node name="Label" type="Label" parent="StickyNote" unique_id=256566736]
-offset_left = -221.0498
-offset_top = -510.4292
-offset_right = 275.9502
-offset_bottom = -209.4292
+[node name="status1" type="Label" parent="StickyNote" unique_id=256566736]
+offset_left = -486.57864
+offset_top = -512.64557
+offset_right = 493.58395
+offset_bottom = -211.64557
 rotation = 0.008346884
 theme_override_colors/font_color = Color(0.20859522, 0.33371216, 0.100667395, 1)
 theme_override_fonts/font = ExtResource("7_mauyy")
 theme_override_font_sizes/font_size = 250
 text = "UH OH"
+horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="StickyNote" unique_id=1969908303]
+[node name="status2" type="Label" parent="StickyNote" unique_id=1969908303]
+custom_minimum_size = Vector2(0.115, 0)
 offset_left = -456.2903
 offset_top = -225.01167
 offset_right = 511.62082
@@ -1050,4 +1052,18 @@ theme_override_colors/font_color = Color(0.20859522, 0.33371216, 0.100667395, 1)
 theme_override_fonts/font = ExtResource("7_mauyy")
 theme_override_font_sizes/font_size = 145
 text = "please connect the dots in order"
+autowrap_mode = 3
+
+[node name="score" type="Label" parent="StickyNote" unique_id=1128455956]
+custom_minimum_size = Vector2(0.37, 0)
+offset_left = -273.14233
+offset_top = 394.3394
+offset_right = 515.5486
+offset_bottom = 569.3394
+rotation = 0.016063562
+theme_override_colors/font_color = Color(0.20859522, 0.33371216, 0.100667395, 1)
+theme_override_fonts/font = ExtResource("7_mauyy")
+theme_override_font_sizes/font_size = 100
+text = "50% accuracy"
+horizontal_alignment = 2
 autowrap_mode = 3

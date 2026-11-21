@@ -25,6 +25,10 @@ signal puzzle_failed
 @onready var undo_button: TextureButton = $"../undo"
 @onready var clear_button: TextureButton = $"../clear"
 
+@onready var status1: Label = $"../StickyNote/status1"
+@onready var status2: Label = $"../StickyNote/status2"
+@onready var score: Label =$"../StickyNote/score"
+
 var ideal_paths: Array[PackedVector2Array] = []
 var dot_positions := PackedVector2Array()
 var strokes: Array[PackedVector2Array] = []
@@ -46,6 +50,7 @@ func _ready() -> void:
 	queue_redraw()
 
 func start_puzzle(scene: PackedScene) -> void:
+	_reset_feedback()
 	end_puzzle()
 	_load_shape(scene)
 	if ideal_paths.is_empty():
@@ -193,15 +198,18 @@ func _on_done_pressed() -> void:
 func _on_undo_pressed() -> void:
 	if locked or strokes.is_empty():
 		return
+
 	strokes.pop_back()
 	line_nodes.pop_back().queue_free()
+	_reset_feedback()
 
 
 func _on_clear_pressed() -> void:
 	if locked:
 		return
-	_clear_strokes()
 
+	_clear_strokes()
+	_reset_feedback()
 
 func _check_dot_order() -> bool:
 	if dot_positions.size() < 2:
@@ -228,38 +236,75 @@ func _check_dot_order() -> bool:
 	# All dots must have been visited in order.
 	return visited == dot_positions.size()
 	
+
+func _show_feedback(passed: bool, message: String, final_score: int) -> void:
+	if passed:
+		status1.text = "PASS"
+	else:
+		status1.text = "UH OH"
+
+	status2.text = message
+	score.text = str(final_score) + "% accuracy"
 	
 func _check() -> bool:
+
 	if strokes.is_empty():
-		status.text = "Draw something first!"
+		_show_feedback(false, "Draw something first!", 0)
 		return false
+
 	if not _check_dot_order():
-		status.text = "Connect the dots in order!"
+		_show_feedback(false, "Please connect the dots in order!", 0)
 		return false
 
 	var ideal_samples := PackedVector2Array()
+
 	for path in ideal_paths:
 		ideal_samples.append_array(_sample_polyline(path))
 
 	var covered := 0
+
 	for p in ideal_samples:
 		if _distance_to_strokes(p) <= tolerance:
 			covered += 1
+
 	var coverage := float(covered) / ideal_samples.size()
 
 	var ink_samples := PackedVector2Array()
+
 	for stroke in strokes:
 		ink_samples.append_array(_sample_polyline(stroke))
+
 	var stray := 0
+
 	for p in ink_samples:
 		if _distance_to_paths(p) > tolerance:
 			stray += 1
+
 	var stray_ratio := float(stray) / ink_samples.size()
 
-	status.text = "Coverage: %d%%   Stray: %d%%" % [coverage * 100, stray_ratio * 100]
-	return coverage >= required_coverage and stray_ratio <= allowed_stray
+	# Calculate final score
+	var final_score := int(round(
+		(coverage * 0.7 + (1.0 - stray_ratio) * 0.3) * 100
+	))
 
+	# Check whether puzzle passes
+	var passed := coverage >= required_coverage and stray_ratio <= allowed_stray
 
+	if passed:
+		_show_feedback(true, "Great job!", final_score)
+	else:
+		if coverage < required_coverage:
+			_show_feedback(false, "Please draw closer to the dots!", final_score)
+		elif stray_ratio > allowed_stray:
+			_show_feedback(false, "Try to keep your lines inside the shape!", final_score)
+
+	return passed
+
+func _reset_feedback() -> void:
+	status1.text = ""
+	status2.text = ""
+	score.text = ""
+	
 func _sample_polyline(points: PackedVector2Array) -> PackedVector2Array:
 	var result := PackedVector2Array()
 	for i in points.size() - 1:

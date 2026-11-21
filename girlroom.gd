@@ -53,12 +53,15 @@ var final_dialogue_played := false
 @onready var help_button = $connectTheDots/help
 @onready var undo_button = $connectTheDots/undo
 @onready var clear_button = $connectTheDots/clear
+@onready var sticky_note = $connectTheDots/StickyNote
 
 func _set_puzzle_ui(visible: bool) -> void:
 	back_button.visible = visible
 	help_button.visible = visible
 	undo_button.visible = visible
 	clear_button.visible = visible
+	sticky_note.visible = visible
+	
 
 var dialogues: Dictionary = {
 "book_intro": [
@@ -580,6 +583,7 @@ func _open_book() -> void:
 		clear_button.show()
 		back_button.show()
 		help_button.show()
+		sticky_note.show()
 	
 func _close_book() -> void:
 	in_book_view = false
