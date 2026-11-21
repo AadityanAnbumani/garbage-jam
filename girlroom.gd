@@ -130,7 +130,7 @@ var dialogues: Dictionary = {
 		"speaker": "friend",
 		"animation": "sad",
 		"text": "[color=#4F366F]Ack, who are you.[/color]",
-		#"audio": preload("res://assets/recordings/bird.mp3"),change to your rec
+		"audio": preload("res://assets/recordings/Friend2.mp3"),
 	},
 	{
 		"speaker": "ruby",
@@ -141,7 +141,7 @@ var dialogues: Dictionary = {
 		"speaker": "friend",
 		"animation": "yay",
 		"text": "[color=#4F366F]We can be friends… if you draw me a key![/color]",
-		#"audio": preload("res://assets/recordings/bird.mp3"),  change to your rec
+		"audio": preload("res://assets/recordings/Friend3.mp3"),
 	},
 ],
 
@@ -150,7 +150,7 @@ var dialogues: Dictionary = {
 		"speaker": "friend",
 		"animation": "default",
 		"text": "[color=#4F366F]wouldn’t it be nice to have an extra eyeball.[/color]",
-		#"audio": preload("res://assets/recordings/bird.mp3"),  change to your rec
+		"audio": preload("res://assets/recordings/Friend4.mp3"),
 	},
 ],
 
@@ -159,7 +159,7 @@ var dialogues: Dictionary = {
 		"speaker": "friend",
 		"animation": "yay",
 		"text": "[color=#4F366F]I wish I could play with you in the real world.[/color]",
-		#"audio": preload("res://assets/recordings/bird.mp3"),  change to your rec
+		"audio": preload("res://assets/recordings/Friend5.mp3"),
 	},
 ],
 
@@ -168,7 +168,7 @@ var dialogues: Dictionary = {
 		"speaker": "friend",
 		"animation": "yay",
 		"text": "[color=#4F366F]I had so much fun drawing with you![/color]",
-		#"audio": preload("res://assets/recordings/bird.mp3"),  change to your rec
+		"audio": preload("res://assets/recordings/Friend6.mp3"),
 	},
 	{
 		"speaker": "ruby",
@@ -181,7 +181,7 @@ var dialogues: Dictionary = {
 		"speaker": "friend",
 		"animation": "smile",
 		"text": "[color=#4F366F]it’s time for a real playdate.[/color]",
-		#"audio": preload("res://assets/recordings/bird.mp3"),  change to your rec
+		"audio": preload("res://assets/recordings/Friend7.mp3"),
 	},
 ],
 
