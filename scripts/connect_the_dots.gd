@@ -11,7 +11,7 @@ signal puzzle_failed
 @export var closed := false
 @export var tolerance := 20.0
 @export var required_coverage := 0.8
-@export var allowed_stray := 0.45
+@export var allowed_stray := 0.35
 @export var sample_spacing := 8.0
 @export var line_width := 4.0
 @export var line_color := Color(0.1, 0.25, 0.8)

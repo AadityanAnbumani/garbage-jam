@@ -1067,3 +1067,17 @@ theme_override_font_sizes/font_size = 100
 text = "50% accuracy"
 horizontal_alignment = 2
 autowrap_mode = 3
+
+[node name="help2" type="RichTextLabel" parent="." unique_id=548428524]
+z_index = 10
+offset_left = 16.0
+offset_top = 264.0
+offset_right = 327.0
+offset_bottom = 650.0
+theme_override_colors/default_color = Color(1, 0.65593, 0.91673905, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.64705884)
+theme_override_fonts/normal_font = ExtResource("7_mauyy")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "Let me connect all the dots from 0 to the largest number and back to 0 again!"
+scroll_active = false

@@ -8,7 +8,7 @@ extends Node2D
 @onready var scene_animations = get_node_or_null("Node2D/AnimationPlayer")
 @onready var book_ruby_text: RichTextLabel = $"ruby text"
 const PASS_MATCH := 0.8
-const MAX_STRAY := 0.30
+const MAX_STRAY := 0.35
 @onready var dialogue_box = $Node2D
 
 @onready var mom_text = $Node2D/Control/mama
@@ -244,6 +244,7 @@ var puzzle_in_progress = false
 
 
 func _ready() -> void:
+	help_button.pressed.connect(_on_help_pressed)
 	_set_puzzle_ui(false)
 	speechbubble.visible = false
 	ruby_room_text.visible = false
@@ -531,8 +532,13 @@ func _end_dialogue() -> void:
 
 	await get_tree().create_timer(1.0).timeout
 	_run_step()
-	
 
+var help := false
+
+func _on_help_pressed() -> void:
+	help = !help
+	$connectTheDots/help2.visible = help
+	
 func _play_friend(anim_name: String) -> void:
 	if friend_sprite.sprite_frames == null:
 		return
@@ -590,8 +596,10 @@ func _close_book() -> void:
 	book.visible = false
 	book_ruby_text.visible = false
 
-	_set_puzzle_ui(false)
+	help = false
+	$connectTheDots/help2.visible = false
 
+	_set_puzzle_ui(false)
 	$AnimatedSprite2D.play("rubybook")
 	
 func _on_back_pressed() -> void:
@@ -610,6 +618,8 @@ func _on_puzzle_completed() -> void:
 	var book_image: Node = null
 
 	# 1. Hide puzzle and dots + ui
+	help = false
+	$connectTheDots/help2.visible = false
 	puzzle.end_puzzle()
 	puzzle.visible = false
 	_set_puzzle_ui(false)

@@ -857,8 +857,10 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [node name="connectTheDots" parent="." unique_id=582379745 instance=ExtResource("7_yhlmj")]
-visible = false
 z_index = 10
+
+[node name="help2" parent="connectTheDots" index="15" unique_id=548428524]
+visible = false
 
 [node name="ruby text" type="RichTextLabel" parent="." unique_id=43916514]
 visible = false
