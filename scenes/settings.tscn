@@ -427,12 +427,14 @@ scale = Vector2(0.2179009, 0.2179009)
 sprite_frames = SubResource("SpriteFrames_1d2k5")
 autoplay = "default"
 frame_progress = 0.9005247
+metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=301680507]
 position = Vector2(170.00002, 501.00003)
 rotation = -0.14086117
 scale = Vector2(0.17224081, 0.17224081)
 sprite_frames = SubResource("SpriteFrames_hae68")
+autoplay = "default"
 frame_progress = 0.2736515
 metadata/_edit_lock_ = true
 
@@ -492,6 +494,30 @@ theme_override_colors/font_color = Color(0.8421755, 0.20405284, 0.51831347, 1)
 theme_override_fonts/font = ExtResource("25_3gwh8")
 theme_override_font_sizes/font_size = 80
 text = "Settings"
+horizontal_alignment = 1
+
+[node name="Settings3" type="Label" parent="." unique_id=766060854]
+offset_left = 307.0
+offset_top = 470.00003
+offset_right = 554.0
+offset_bottom = 501.00003
+rotation = 0.008346884
+theme_override_colors/font_color = Color(0.5294118, 0.49803922, 0.52156866, 1)
+theme_override_fonts/font = ExtResource("25_3gwh8")
+theme_override_font_sizes/font_size = 25
+text = "press EScape for settings"
+horizontal_alignment = 1
+
+[node name="Settings4" type="Label" parent="." unique_id=1867666104]
+offset_left = 817.0
+offset_top = 466.00003
+offset_right = 1064.0
+offset_bottom = 497.00003
+rotation = 0.008346884
+theme_override_colors/font_color = Color(0.5294118, 0.49803922, 0.52156866, 1)
+theme_override_fonts/font = ExtResource("25_3gwh8")
+theme_override_font_sizes/font_size = 25
+text = "press EScape for settings"
 horizontal_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="." unique_id=258315186]

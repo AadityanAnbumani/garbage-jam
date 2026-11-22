@@ -23,3 +23,13 @@ func _on_texture_button_pressed() -> void:
 	$play.disabled=false
 	$credits.disabled=false
 	$settings.disabled=false
+	$settings2.visible=false
+
+
+func _on_settings_pressed() -> void:
+	$settings2.visible=true
+	$TextureButton.disabled = false
+	$play.disabled=true
+	$credits.disabled=true
+	$settings.disabled=true
+	$TextureButton.visible=true

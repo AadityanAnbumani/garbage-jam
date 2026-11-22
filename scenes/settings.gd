@@ -21,3 +21,7 @@ func _on_slider_changed(value: float, bus_name: String) -> void:
 	var idx := AudioServer.get_bus_index(bus_name)
 	AudioServer.set_bus_volume_db(idx, linear_to_db(value))
 	AudioServer.set_bus_mute(idx, value <= 0.0)
+
+
+func _on_back_button_pressed() -> void:
+	$".".visible=false
