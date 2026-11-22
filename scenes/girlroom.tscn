@@ -37,6 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://cc5tfp36siyjk" path="res://assets/arrow.png" id="35_x6a6y"]
 [ext_resource type="Texture2D" uid="uid://cgayu2lh4b0hx" path="res://assets/speech bubble.png" id="36_ixjkf"]
 [ext_resource type="Texture2D" uid="uid://coaddy0udqnyk" path="res://assets/stickman.png" id="37_jp0jl"]
+[ext_resource type="Texture2D" uid="uid://bs1ty2rkh6qvb" path="res://assets/sound.png" id="38_w6n54"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dw713"]
 atlas = ExtResource("2_6mjyq")
@@ -613,7 +614,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_jp0jl"]
 resource_name = "arrow"
-length = 2.0
+length = 1.5999999999999999
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -622,7 +623,7 @@ tracks/0/path = NodePath("AnimationPlayer2/Arrow:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.0333333, 2),
+"times": PackedFloat32Array(0, 0.6333333, 1.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(0.32627118, 0.32627118), Vector2(0.3, 0.3), Vector2(0.32627118, 0.32627118)]
@@ -634,7 +635,7 @@ tracks/1/path = NodePath("AnimationPlayer2/Arrow:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.0333333, 2),
+"times": PackedFloat32Array(0, 0.6, 1.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [-0.69419384, -0.69419384, -0.69419384]
@@ -646,10 +647,10 @@ tracks/2/path = NodePath("AnimationPlayer2/Arrow:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.6333333, 1.6),
+"transitions": PackedFloat32Array(1, 1.3660405, 1),
 "update": 0,
-"values": [Vector2(578, 454)]
+"values": [Vector2(578, 454), Vector2(604.00006, 446), Vector2(578, 454)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w6n54"]
@@ -727,6 +728,151 @@ animations = [{
 "name": &"yay",
 "speed": 5.0
 }]
+
+[sub_resource type="Animation" id="Animation_w6n54"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer3/ColorRect2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer3/Sound:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer3/Label2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer3/Sound:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimationPlayer3/Label2:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_evcye"]
+resource_name = "fade in"
+length = 3.0000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer3/ColorRect2:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.08194164, 7.669334e-06, 0.085640006, 1), Color(0.08194164, 7.669334e-06, 0.085640006, 1), Color(0.23529412, 0, 0.24313726, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer3/Sound:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.65),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer3/Label2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.65),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer3/Sound:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimationPlayer3/ColorRect2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimationPlayer3/Label2:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_evcye"]
+_data = {
+&"RESET": SubResource("Animation_w6n54"),
+&"fade in": SubResource("Animation_evcye")
+}
 
 [node name="Node2D2" type="Node2D" unique_id=400311361]
 script = ExtResource("1_1m1kd")
@@ -851,7 +997,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.64705884)
 theme_override_fonts/normal_font = ExtResource("6_tkwkb")
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
-text = "Ruby, Sweetie. Come Here"
+text = "Ruby, come here sweetie."
 scroll_active = false
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
@@ -909,6 +1055,7 @@ text = "Did the square I just drew come into my room?!"
 scroll_active = false
 
 [node name="SpeechBubble" type="Sprite2D" parent="." unique_id=1018554767]
+visible = false
 position = Vector2(290.00003, 313)
 scale = Vector2(0.19008297, 0.19008298)
 texture = ExtResource("36_ixjkf")
@@ -1036,6 +1183,7 @@ texture = ExtResource("35_x6a6y")
 centered = false
 
 [node name="friend" type="AnimatedSprite2D" parent="." unique_id=868447967]
+visible = false
 z_index = 10
 position = Vector2(838, 589)
 scale = Vector2(0.3782851, 0.39782825)
@@ -1043,6 +1191,36 @@ sprite_frames = SubResource("SpriteFrames_w6n54")
 animation = &"smile"
 
 [node name="VoicePlayer" type="AudioStreamPlayer2D" parent="." unique_id=1434623927]
+
+[node name="AnimationPlayer3" type="AnimationPlayer" parent="." unique_id=728747886]
+libraries/ = SubResource("AnimationLibrary_evcye")
+autoplay = &"fade in"
+
+[node name="ColorRect2" type="ColorRect" parent="AnimationPlayer3" unique_id=643504753]
+offset_left = -179.0
+offset_top = -127.0
+offset_right = 1392.0
+offset_bottom = 729.0
+mouse_filter = 2
+color = Color(0.08194164, 7.669334e-06, 0.085640006, 1)
+metadata/_edit_lock_ = true
+
+[node name="Sound" type="Sprite2D" parent="AnimationPlayer3" unique_id=937242584]
+position = Vector2(297, 343)
+scale = Vector2(0.25806448, 0.25806448)
+texture = ExtResource("38_w6n54")
+
+[node name="Label2" type="Label" parent="AnimationPlayer3" unique_id=439089894]
+offset_left = 347.99994
+offset_top = 321.99997
+offset_right = 886.99994
+offset_bottom = 361.99997
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.5019608, 0.7921569, 0.99215686, 1)
+theme_override_fonts/font = ExtResource("6_tkwkb")
+theme_override_font_sizes/font_size = 30
+text = "turn up your volume for the best experience! :D"
+autowrap_mode = 2
 
 [connection signal="input_event" from="AnimatedSprite2D/Area2D" to="." method="_on_girlpressed"]
 

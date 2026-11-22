@@ -88,8 +88,8 @@ var dialogues: Dictionary = {
 	},
 	{
 		"speaker": "ruby",
-		"text": "[color=#ffa7ea]Let me connect all the dots from 0 to the largest number and back to 0 again![/color]",
-		"audio": preload("res://assets/recordings/bookintro4.mp3"),
+		"text": "[color=#ffa7ea]Let me connect all the dots from 1 to the largest number and back to 1 again![/color]",
+		"audio": preload("res://assets/recordings/bookintro4fix.mp3"),
 	}
 ],
 
@@ -102,7 +102,7 @@ var dialogues: Dictionary = {
 	{
 		"speaker": "ruby",
 		"text": "[color=#ffa7ea]hehe let's keep drawing![/color]",
-		"audio": preload("res://assets/recordings/square2.mp3"),
+		"audio": preload("res://assets/recordings/square2fix.mp3"),
 	},
 ],
 
@@ -129,7 +129,7 @@ var dialogues: Dictionary = {
 	{
 		"speaker": "friend",
 		"animation": "sad",
-		"text": "[color=#4F366F]Ack, who are you.[/color]",
+		"text": "[color=#4F366F]Huh, who are you.[/color]",
 		"audio": preload("res://assets/recordings/Friend2.mp3"),
 	},
 	{
@@ -281,6 +281,10 @@ func _ready() -> void:
 	back_button.pressed.connect(_on_back_pressed)
 
 	dialogue_controller.dialogue_finished.connect(_on_mama_dialogue_finished)
+	$VoicePlayer.stream = preload("res://assets/recordings/mama1.mp3")
+	
+	await $AnimationPlayer3.animation_finished
+	$VoicePlayer.play()
 
 	if ruby_sprite == null:
 		ruby_sprite = $AnimatedSprite2D

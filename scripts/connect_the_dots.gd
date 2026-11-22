@@ -41,6 +41,7 @@ var status: Label
 
 var input_enabled := true
 func _ready() -> void:
+	print(get_node_or_null("../../VoicePlayer"))
 	undo_button.pressed.connect(_on_undo_pressed)
 	clear_button.pressed.connect(_on_clear_pressed)
 
@@ -248,12 +249,14 @@ func _show_feedback(passed: bool, message: String, final_score: int) -> void:
 	
 func _check() -> bool:
 
-	if strokes.is_empty():
-		_show_feedback(false, "Draw something first!", 0)
-		return false
+	#if strokes.is_empty():
+		#_show_feedback(false, "Draw something first!", 0)
+		#return false
 
 	if not _check_dot_order():
 		_show_feedback(false, "Please connect the dots in order!", 0)
+		$"../../VoicePlayer".stream = load("res://assets/recordings/uhoh3.mp3")
+		$"../../VoicePlayer".play()
 		return false
 
 	var ideal_samples := PackedVector2Array()
@@ -295,8 +298,13 @@ func _check() -> bool:
 	else:
 		if coverage < required_coverage:
 			_show_feedback(false, "Please draw closer to the dots!", final_score)
+			$"../../VoicePlayer".stream = load("res://assets/recordings/uhoh1.mp3")
+			$"../../VoicePlayer".play()
+			
 		elif stray_ratio > allowed_stray:
 			_show_feedback(false, "Try to keep your lines inside the shape!", final_score)
+			$"../../VoicePlayer".stream = load("res://assets/recordings/uhoh2.mp3")
+			$"../../VoicePlayer".play()
 
 	return passed
 
