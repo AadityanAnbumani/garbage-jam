@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://d1k177cf08b5q"]
+
+[ext_resource type="Texture2D" uid="uid://delkrnmm55umx" path="res://assets/dots/scissors.png" id="1_7p1mj"]
+[ext_resource type="Script" uid="uid://d0jp6dunufj8k" path="res://scenes/enemy.gd" id="1_md0e3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4raep"]
+size = Vector2(46, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_037ak"]
+size = Vector2(58, 40)
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1657919196]
+collision_layer = 4
+script = ExtResource("1_md0e3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1067247002]
+rotation = 1.5707964
+scale = Vector2(0.19, 0.19)
+texture = ExtResource("1_7p1mj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=240226995]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_4raep")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1624525164]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=430247814]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_037ak")
