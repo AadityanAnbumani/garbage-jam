@@ -791,10 +791,22 @@ tracks/4/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimationPlayer3/Label2:text")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["turn up your volume for the best experience! :D"]
+}
 
 [sub_resource type="Animation" id="Animation_evcye"]
 resource_name = "fade in"
-length = 3.0000000000000004
+length = 6.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -802,7 +814,7 @@ tracks/0/path = NodePath("AnimationPlayer3/ColorRect2:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2, 3),
+"times": PackedFloat32Array(0, 5.4666667, 6.4666667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(0.08194164, 7.669334e-06, 0.085640006, 1), Color(0.08194164, 7.669334e-06, 0.085640006, 1), Color(0.23529412, 0, 0.24313726, 0)]
@@ -814,10 +826,10 @@ tracks/1/path = NodePath("AnimationPlayer3/Sound:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.65),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, true]
+"values": [true, false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -838,7 +850,7 @@ tracks/3/path = NodePath("AnimationPlayer3/Sound:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 2, 3),
+"times": PackedFloat32Array(0, 5.4666667, 6.4666667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -862,10 +874,22 @@ tracks/5/path = NodePath("AnimationPlayer3/Label2:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(2, 3),
+"times": PackedFloat32Array(5.4666667, 6.4666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimationPlayer3/Label2:text")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.06666666, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": ["turn up your volume for the best experience! :D", "ps. spacebar to skip dialogue will be your bff"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_evcye"]
@@ -1202,7 +1226,7 @@ offset_top = -127.0
 offset_right = 1392.0
 offset_bottom = 729.0
 mouse_filter = 2
-color = Color(0.08194164, 7.669334e-06, 0.085640006, 1)
+color = Color(0.23529412, 0, 0.24313726, 0)
 metadata/_edit_lock_ = true
 
 [node name="Sound" type="Sprite2D" parent="AnimationPlayer3" unique_id=937242584]
