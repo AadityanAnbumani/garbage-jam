@@ -614,7 +614,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_jp0jl"]
 resource_name = "arrow"
-length = 1.5999999999999999
+length = 1.6
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1215,6 +1215,7 @@ sprite_frames = SubResource("SpriteFrames_w6n54")
 animation = &"smile"
 
 [node name="VoicePlayer" type="AudioStreamPlayer2D" parent="." unique_id=1434623927]
+bus = &"Dialogue"
 
 [node name="AnimationPlayer3" type="AnimationPlayer" parent="." unique_id=728747886]
 libraries/ = SubResource("AnimationLibrary_evcye")

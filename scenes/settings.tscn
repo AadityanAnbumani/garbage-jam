@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://chmnokebi27xp"]
 
 [ext_resource type="Texture2D" uid="uid://bdhymyet3m3r3" path="res://assets/paper button click.png" id="1_5p8wc"]
+[ext_resource type="Script" uid="uid://itgjfbn2guj1" path="res://scenes/settings.gd" id="1_wqg1u"]
 [ext_resource type="Texture2D" uid="uid://dj4tqriawig5l" path="res://assets/skipgif-frames/frame-001.png" id="2_2pu5r"]
 [ext_resource type="Texture2D" uid="uid://dq4ktqk6dhebg" path="res://assets/Group-1-frames/frame-001.png" id="2_i24gk"]
 [ext_resource type="Texture2D" uid="uid://bkr40f5hlf3co" path="res://assets/Group-1-frames/frame-002.png" id="3_3gwh8"]
@@ -412,6 +413,7 @@ animations = [{
 }]
 
 [node name="Node2D" type="Node2D" unique_id=1535390273]
+script = ExtResource("1_wqg1u")
 
 [node name="PaperButtonClick" type="Sprite2D" parent="." unique_id=1513940166]
 position = Vector2(562, 302)

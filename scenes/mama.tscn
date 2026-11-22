@@ -175,6 +175,7 @@ text = "yes mama? "
 scroll_active = false
 
 [node name="VoicePlayer" type="AudioStreamPlayer2D" parent="Control" unique_id=74407303]
+bus = &"Dialogue"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1084306524]
 root_node = NodePath("../Book")

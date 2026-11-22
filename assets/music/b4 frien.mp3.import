@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/b4 frien.mp3-1f79755c1fdc6f99e660a5cdcf6ad1ad
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

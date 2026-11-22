@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/after friend.mp3-5b3cb12e63e338fc1ea06e3fa1f1
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

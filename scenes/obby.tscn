@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://ceh4unn33py5o"]
 
+[ext_resource type="Script" uid="uid://dprfgjxfk2ecp" path="res://scenes/obby.gd" id="1_62xlc"]
 [ext_resource type="Texture2D" uid="uid://bylf6q6af8aem" path="res://assets/obby paper.png" id="1_88vgh"]
 [ext_resource type="Texture2D" uid="uid://bh3rrm0b5cm4l" path="res://assets/paper room.png" id="2_ygns2"]
 [ext_resource type="FontFile" uid="uid://cdpjmu781u54k" path="res://font/BBHBogle-Regular.ttf" id="3_w0o1q"]
@@ -18,6 +19,17 @@
 [ext_resource type="Texture2D" uid="uid://cs7hvebcr3tn" path="res://assets/obby/skeleton.png" id="16_gct25"]
 [ext_resource type="Texture2D" uid="uid://bdhymyet3m3r3" path="res://assets/paper button click.png" id="17_n34sk"]
 [ext_resource type="Texture2D" uid="uid://bq7b63o25nimv" path="res://assets/obby/trampoline.png" id="18_ik3bw"]
+[ext_resource type="Texture2D" uid="uid://bfwn2wabcqtxm" path="res://assets/obby/wood_floor_paper.png" id="19_ik3bw"]
+[ext_resource type="Texture2D" uid="uid://ddymajeoana18" path="res://assets/obby/brown_wall_paper.png" id="20_fw5c7"]
+[ext_resource type="Texture2D" uid="uid://2r4mtqi1vmya" path="res://assets/obby/pendulum_clock_paper.png" id="21_bqaw3"]
+[ext_resource type="Texture2D" uid="uid://clbv1xevqn5sk" path="res://assets/obby/frankenstein_paper.png" id="22_wr5rq"]
+[ext_resource type="Texture2D" uid="uid://4ofoo6wh13im" path="res://assets/obby/hide_text.png" id="23_62xlc"]
+[ext_resource type="Texture2D" uid="uid://0iw1mf2v6sik" path="res://assets/obby/wardrobe_paper.png" id="24_4raep"]
+[ext_resource type="Texture2D" uid="uid://chqasmdcgi5xw" path="res://assets/obby/table_paper.png" id="25_037ak"]
+[ext_resource type="Script" uid="uid://bu5idm3jhxeep" path="res://scenes/canvas_layer.gd" id="26_wr5rq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wgxnn"]
+size = Vector2(251.25021, 269.18085)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(1533.6941, 489.36365)
@@ -28,9 +40,34 @@ size = Vector2(416.01563, 886.95483)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
 size = Vector2(471.6526, 313.87903)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0u6y"]
+size = Vector2(1544.9995, 420)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gngh"]
+size = Vector2(1456, 384)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fcnqv"]
+size = Vector2(799.0879, 1036.2666)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7numd"]
+size = Vector2(641, 916)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p1u0y"]
+size = Vector2(645.2013, 359.75232)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33x8s"]
+size = Vector2(1854.5453, 523.6365)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2j2di"]
+size = Vector2(1815.3917, 515.625)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yf5fn"]
 radius = 14.0
 height = 140.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62xlc"]
+atlas = ExtResource("11_gct25")
+region = Rect2(0, 0, 1024, 1636)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3i2nk"]
 atlas = ExtResource("11_gct25")
@@ -56,6 +93,14 @@ region = Rect2(4096, 0, 1024, 1636)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_62xlc")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_3i2nk")
 }, {
 "duration": 1.0,
@@ -75,16 +120,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0u6y"]
-size = Vector2(1544.9995, 420)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gngh"]
-size = Vector2(1456, 384)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fcnqv"]
-size = Vector2(799.0879, 1036.2666)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_avnxn"]
+size = Vector2(1887.5, 1159)
 
 [node name="Node2D" type="Node2D" unique_id=2018465092]
+script = ExtResource("1_62xlc")
 
 [node name="ObbyPaper" type="Sprite2D" parent="." unique_id=134239082]
 position = Vector2(572.5, 321.5)
@@ -115,6 +155,12 @@ texture = ExtResource("1_88vgh")
 position = Vector2(-594, 319)
 scale = Vector2(2.4704642, 2.5150375)
 texture = ExtResource("1_88vgh")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ObbyPaper17" unique_id=698196340]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObbyPaper17/StaticBody2D" unique_id=490739623]
+position = Vector2(115.6251, 2.5844574)
+shape = SubResource("RectangleShape2D_wgxnn")
 
 [node name="ObbyPaper2" type="Sprite2D" parent="." unique_id=1613112552]
 position = Vector2(1687, 316)
@@ -153,6 +199,86 @@ position = Vector2(-2954, 1648)
 scale = Vector2(2.4704642, 2.5150375)
 texture = ExtResource("1_88vgh")
 
+[node name="ObbyPaper24" type="Sprite2D" parent="." unique_id=151498037]
+position = Vector2(-4115, 1656)
+scale = Vector2(2.4704642, 2.5150375)
+texture = ExtResource("1_88vgh")
+
+[node name="ObbyPaper30" type="Sprite2D" parent="." unique_id=672687357]
+position = Vector2(-4132.0005, 2301)
+scale = Vector2(2.4704642, 2.5150375)
+texture = ExtResource("1_88vgh")
+
+[node name="ObbyPaper31" type="Sprite2D" parent="." unique_id=1771789377]
+position = Vector2(-4138, 2948)
+scale = Vector2(2.4704642, 2.5150375)
+texture = ExtResource("1_88vgh")
+
+[node name="ObbyPaper32" type="Sprite2D" parent="." unique_id=2091528005]
+position = Vector2(-2974, 2279.9998)
+scale = Vector2(2.4704642, 2.5150375)
+texture = ExtResource("1_88vgh")
+
+[node name="ObbyPaper33" type="Sprite2D" parent="." unique_id=936293976]
+position = Vector2(-2998.0002, 2921)
+scale = Vector2(2.4704642, 2.5150375)
+texture = ExtResource("1_88vgh")
+
+[node name="ObbyPaper34" type="Sprite2D" parent="." unique_id=2039589164]
+position = Vector2(-1816, 2283)
+scale = Vector2(2.4704642, 2.5150375)
+texture = ExtResource("1_88vgh")
+
+[node name="ObbyPaper35" type="Sprite2D" parent="." unique_id=1390670538]
+position = Vector2(-1852, 2918)
+scale = Vector2(2.4704642, 2.5150375)
+texture = ExtResource("1_88vgh")
+
+[node name="ObbyPaper36" type="Sprite2D" parent="." unique_id=1492027001]
+position = Vector2(-682, 2300.9998)
+scale = Vector2(2.4704642, 2.5150375)
+texture = ExtResource("1_88vgh")
+
+[node name="ObbyPaper37" type="Sprite2D" parent="." unique_id=1680867648]
+position = Vector2(-685.00006, 2933)
+scale = Vector2(2.4704642, 2.5150375)
+texture = ExtResource("1_88vgh")
+
+[node name="ObbyPaper38" type="Sprite2D" parent="." unique_id=1174880005]
+position = Vector2(475.99994, 2294.9998)
+scale = Vector2(2.4704642, 2.5150375)
+texture = ExtResource("1_88vgh")
+
+[node name="ObbyPaper40" type="Sprite2D" parent="." unique_id=1447648821]
+position = Vector2(1618, 2277)
+scale = Vector2(2.4704642, 2.5150375)
+texture = ExtResource("1_88vgh")
+
+[node name="ObbyPaper41" type="Sprite2D" parent="." unique_id=1780845522]
+position = Vector2(1597.0001, 2927)
+scale = Vector2(2.4704642, 2.5150375)
+texture = ExtResource("1_88vgh")
+
+[node name="ObbyPaper42" type="Sprite2D" parent="." unique_id=1455080943]
+position = Vector2(2758, 2912)
+scale = Vector2(2.4704642, 2.5150375)
+texture = ExtResource("1_88vgh")
+
+[node name="ObbyPaper43" type="Sprite2D" parent="." unique_id=1614108166]
+position = Vector2(2752, 2283)
+scale = Vector2(2.4704642, 2.5150375)
+texture = ExtResource("1_88vgh")
+
+[node name="ObbyPaper44" type="Sprite2D" parent="." unique_id=21697361]
+position = Vector2(3912, 2307)
+scale = Vector2(2.4704642, 2.5150375)
+texture = ExtResource("1_88vgh")
+
+[node name="ObbyPaper39" type="Sprite2D" parent="." unique_id=123035797]
+position = Vector2(473, 2936)
+scale = Vector2(2.4704642, 2.5150375)
+texture = ExtResource("1_88vgh")
+
 [node name="ObbyPaper19" type="Sprite2D" parent="." unique_id=1045248348]
 position = Vector2(-1786, 1001)
 scale = Vector2(2.4704642, 2.5150375)
@@ -160,6 +286,31 @@ texture = ExtResource("1_88vgh")
 
 [node name="ObbyPaper23" type="Sprite2D" parent="." unique_id=1387204398]
 position = Vector2(-2954, 1001)
+scale = Vector2(2.4704642, 2.5150375)
+texture = ExtResource("1_88vgh")
+
+[node name="ObbyPaper26" type="Sprite2D" parent="." unique_id=895681390]
+position = Vector2(-2918, 346)
+scale = Vector2(2.4704642, 2.5150375)
+texture = ExtResource("1_88vgh")
+
+[node name="ObbyPaper28" type="Sprite2D" parent="." unique_id=738612344]
+position = Vector2(-2918, -301)
+scale = Vector2(2.4704642, 2.5150375)
+texture = ExtResource("1_88vgh")
+
+[node name="ObbyPaper29" type="Sprite2D" parent="." unique_id=792392093]
+position = Vector2(-4070, -293)
+scale = Vector2(2.4704642, 2.5150375)
+texture = ExtResource("1_88vgh")
+
+[node name="ObbyPaper27" type="Sprite2D" parent="." unique_id=332582143]
+position = Vector2(-4083, 350)
+scale = Vector2(2.4704642, 2.5150375)
+texture = ExtResource("1_88vgh")
+
+[node name="ObbyPaper25" type="Sprite2D" parent="." unique_id=2109174168]
+position = Vector2(-4102, 1013)
 scale = Vector2(2.4704642, 2.5150375)
 texture = ExtResource("1_88vgh")
 
@@ -185,6 +336,16 @@ texture = ExtResource("1_88vgh")
 
 [node name="ObbyPaper7" type="Sprite2D" parent="." unique_id=871330167]
 position = Vector2(2861, 1645)
+scale = Vector2(2.4704642, 2.5150375)
+texture = ExtResource("1_88vgh")
+
+[node name="ObbyPaper45" type="Sprite2D" parent="." unique_id=1976643416]
+position = Vector2(7084, 2443)
+scale = Vector2(2.4704642, 2.5150375)
+texture = ExtResource("1_88vgh")
+
+[node name="ObbyPaper46" type="Sprite2D" parent="." unique_id=1619189499]
+position = Vector2(7088, 3106)
 scale = Vector2(2.4704642, 2.5150375)
 texture = ExtResource("1_88vgh")
 
@@ -296,6 +457,18 @@ texture = ExtResource("9_3i2nk")
 [node name="StaticBody2D" type="StaticBody2D" parent="Paper7" unique_id=596152186]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Paper7/StaticBody2D" unique_id=169387363]
+position = Vector2(-10.090332, -234.68152)
+scale = Vector2(0.99999964, 0.99999946)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="Paper22" type="Sprite2D" parent="." unique_id=1372048300]
+position = Vector2(6988.0005, 2955.0002)
+scale = Vector2(0.4955357, 0.352551)
+texture = ExtResource("9_3i2nk")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Paper22" unique_id=70340889]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paper22/StaticBody2D" unique_id=376653440]
 position = Vector2(-10.090332, -234.68152)
 scale = Vector2(0.99999964, 0.99999946)
 shape = SubResource("RectangleShape2D_g4v7s")
@@ -448,24 +621,6 @@ position = Vector2(526.99994, 426)
 scale = Vector2(0.46268654, 0.46268657)
 texture = ExtResource("5_4cx6m")
 
-[node name="player" type="CharacterBody2D" parent="." unique_id=1878973696]
-script = ExtResource("13_4m40g")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=803901214]
-position = Vector2(136, -149)
-shape = SubResource("CapsuleShape2D_yf5fn")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player" unique_id=1663421951]
-position = Vector2(133, -147)
-scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_g4v7s")
-animation = &"run"
-
-[node name="Camera2D" type="Camera2D" parent="player" unique_id=669751311]
-position = Vector2(137, -153)
-zoom = Vector2(1.35, 1.35)
-limit_left = 0
-
 [node name="Paper8" type="Sprite2D" parent="." unique_id=309156290]
 position = Vector2(2578.17, 497.19498)
 scale = Vector2(0.33040106, 0.33263308)
@@ -552,3 +707,284 @@ texture = ExtResource("8_4m40g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Paper20/StaticBody2D" unique_id=923330285]
 position = Vector2(-0.54296875, 1.6337891)
 shape = SubResource("RectangleShape2D_fcnqv")
+
+[node name="Paper21" type="Sprite2D" parent="." unique_id=1715504482]
+position = Vector2(-4401.0005, 1165)
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("8_4m40g")
+
+[node name="NontebookPaper2" type="Sprite2D" parent="." unique_id=1943467762]
+position = Vector2(-5419, 2758)
+texture = ExtResource("10_gct25")
+flip_h = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="NontebookPaper2" unique_id=2037552523]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NontebookPaper2/StaticBody2D" unique_id=228738662]
+position = Vector2(330.5, -20)
+shape = SubResource("RectangleShape2D_7numd")
+
+[node name="WoodFloorPaper" type="Sprite2D" parent="." unique_id=1833267690]
+position = Vector2(-4244.2, 3057.8926)
+scale = Vector2(1.615, 1.615)
+texture = ExtResource("19_ik3bw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="WoodFloorPaper" unique_id=1475937991]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WoodFloorPaper/StaticBody2D" unique_id=488546826]
+position = Vector2(-2.4768066, 2.1672363)
+shape = SubResource("RectangleShape2D_p1u0y")
+
+[node name="WoodFloorPaper2" type="Sprite2D" parent="." unique_id=1733370795]
+position = Vector2(-3225.2002, 3057.8926)
+scale = Vector2(1.615, 1.615)
+texture = ExtResource("19_ik3bw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="WoodFloorPaper2" unique_id=1793876685]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WoodFloorPaper2/StaticBody2D" unique_id=839988208]
+position = Vector2(-2.4768066, 2.1672363)
+shape = SubResource("RectangleShape2D_p1u0y")
+
+[node name="WoodFloorPaper3" type="Sprite2D" parent="." unique_id=1717548773]
+position = Vector2(-2191.2002, 3069.8926)
+scale = Vector2(1.615, 1.615)
+texture = ExtResource("19_ik3bw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="WoodFloorPaper3" unique_id=1176878630]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WoodFloorPaper3/StaticBody2D" unique_id=1070309725]
+position = Vector2(-2.4768066, 2.1672363)
+shape = SubResource("RectangleShape2D_p1u0y")
+
+[node name="WoodFloorPaper4" type="Sprite2D" parent="." unique_id=309036400]
+position = Vector2(-1160.2002, 3071.8926)
+scale = Vector2(1.615, 1.615)
+texture = ExtResource("19_ik3bw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="WoodFloorPaper4" unique_id=2013567478]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WoodFloorPaper4/StaticBody2D" unique_id=653811633]
+position = Vector2(-2.4768066, 2.1672363)
+shape = SubResource("RectangleShape2D_p1u0y")
+
+[node name="WoodFloorPaper5" type="Sprite2D" parent="." unique_id=1620184726]
+position = Vector2(-118, 3069)
+scale = Vector2(1.615, 1.615)
+texture = ExtResource("19_ik3bw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="WoodFloorPaper5" unique_id=115676035]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WoodFloorPaper5/StaticBody2D" unique_id=1532481328]
+position = Vector2(-2.4768066, 2.1672363)
+shape = SubResource("RectangleShape2D_p1u0y")
+
+[node name="WoodFloorPaper6" type="Sprite2D" parent="." unique_id=1211580745]
+position = Vector2(921, 3069)
+scale = Vector2(1.615, 1.615)
+texture = ExtResource("19_ik3bw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="WoodFloorPaper6" unique_id=310610538]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WoodFloorPaper6/StaticBody2D" unique_id=1849427605]
+position = Vector2(-2.4768066, 2.1672363)
+shape = SubResource("RectangleShape2D_p1u0y")
+
+[node name="WoodFloorPaper7" type="Sprite2D" parent="." unique_id=77486363]
+position = Vector2(1954, 3069)
+scale = Vector2(1.615, 1.615)
+texture = ExtResource("19_ik3bw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="WoodFloorPaper7" unique_id=457702814]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WoodFloorPaper7/StaticBody2D" unique_id=1965257775]
+position = Vector2(-2.4768066, 2.1672363)
+shape = SubResource("RectangleShape2D_p1u0y")
+
+[node name="WoodFloorPaper8" type="Sprite2D" parent="." unique_id=2085748713]
+position = Vector2(2990, 3069)
+scale = Vector2(1.615, 1.615)
+texture = ExtResource("19_ik3bw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="WoodFloorPaper8" unique_id=375165659]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WoodFloorPaper8/StaticBody2D" unique_id=677662154]
+position = Vector2(-2.4768066, 2.1672363)
+shape = SubResource("RectangleShape2D_p1u0y")
+
+[node name="WoodFloorPaper9" type="Sprite2D" parent="." unique_id=561802633]
+position = Vector2(4035, 3065)
+scale = Vector2(1.615, 1.615)
+texture = ExtResource("19_ik3bw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="WoodFloorPaper9" unique_id=1651563602]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WoodFloorPaper9/StaticBody2D" unique_id=765595983]
+position = Vector2(-2.4768066, 2.1672363)
+shape = SubResource("RectangleShape2D_p1u0y")
+
+[node name="WoodFloorPaper10" type="Sprite2D" parent="." unique_id=420027037]
+position = Vector2(5076, 3074)
+scale = Vector2(1.615, 1.615)
+texture = ExtResource("19_ik3bw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="WoodFloorPaper10" unique_id=449859288]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WoodFloorPaper10/StaticBody2D" unique_id=1634500318]
+position = Vector2(-2.4768066, 2.1672363)
+shape = SubResource("RectangleShape2D_p1u0y")
+
+[node name="WoodFloorPaper11" type="Sprite2D" parent="." unique_id=422545823]
+position = Vector2(6092, 3073)
+scale = Vector2(1.615, 1.615)
+texture = ExtResource("19_ik3bw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="WoodFloorPaper11" unique_id=977303988]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WoodFloorPaper11/StaticBody2D" unique_id=1799627577]
+position = Vector2(-2.4768066, 2.1672363)
+shape = SubResource("RectangleShape2D_p1u0y")
+
+[node name="BrownWallPaper" type="Sprite2D" parent="." unique_id=738717297]
+position = Vector2(-4254.0005, 2431)
+scale = Vector2(1.905, 1.905)
+texture = ExtResource("20_fw5c7")
+
+[node name="BrownWallPaper2" type="Sprite2D" parent="." unique_id=1103151154]
+position = Vector2(-3234.0005, 2429.0002)
+scale = Vector2(1.905, 1.905)
+texture = ExtResource("20_fw5c7")
+
+[node name="BrownWallPaper3" type="Sprite2D" parent="." unique_id=306586878]
+position = Vector2(-2207.0002, 2434)
+scale = Vector2(1.905, 1.905)
+texture = ExtResource("20_fw5c7")
+
+[node name="BrownWallPaper4" type="Sprite2D" parent="." unique_id=751777384]
+position = Vector2(-1184.0002, 2436)
+scale = Vector2(1.905, 1.905)
+texture = ExtResource("20_fw5c7")
+
+[node name="BrownWallPaper5" type="Sprite2D" parent="." unique_id=1311352040]
+position = Vector2(-152, 2441)
+scale = Vector2(1.905, 1.905)
+texture = ExtResource("20_fw5c7")
+
+[node name="BrownWallPaper6" type="Sprite2D" parent="." unique_id=1473267717]
+position = Vector2(880, 2441)
+scale = Vector2(1.905, 1.905)
+texture = ExtResource("20_fw5c7")
+
+[node name="BrownWallPaper7" type="Sprite2D" parent="." unique_id=338213177]
+position = Vector2(1907, 2439)
+scale = Vector2(1.905, 1.905)
+texture = ExtResource("20_fw5c7")
+
+[node name="BrownWallPaper8" type="Sprite2D" parent="." unique_id=2113161425]
+position = Vector2(2935.0002, 2439.0002)
+scale = Vector2(1.905, 1.905)
+texture = ExtResource("20_fw5c7")
+
+[node name="BrownWallPaper9" type="Sprite2D" parent="." unique_id=1385139680]
+position = Vector2(3950.0002, 2436.0002)
+scale = Vector2(1.905, 1.905)
+texture = ExtResource("20_fw5c7")
+
+[node name="BrownWallPaper10" type="Sprite2D" parent="." unique_id=1387406953]
+position = Vector2(4979, 2439)
+scale = Vector2(1.905, 1.905)
+texture = ExtResource("20_fw5c7")
+
+[node name="BrownWallPaper11" type="Sprite2D" parent="." unique_id=964667526]
+position = Vector2(6001, 2442.0002)
+scale = Vector2(1.905, 1.905)
+texture = ExtResource("20_fw5c7")
+
+[node name="PendulumClockPaper" type="Sprite2D" parent="." unique_id=1219006288]
+position = Vector2(-3632, 2469.0002)
+scale = Vector2(0.1475938, 0.1475938)
+texture = ExtResource("21_bqaw3")
+
+[node name="PendulumClockPaper2" type="Sprite2D" parent="." unique_id=1059069210]
+position = Vector2(4107.9995, 2479)
+scale = Vector2(0.1475938, 0.1475938)
+texture = ExtResource("21_bqaw3")
+
+[node name="FrankensteinPaper" type="Sprite2D" parent="." unique_id=1665825690]
+position = Vector2(-1892.0001, 2475)
+scale = Vector2(0.465, 0.465)
+texture = ExtResource("22_wr5rq")
+
+[node name="FrankensteinPaper2" type="Sprite2D" parent="." unique_id=869941243]
+position = Vector2(4416, 2481)
+scale = Vector2(0.465, 0.465)
+texture = ExtResource("22_wr5rq")
+
+[node name="HideText" type="Sprite2D" parent="." unique_id=1664287602]
+position = Vector2(-4111.9995, 2406)
+scale = Vector2(1.62, 1.62)
+texture = ExtResource("23_62xlc")
+
+[node name="WardrobePaper" type="Sprite2D" parent="." unique_id=69029829]
+position = Vector2(483, 2467)
+scale = Vector2(1.88, 1.88)
+texture = ExtResource("24_4raep")
+
+[node name="TablePaper" type="Sprite2D" parent="." unique_id=716499267]
+position = Vector2(-715, 2786.9998)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("25_037ak")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TablePaper" unique_id=1840137744]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TablePaper/StaticBody2D" unique_id=2061270775]
+position = Vector2(-3.6365967, 32.726563)
+shape = SubResource("RectangleShape2D_33x8s")
+
+[node name="TablePaper2" type="Sprite2D" parent="." unique_id=429097536]
+position = Vector2(2175, 2791)
+scale = Vector2(0.85270834, 0.32)
+texture = ExtResource("25_037ak")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TablePaper2" unique_id=1785298807]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TablePaper2/StaticBody2D" unique_id=97935473]
+position = Vector2(-19.936035, 20.3125)
+shape = SubResource("RectangleShape2D_2j2di")
+
+[node name="player" type="CharacterBody2D" parent="." unique_id=1878973696]
+script = ExtResource("13_4m40g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=803901214]
+position = Vector2(136, -149)
+shape = SubResource("CapsuleShape2D_yf5fn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player" unique_id=1663421951]
+position = Vector2(133, -147)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"idle"
+
+[node name="Camera2D" type="Camera2D" parent="player" unique_id=669751311]
+position = Vector2(137, -153)
+zoom = Vector2(1.35, 1.35)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1467243499]
+layer = 10
+script = ExtResource("26_wr5rq")
+
+[node name="Flash" type="ColorRect" parent="CanvasLayer" unique_id=753793649]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[node name="BlindZone" type="Area2D" parent="." unique_id=74985020]
+position = Vector2(6630, 2745)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlindZone" unique_id=1491398364]
+position = Vector2(290, -2)
+shape = SubResource("RectangleShape2D_avnxn")

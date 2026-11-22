@@ -27,5 +27,6 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite2D.flip_h = true
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		$AnimatedSprite2D.play("idle")
 
 	move_and_slide()
