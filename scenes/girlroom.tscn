@@ -38,6 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://cgayu2lh4b0hx" path="res://assets/speech bubble.png" id="36_ixjkf"]
 [ext_resource type="Texture2D" uid="uid://coaddy0udqnyk" path="res://assets/stickman.png" id="37_jp0jl"]
 [ext_resource type="Texture2D" uid="uid://bs1ty2rkh6qvb" path="res://assets/sound.png" id="38_w6n54"]
+[ext_resource type="PackedScene" uid="uid://bi0d5q50dphxp" path="res://scenes/menu.tscn" id="39_evcye"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dw713"]
 atlas = ExtResource("2_6mjyq")
@@ -1246,6 +1247,10 @@ theme_override_fonts/font = ExtResource("6_tkwkb")
 theme_override_font_sizes/font_size = 30
 text = "turn up your volume for the best experience! :D"
 autowrap_mode = 2
+
+[node name="menu" parent="." unique_id=1737399484 instance=ExtResource("39_evcye")]
+visible = false
+z_index = 13
 
 [connection signal="input_event" from="AnimatedSprite2D/Area2D" to="." method="_on_girlpressed"]
 

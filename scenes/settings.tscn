@@ -421,6 +421,7 @@ scale = Vector2(0.69519705, 1.2310535)
 texture = ExtResource("1_5p8wc")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1843763329]
+process_mode = 3
 position = Vector2(670.3737, 469.94263)
 rotation = 0.18680811
 scale = Vector2(0.2179009, 0.2179009)
@@ -430,6 +431,7 @@ frame_progress = 0.9005247
 metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=301680507]
+process_mode = 3
 position = Vector2(170.00002, 501.00003)
 rotation = -0.14086117
 scale = Vector2(0.17224081, 0.17224081)

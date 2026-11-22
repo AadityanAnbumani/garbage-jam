@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://0iw1mf2v6sik" path="res://assets/obby/wardrobe_paper.png" id="24_4raep"]
 [ext_resource type="Texture2D" uid="uid://chqasmdcgi5xw" path="res://assets/obby/table_paper.png" id="25_037ak"]
 [ext_resource type="Script" uid="uid://bu5idm3jhxeep" path="res://scenes/canvas_layer.gd" id="26_wr5rq"]
+[ext_resource type="PackedScene" uid="uid://bi0d5q50dphxp" path="res://scenes/menu.tscn" id="28_4raep"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wgxnn"]
 size = Vector2(251.25021, 269.18085)
@@ -968,6 +969,12 @@ animation = &"idle"
 [node name="Camera2D" type="Camera2D" parent="player" unique_id=669751311]
 position = Vector2(137, -153)
 zoom = Vector2(1.35, 1.35)
+
+[node name="menu" parent="player/Camera2D" unique_id=1737399484 instance=ExtResource("28_4raep")]
+visible = false
+z_index = 13
+position = Vector2(-401.00003, -200.00003)
+scale = Vector2(0.6163767, 0.6163767)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1467243499]
 layer = 10
