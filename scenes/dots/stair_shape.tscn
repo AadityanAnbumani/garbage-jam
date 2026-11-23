@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dck4k7tvdwh2m"]
+[gd_scene format=3 uid="uid://bvekhko462h56"]
 
 [ext_resource type="Texture2D" uid="uid://tm0vnlphy0nj" path="res://assets/paper.png" id="1_qmd2u"]
 [ext_resource type="Texture2D" uid="uid://blfd5u5gd2da4" path="res://assets/dots/stairs.png" id="2_13xaa"]
@@ -13,7 +13,7 @@ metadata/_edit_lock_ = true
 
 [node name="Line2D" type="Line2D" parent="." unique_id=2022625689]
 position = Vector2(-7, -8)
-points = PackedVector2Array(-256, 31, 52, -164, 55, 34)
+points = PackedVector2Array(-256, 31, -187.7584, -12.204895, 52, -164, 55, 34)
 default_color = Color(0, 0, 0, 1)
 
 [node name="Stairs" type="Sprite2D" parent="." unique_id=1332814119]

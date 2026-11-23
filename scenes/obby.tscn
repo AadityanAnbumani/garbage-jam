@@ -43,7 +43,7 @@
 [ext_resource type="PackedScene" uid="uid://b55lylwa4l3mx" path="res://scenes/connect_the_dots.tscn" id="40_ydwmx"]
 [ext_resource type="Script" uid="uid://bsuvppkoraixw" path="res://scripts/dots_spot.gd" id="41_i3kjw"]
 [ext_resource type="PackedScene" uid="uid://brv0ggpfusfrc" path="res://scenes/dots/key_shape.tscn" id="42_4okkk"]
-[ext_resource type="PackedScene" uid="uid://dck4k7tvdwh2m" path="res://scenes/dots/stair_shape.tscn" id="42_7tknw"]
+[ext_resource type="PackedScene" uid="uid://bvekhko462h56" path="res://scenes/dots/stair_shape.tscn" id="43_6vpso"]
 [ext_resource type="Texture2D" uid="uid://b0mc6ahmvpxxf" path="res://assets/dots/key.png" id="43_7tknw"]
 [ext_resource type="PackedScene" uid="uid://b8aspsw7p5caa" path="res://scenes/dots/trampoline_shape.tscn" id="43_48yph"]
 [ext_resource type="PackedScene" uid="uid://8atlpmd8pax4" path="res://scenes/dots/pentagram_shape.tscn" id="46_pxvbx"]
@@ -969,7 +969,7 @@ flip_h = true
 [node name="StaticBody2D" type="StaticBody2D" parent="Stairs" unique_id=201025329]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Stairs/StaticBody2D" unique_id=435141299]
-polygon = PackedVector2Array(284.61523, -138.46155, -253.84619, 225.64105, 284.61523, 225.64105)
+polygon = PackedVector2Array(284.61523, -138.46155, -136.0064, 145.95886, -253.84619, 225.64105, 284.61523, 225.64105)
 
 [node name="Stairs3" type="Sprite2D" parent="." unique_id=1042992400]
 position = Vector2(-4188, 956)
@@ -1516,7 +1516,7 @@ bus = &"Dialogue"
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("41_i3kjw")
-drawing = ExtResource("42_7tknw")
+drawing = ExtResource("43_6vpso")
 reveal = NodePath("../../Stairs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DotsSpots/Area2D" unique_id=736843125]

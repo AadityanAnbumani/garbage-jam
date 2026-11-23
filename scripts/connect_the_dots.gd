@@ -47,6 +47,11 @@ func _ready() -> void:
 
 	if autostart and shape_scene:
 		start_puzzle(shape_scene)
+	
+	print("Obby status: ", GameManager.obby)
+
+	if GameManager.obby:
+		$"../BackButton".hide()
 
 	queue_redraw()
 
