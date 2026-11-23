@@ -1649,9 +1649,13 @@ shape = SubResource("RectangleShape2D_vfslc")
 layer = 8
 
 [node name="connectTheDots" parent="BookLayer" unique_id=582379745 instance=ExtResource("40_ydwmx")]
+visible = false
 
 [node name="GirlRoom" parent="BookLayer/connectTheDots" index="0" unique_id=1709195477]
 visible = false
+
+[node name="Puzzle" parent="BookLayer/connectTheDots" index="8" unique_id=88191845]
+shape_scene = ExtResource("43_6vpso")
 
 [node name="BackButton" parent="BookLayer/connectTheDots" index="9" unique_id=1987522140]
 visible = false
@@ -1766,6 +1770,9 @@ zoom = Vector2(1.645, 1.645)
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1441793234]
 position = Vector2(578, -309)
 scale = Vector2(2.4704642, 2.5150375)
+
+[node name="RespawnPoint" type="Marker2D" parent="." unique_id=297770092]
+position = Vector2(-4348, 2143)
 
 [editable path="Enemy2"]
 [editable path="BookLayer/connectTheDots"]

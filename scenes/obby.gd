@@ -32,7 +32,13 @@ var dots_player: Node2D
 var book_open := false
 var blinded := false
 
+@onready var respawn_point: Marker2D = $RespawnPoint
+
 func _ready() -> void:
+	if GameManager.caught_by_eye:
+		player.global_position = respawn_point.global_position
+		player.velocity = Vector2.ZERO
+		GameManager.caught_by_eye = false
 	GameManager.obby = true
 	$StaticBody2D/CollisionShape2D.disabled=true
 
@@ -84,6 +90,7 @@ func _set_collisions(root: Node, enabled: bool) -> void:
 func _on_dots_spot_entered(body: Node2D, spot: DotsSpot) -> void:
 	if body.name != "player" or spot.solved or book_open:
 		return
+	$BookLayer/connectTheDots.visible=true
 	current_spot = spot
 	dots_player = body
 	if "velocity" in body:

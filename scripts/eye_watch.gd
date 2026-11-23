@@ -38,6 +38,7 @@ func _watch_loop() -> void:
 
 		if not _is_hidden():
 			print("spotted!")
+			GameManager.caught_by_eye = true
 			get_tree().reload_current_scene()
 			return
 
