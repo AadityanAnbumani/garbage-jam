@@ -1222,7 +1222,7 @@ position = Vector2(720, 120)
 texture = ExtResource("26_ilsdv")
 
 [node name="player" type="CharacterBody2D" parent="." unique_id=1878973696]
-position = Vector2(7922, 2852)
+position = Vector2(-78, 64)
 collision_layer = 2
 script = ExtResource("13_4m40g")
 
@@ -1511,6 +1511,11 @@ shape = SubResource("RectangleShape2D_3nlwh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1940801550]
 libraries/ = SubResource("AnimationLibrary_tut8m")
+
+[node name="ObbyConnectTheDots4" type="Sprite2D" parent="." unique_id=849765014]
+position = Vector2(6007, 384)
+scale = Vector2(0.415, 0.415)
+texture = ExtResource("4_0v40y")
 
 [editable path="Enemy2"]
 [editable path="BookLayer/connectTheDots"]
