@@ -140,6 +140,9 @@ func _on_dots_completed() -> void:
 	if spot.cutscene_after:
 		await get_tree().create_timer(1.0).timeout
 		await play_cutscene()
+	if $Pentagram.visible==true:
+		await get_tree().create_timer(2.0).timeout
+		get_tree().change_scene_to_file("res://scenes/finalscene.tscn")
 
 func _reveal(node: Node2D) -> void:
 	node.modulate.a = 0.0
