@@ -1216,6 +1216,7 @@ sprite_frames = SubResource("SpriteFrames_w6n54")
 animation = &"smile"
 
 [node name="VoicePlayer" type="AudioStreamPlayer2D" parent="." unique_id=1434623927]
+volume_db = 4.0
 bus = &"Dialogue"
 
 [node name="AnimationPlayer3" type="AnimationPlayer" parent="." unique_id=728747886]
@@ -1228,7 +1229,7 @@ offset_top = -127.0
 offset_right = 1392.0
 offset_bottom = 729.0
 mouse_filter = 2
-color = Color(0.23529412, 0, 0.24313726, 0)
+color = Color(0.08194164, 7.669334e-06, 0.085640006, 1)
 metadata/_edit_lock_ = true
 
 [node name="Sound" type="Sprite2D" parent="AnimationPlayer3" unique_id=937242584]

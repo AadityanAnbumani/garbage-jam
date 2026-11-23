@@ -700,6 +700,7 @@ func _on_puzzle_completed() -> void:
 		busy = false
 
 		_start_dialogue("friend drawn")
+		Music.play_track("track2")
 		return
 
 	# EYEBALL SPECIAL EVENT
@@ -769,7 +770,7 @@ func _on_puzzle_completed() -> void:
 		_start_room_dialogue("bird")
 		return
 
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(2.0).timeout
 	busy = false
 	_run_puzzle()
 	
