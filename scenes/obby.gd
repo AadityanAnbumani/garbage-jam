@@ -119,7 +119,7 @@ func play_cutscene() -> void:
 	player.visible = false
 	cutscene_cam.make_current()
 
-	cutscene_anim.play("your_animation_name")
+	cutscene_anim.play("birdFly")
 	await cutscene_anim.animation_finished
 
 	player.global_position = cutscene_sprite.global_position
