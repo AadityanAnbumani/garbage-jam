@@ -51,6 +51,7 @@
 [ext_resource type="Texture2D" uid="uid://cghsrcdak3spn" path="res://assets/obby/safe_text.png" id="49_jr73d"]
 [ext_resource type="Texture2D" uid="uid://cnooi43tukq2b" path="res://assets/obby/ride_text.png" id="50_j186r"]
 [ext_resource type="Script" uid="uid://prm7upje55qc" path="res://scripts/kill_zone.gd" id="51_6vpso"]
+[ext_resource type="Texture2D" uid="uid://bg6ro4ej6icdy" path="res://assets/obby/girlFly.png" id="52_i6b6h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wgxnn"]
 size = Vector2(251.25021, 269.18085)
@@ -191,6 +192,42 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(8387, 2581)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GirlFly:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GirlFly:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8053.0005, 2695.0002)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Key:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8345, 2558)]
+}
 
 [sub_resource type="Animation" id="Animation_i6b6h"]
 resource_name = "birdFly"
@@ -202,10 +239,46 @@ tracks/0/path = NodePath("Bird:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.7),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.7, 3.5, 4.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(8387, 2581), Vector2(8036, 2600)]
+"values": [Vector2(8387, 2581), Vector2(8036, 2600), Vector2(4026, 868), Vector2(4069, 174), Vector2(4275, 125)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GirlFly:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GirlFly:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7, 3.5, 4.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(8053.0005, 2695.0002), Vector2(8053.0005, 2695.0002), Vector2(4047.0002, 974.0001), Vector2(4084, 278.00006), Vector2(4301, 235.00003)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Key:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.7, 3.5, 4.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(8345, 2558), Vector2(8087, 2678), Vector2(4081, 951), Vector2(4119, 265), Vector2(4333, 224)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tut8m"]
@@ -605,7 +678,8 @@ position = Vector2(8108, 2449)
 texture = ExtResource("4_0v40y")
 
 [node name="ObbyHouse" type="Sprite2D" parent="." unique_id=1609158701]
-position = Vector2(4955, 175)
+position = Vector2(5418.0005, 217.00003)
+scale = Vector2(1.565, 1.565)
 texture = ExtResource("6_fw3ae")
 
 [node name="ObbyRock" type="Sprite2D" parent="." unique_id=892666641]
@@ -959,6 +1033,17 @@ texture = ExtResource("8_4m40g")
 position = Vector2(-0.54296875, 1.6337891)
 shape = SubResource("RectangleShape2D_fcnqv")
 
+[node name="Paper27" type="Sprite2D" parent="." unique_id=1084416508]
+position = Vector2(-2410, 1012)
+scale = Vector2(0.08509689, 0.06851518)
+texture = ExtResource("8_4m40g")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Paper27" unique_id=1166262460]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paper27/StaticBody2D" unique_id=1105647172]
+position = Vector2(-0.54296875, 1.6337891)
+shape = SubResource("RectangleShape2D_fcnqv")
+
 [node name="Paper21" type="Sprite2D" parent="." unique_id=1715504482]
 position = Vector2(-4401.0005, 1165)
 scale = Vector2(0.24, 0.24)
@@ -1172,7 +1257,7 @@ scale = Vector2(0.465, 0.465)
 texture = ExtResource("22_wr5rq")
 
 [node name="HideText" type="Sprite2D" parent="." unique_id=1664287602]
-position = Vector2(-4152, 2630)
+position = Vector2(-4500, 2634)
 scale = Vector2(1.62, 1.62)
 texture = ExtResource("23_62xlc")
 
@@ -1222,7 +1307,7 @@ position = Vector2(720, 120)
 texture = ExtResource("26_ilsdv")
 
 [node name="player" type="CharacterBody2D" parent="." unique_id=1878973696]
-position = Vector2(-78, 64)
+position = Vector2(7672, 2840)
 collision_layer = 2
 script = ExtResource("13_4m40g")
 
@@ -1486,7 +1571,7 @@ scale = Vector2(0.195, 0.195)
 texture = ExtResource("43_7tknw")
 
 [node name="SafeText" type="Sprite2D" parent="." unique_id=1973689641]
-position = Vector2(-4017, 2315)
+position = Vector2(-4002, 2544)
 scale = Vector2(1.72, 1.72)
 texture = ExtResource("49_jr73d")
 
@@ -1516,6 +1601,14 @@ libraries/ = SubResource("AnimationLibrary_tut8m")
 position = Vector2(6007, 384)
 scale = Vector2(0.415, 0.415)
 texture = ExtResource("4_0v40y")
+
+[node name="GirlFly" type="Sprite2D" parent="." unique_id=1522862849]
+position = Vector2(8053.0005, 2695.0002)
+scale = Vector2(0.105, 0.105)
+texture = ExtResource("52_i6b6h")
+
+[node name="Camera2D" type="Camera2D" parent="GirlFly" unique_id=546761602]
+zoom = Vector2(1.645, 1.645)
 
 [editable path="Enemy2"]
 [editable path="BookLayer/connectTheDots"]

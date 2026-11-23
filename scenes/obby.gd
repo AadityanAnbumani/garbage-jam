@@ -8,6 +8,11 @@ extends Node2D
 @onready var dots_book: Node2D = $BookLayer/connectTheDots
 @onready var dots_puzzle = $BookLayer/connectTheDots/Puzzle
 @onready var dots_spots: Node2D = $DotsSpots
+@onready var player: CharacterBody2D = $player
+@onready var player_cam: Camera2D = $player/Camera2D
+@onready var cutscene_sprite: Sprite2D = $GirlFly
+@onready var cutscene_cam: Camera2D = $GirlFly/Camera2D
+@onready var cutscene_anim: AnimationPlayer = $AnimationPlayer
 
 var current_spot: DotsSpot
 var dots_player: Node2D
@@ -94,9 +99,27 @@ func _on_dots_completed() -> void:
 	if spot.reveal:
 		await get_tree().create_timer(0.5).timeout
 		_reveal(spot.reveal)
+	if spot.cutscene_after:
+		await get_tree().create_timer(1.0).timeout
+		await play_cutscene()
 
 func _reveal(node: Node2D) -> void:
 	node.modulate.a = 0.0
 	node.visible = true
 	_set_collisions(node, true)
 	create_tween().tween_property(node, "modulate:a", 1.0, 0.6)
+	
+func play_cutscene() -> void:
+	player.set_physics_process(false)
+	player.velocity = Vector2.ZERO
+	player.visible = false
+	cutscene_cam.make_current()
+
+	cutscene_anim.play("your_animation_name")
+	await cutscene_anim.animation_finished
+
+	player.global_position = cutscene_sprite.global_position
+	player.visible = true
+	player_cam.make_current()
+	player_cam.reset_smoothing()
+	player.set_physics_process(true)
