@@ -1,6 +1,10 @@
 extends Node2D
 func _ready():
-	GameManager.obby = false
+	
+	await get_tree().create_timer(2.0).timeout
+	$friend.visible=false
+	
+	
 	$AnimatedSprite2D2.play("um")
 	await get_tree().create_timer(1.0).timeout
 	$AnimatedSprite2D2.play("huh")
