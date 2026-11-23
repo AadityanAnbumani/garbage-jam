@@ -260,58 +260,46 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("GirlFly:visible")
+tracks/1/path = NodePath("GirlFly:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Vector2(8053.0005, 2695.0002)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("GirlFly:position")
+tracks/2/path = NodePath("Key:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(8053.0005, 2695.0002)]
+"values": [Vector2(8345, 2558)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Key:position")
+tracks/3/path = NodePath("Bird:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(8345, 2558)]
+"update": 1,
+"values": [false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Bird:visible")
+tracks/4/path = NodePath("Key:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Key:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -399,6 +387,9 @@ _data = {
 &"RESET": SubResource("Animation_6vpso"),
 &"birdFly": SubResource("Animation_i6b6h")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1d2k5"]
+size = Vector2(266, 500)
 
 [node name="Node2D" type="Node2D" unique_id=2018465092]
 script = ExtResource("1_62xlc")
@@ -1776,6 +1767,12 @@ scale = Vector2(2.4704642, 2.5150375)
 
 [node name="RespawnPoint" type="Marker2D" parent="." unique_id=297770092]
 position = Vector2(-4348, 2143)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1956393196]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=970279684]
+position = Vector2(4274, 240)
+shape = SubResource("RectangleShape2D_1d2k5")
 
 [editable path="Enemy2"]
 [editable path="BookLayer/connectTheDots"]

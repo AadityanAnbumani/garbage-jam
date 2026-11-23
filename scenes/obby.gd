@@ -19,7 +19,6 @@ signal dialogue_finished
 @onready var friend_text: RichTextLabel = $"player/Camera2D/friend text"
 
 @onready var ruby_sprite: AnimatedSprite2D = $player/AnimatedSprite2D
-@onready var friend_sprite: AnimatedSprite2D = $Friend
 
 @onready var voice_player =  $AudioStreamPlayer2D
 var active_text: RichTextLabel
@@ -35,6 +34,7 @@ var blinded := false
 @onready var respawn_point: Marker2D = $RespawnPoint
 
 func _ready() -> void:
+	Music.play_track("track3")
 	if GameManager.caught_by_eye:
 		player.global_position = respawn_point.global_position
 		player.velocity = Vector2.ZERO
