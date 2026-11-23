@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://b8aspsw7p5caa"]
+
+[ext_resource type="Texture2D" uid="uid://tm0vnlphy0nj" path="res://assets/paper.png" id="1_tov1r"]
+[ext_resource type="Texture2D" uid="uid://bq7b63o25nimv" path="res://assets/obby/trampoline.png" id="2_tov1r"]
+
+[node name="flowerShape" type="Node2D" unique_id=967914542]
+
+[node name="Paper" type="Sprite2D" parent="." unique_id=1663904749]
+position = Vector2(-106.700005, -71.05924)
+scale = Vector2(0.5, 0.60041744)
+texture = ExtResource("1_tov1r")
+metadata/_edit_lock_ = true
+
+[node name="Line2D" type="Line2D" parent="." unique_id=2022625689]
+position = Vector2(-7, -8)
+points = PackedVector2Array(-259, -117, 77, -114, 73, -58, 62, -31, 50, -103, -23, -98, -34, -9, -182, -11, -189, -99, -238, -104, -255, -44)
+default_color = Color(0, 0, 0, 1)
+
+[node name="Trampoline" type="Sprite2D" parent="." unique_id=1684365514]
+position = Vector2(-100, -81)
+scale = Vector2(0.23, 0.23)
+texture = ExtResource("2_tov1r")

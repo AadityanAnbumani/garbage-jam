@@ -1,7 +1,7 @@
 extends AnimatableBody2D
 
 @export var travel := Vector2(1300, 0)   # how far it moves from where you place it
-@export var speed := 100.0
+@export var speed := 200.0
 
 var start_pos: Vector2
 var end_pos: Vector2

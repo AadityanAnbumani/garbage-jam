@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://byn3osjjoroga"]
+
+[ext_resource type="Script" uid="uid://bw0mb0vj1hi03" path="res://scripts/rubble.gd" id="1_p3k48"]
+[ext_resource type="Texture2D" uid="uid://d3tb1cv5xmy0f" path="res://assets/obby/rubble_puzzle.png" id="2_d1a4l"]
+
+[node name="Rubble" type="Area2D" unique_id=680860111]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_p3k48")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1577507118]
+texture = ExtResource("2_d1a4l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1568647347]
