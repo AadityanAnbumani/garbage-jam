@@ -523,6 +523,7 @@ text = "press EScape for settings"
 horizontal_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="." unique_id=258315186]
+process_mode = 3
 offset_left = 432.0
 offset_top = 187.0
 offset_right = 783.04504
@@ -530,6 +531,7 @@ offset_bottom = 203.0
 scale = Vector2(1.4043782, 1.4043782)
 
 [node name="HSlider2" type="HSlider" parent="." unique_id=922980285]
+process_mode = 3
 offset_left = 432.0
 offset_top = 238.99998
 offset_right = 784.4691
@@ -548,6 +550,7 @@ theme_override_font_sizes/font_size = 25
 text = "bg music volume:"
 
 [node name="HSlider3" type="HSlider" parent="." unique_id=1010794846]
+process_mode = 3
 offset_left = 432.00003
 offset_top = 280.0
 offset_right = 786.60535

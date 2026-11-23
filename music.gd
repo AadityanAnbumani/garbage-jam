@@ -18,6 +18,7 @@ func _ready() -> void:
 		add_child(p)
 		players[key] = p
 		started[key] = false
+		play_track("track1")
 
 func play_track(key: String) -> void:
 	if key == current:
