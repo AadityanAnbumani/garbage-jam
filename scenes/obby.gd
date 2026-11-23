@@ -15,6 +15,7 @@ var book_open := false
 var blinded := false
 
 func _ready() -> void:
+	GameManager.obby = true
 	blind_zone.body_entered.connect(_on_blind_zone_body_entered)
 	eye_zone.body_entered.connect(_on_eye_zone_entered)
 	eye_zone.body_exited.connect(_on_eye_zone_exited)
@@ -65,6 +66,9 @@ func _open_book(spot: DotsSpot) -> void:
 		var node = dots_book.get_node_or_null(n)
 		if node:
 			node.visible = true
+
+	if GameManager.obby:
+		dots_book.get_node("BackButton").hide()
 	var help2 = dots_book.get_node_or_null("help2")
 	if help2:
 		help2.visible = false

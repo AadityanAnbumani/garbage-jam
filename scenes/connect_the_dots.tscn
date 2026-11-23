@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://brdwcpr8qp75q" path="res://assets/girl room.jpg" id="2_6hgct"]
 [ext_resource type="Texture2D" uid="uid://bcfhufvhbcip3" path="res://assets/book.png" id="3_4o5sk"]
 [ext_resource type="Texture2D" uid="uid://tm0vnlphy0nj" path="res://assets/paper.png" id="4_hdh57"]
-[ext_resource type="PackedScene" uid="uid://dck4k7tvdwh2m" path="res://scenes/dots/stair_shape.tscn" id="5_4o5sk"]
+[ext_resource type="PackedScene" uid="uid://cgwwxxgeewb4v" path="res://scenes/dots/square_shape.tscn" id="5_4o5sk"]
 [ext_resource type="Texture2D" uid="uid://d01lwvsjybf1h" path="res://assets/dots/bird.png" id="6_2pl0l"]
 [ext_resource type="Texture2D" uid="uid://cc5tfp36siyjk" path="res://assets/arrow.png" id="6_4gn7c"]
 [ext_resource type="Texture2D" uid="uid://bxvl4jnatbdw" path="res://assets/dots/candle.png" id="7_fatfg"]
@@ -97,7 +97,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -804,6 +804,7 @@ root_node = NodePath("../Panel")
 libraries/ = SubResource("AnimationLibrary_po3ya")
 
 [node name="Panel3" type="Panel" parent="." unique_id=1421823698]
+visible = false
 offset_left = 603.0
 offset_top = 56.0
 offset_right = 694.0
